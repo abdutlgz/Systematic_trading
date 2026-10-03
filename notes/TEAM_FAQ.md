@@ -27,8 +27,8 @@ borrowing 47% of capital; charging T-bill + 0.5% for that costs about 2.3%/yr. W
 intraday-month in April 2025, but no month-end close was above 30. Monthly checks miss short spikes. That is a lesson, not something we tuned away.
 
 ## Testing honesty
-**Q: How many things did you try?** 27 pre-registered trials: 4 early pilots, 5 momentum variants, 10-idea ETF screen, 3 thematic
-ideas (weather→cocoa/coffee, GLP-1 news, open-source AI releases), 4 Massive options hypotheses, 1 portfolio. All are reported.
+**Q: How many things did you try?** 31 pre-registered trials: 4 early pilots, 5 momentum variants, 10-idea ETF screen, 3 thematic
+ideas (weather→cocoa/coffee, GLP-1 news, open-source AI releases), 8 Massive options hypotheses, 1 portfolio. All are reported.
 
 **Q: How do you correct for that?** Deflated Sharpe Ratio, Holm/BHY multiple-testing corrections, and CSCV probability of backtest
 overfitting (0.21). The Deflated Sharpe flagged our two best screen ideas (0.84, 0.71 < 0.90) and both then failed OOS.
@@ -60,6 +60,10 @@ rates cut OOS Sharpe to 0.47, which we report.
 **Q: What did you find?** Our pre-registered trade (sell puts after executive departures) failed: about zero in-sample, positive OOS only
 because the stocks rallied. But one measurement replicated in both windows: after exec exits, stocks move MORE than options priced
 (21-day ratio 1.43 vs 0.99 OOS). The market under-prices this risk. Our sealed-window predictions are in FORWARD_LEDGER.md.
+
+**Q: The workshop said to use starred cells. Did you?** Yes, with a rule fixed in advance. 2022-23 discovery: 0 of 97 key cells starred
+(about 5 expected by chance); 8 of 135 across all horizons (about 7 expected). The best near-star (CFO appointment → CSP at expiry, +2.34%)
+was registered as a follow-up and tested on unseen 2024-25: -0.23%. Stars appear at the chance rate.
 
 **Q: Why not trade the straddle then?** It wasn't pre-registered, so testing it now on seen data would be p-hacking. It is stated as a
 prediction for the judges' sealed window instead.
