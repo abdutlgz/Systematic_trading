@@ -15,3 +15,18 @@ Distinct strategy trials N = 5. A conservative N = 20 also counts the earlier pi
 In-sample run 2026-10-02. OOS NOT yet evaluated. No parameter was changed after seeing IS results.
 Implementation notes made during IS work (no effect on the strategy rule): FRED CSV timed out, so VIX comes from
 Yahoo ^VIX (the same CBOE close); the simulator was vectorized and reproduces identical numbers.
+
+## Out-of-sample, run ONCE (2026-10-03): 2024-10-01..2026-09-30, `run_all.py --oos`, no spec changes
+| | Ann. return | Vol | Sharpe | t | Max DD | Turnover/yr |
+|---|---:|---:|---:|---:|---:|---:|
+| 1 Base 12m, OOS | 11.2% | 12.6% | 0.90 | 1.28 | -12.6% | 7.3x |
+| 2 VIX overlay 12m, OOS | 11.2% | 12.6% | 0.90 | 1.28 | -12.6% | 7.3x |
+| 2 at 2x costs, OOS | 10.4% | 12.6% | 0.85 | 1.19 | -12.7% | 7.3x |
+In-sample numbers reproduced exactly.
+- The overlay NEVER triggered OOS: VIX closed above 30 on 14 days (peak 52.3 on 2025-04-08), but no month-end
+  close was above 30 (max 25.2). Monthly checks miss intra-month spikes. This is a known limitation of the spec,
+  not changed after the fact.
+- OOS factor regression (to 2026-08-31): alpha -0.4%/yr (t -0.07), Mkt beta 0.50, Mom 0.09. OOS return is
+  explained by equity-market exposure (trend was long equities in a rising market), not by alpha.
+- Calendar years: 2024 +8.0%, 2025 +14.5%, 2026 YTD +12.1%.
+- Two years is short: Sharpe t-stat 1.28. OOS Sharpe 0.90 > IS 0.26 is most likely regime luck, not improvement.
