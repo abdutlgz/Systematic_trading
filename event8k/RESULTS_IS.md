@@ -11,3 +11,15 @@
 probability 0.59 (N = 5); per-event 60d hedged return +1.92% (median +2.03%) with t = 1.33 (n = 216). Average gross short is only 27%
 (max 46%), so the return on deployed capital is about 8.4%/yr. Yearly: 2022 +2.2%, 2023 -2.1%, 2024 +6.7%, 2025 YTD +1.4%.
 OOS 2025-10..2026-09 is run next, ONCE, per the protocol.
+
+## OOS 2025-10-01..2026-09-30, run ONCE (`python event8k/backtest.py --oos`), no changes after IS
+| Variant | OOS Sharpe | Ann. ret | Vol | Max DD | New trades |
+|---|---:|---:|---:|---:|---:|
+| **V2 abrupt (primary)** | **+0.32** | +1.6% | 5.2% | -4.9% | 54 |
+| V4 planned control | -0.69 | -3.4% | 4.8% | -6.8% | 67 |
+| V1 all departures | -0.02 | -0.8% | 10.7% | -11.1% | 155 |
+Same sign as IS, and V2 again beats the control (spread V2 - V4: IS +2.8%/yr, OOS +4.9%/yr). But the per-event mean of OOS-entered
+trades is about 0 (t = -0.07, n = 54); part of the OOS return comes from positions opened in late IS and still held. Verdict: weakly
+consistent, not significant. Short-selling after abrupt CFO exits beats short-selling after retirements in both periods, which is the
+cleanest part of the result. Note: OOS overlaps the Jan-Aug 2026 window where exec-exit names rallied (known in advance; that works
+against this short, and the strategy still stayed positive).
