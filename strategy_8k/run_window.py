@@ -1,10 +1,12 @@
-"""In-sample run of the Massive starter pipeline for the pre-registered hypothesis (HYPOTHESIS.md).
+"""Run (any window) of the Massive starter pipeline for the pre-registered hypothesis (HYPOTHESIS.md).
 
 Executes the starter notebook's own code cells (sections 1-7), replacing only the event table with the pooled
 executive-exit events. Stops BEFORE section 8 (out-of-sample). Run from the starter folder so .env and the cache
 resolve:
-    cd gqh-massive-8k-starter && .venv/bin/python ../strategy_8k/run_is.py
+    cd gqh-massive-8k-starter && .venv/bin/python ../strategy_8k/run_window.py --start 2024-01-01 --end 2025-12-31 --label is
+    cd gqh-massive-8k-starter && .venv/bin/python ../strategy_8k/run_window.py --start 2026-01-01 --end 2026-08-31 --label oos
 """
+import argparse
 import json
 import pickle
 import sys
@@ -40,7 +42,7 @@ for _r in events.itertuples():
         _last[_r.ticker] = _r.filing_date
 events = events[_keep].sort_values("filing_date").reset_index(drop=True)
 events["days_since_prev_event"] = events.groupby("ticker")["filing_date"].diff().dt.days
-print(f"{len(events)} pooled in-sample exec-exit events across {events.ticker.nunique()} tickers;",
+print(f"{len(events)} pooled exec-exit events across {events.ticker.nunique()} tickers;",
       events.tag.value_counts().to_dict())
 '''
 
@@ -54,6 +56,11 @@ RETRY_GET = '''
 
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--start", required=True)
+    ap.add_argument("--end", required=True)
+    ap.add_argument("--label", required=True)
+    args = ap.parse_args()
     cells = json.loads(NB.read_text())["cells"]
     g = {"display": display, "__name__": "__main__", "POOLED_TAGS": TAGS, "DEDUPE_DAYS": DEDUPE_DAYS}
     for i, c in enumerate(cells[: LAST_CELL + 1]):
@@ -70,13 +77,16 @@ def main():
             src = head + POOLED_EVENTS + "\n".join(l for l in tail.splitlines() if "sample(5" not in l and "supporting_text" not in l and "max_colwidth" not in l)
         print(f"\n######## cell {i} ########", flush=True)
         exec(compile(src, f"cell{i}", "exec"), g)
+        if i == 10:  # the window under test replaces the notebook's study window (events AND placebo use it)
+            g["STUDY_START"], g["STUDY_END"], g["EVENT_TAG"] = args.start, args.end, "executive_officer_departure"
     for name in ("events", "results", "board", "placebo_results", "diff", "ranking"):
         if name in g:
             obj = g[name]
-            obj.to_pickle(OUT / f"is_{name}.pkl") if hasattr(obj, "to_pickle") else None
-    print("\nCash-secured put, events minus placebo (in-sample):")
+            obj.to_pickle(OUT / f"{args.label}_{name}.pkl") if hasattr(obj, "to_pickle") else None
     d = g["diff"]
-    display(d[d.strategy == "cash_secured_put"])
+    for s in ("cash_secured_put", "protective_put", "long_call", "stock"):
+        print(f"\n{s}, events minus placebo ({args.label} {args.start}..{args.end}):")
+        display(d[d.strategy == s])
 
 
 if __name__ == "__main__":
