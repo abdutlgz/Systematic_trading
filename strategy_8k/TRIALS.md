@@ -106,3 +106,14 @@ exp **-0.23%** [-3.07%, +2.14%]; 63d -0.41%; 42d +0.23%; 21d +0.25%; 10d -0.16% 
 near-star that was noise, which is exactly what the two-stage design is meant to catch.
 Final Massive tally: 8 pre-registered trials; no trading rule survives; one measurement replicates (exec-exit moves exceed
 implied moves, IS and OOS).
+
+## Trial 9 (HYPOTHESIS_9.md): exec exits → long ATM straddle, 2022-01-01..2023-12-31, run once. **FAIL.**
+167 events / 74 tickers (435 priced pairs); placebo 120 sessions. Net of 4% round-trip premium cost, events minus placebo:
+1m bucket: 5d -0.51% [-1.08, +0.04], 10d -0.48%, **21d -1.15% [-3.87, +1.42] (primary, FAIL)**; 3-6m: 21d -1.00%, 42d -1.10%.
+Hit rate after exits is 31-36%; the median event loses.
+Realized/implied ratio, 2022-23: day 1 events 1.13 vs placebo 0.88 (the same as 2024-25: 1.13 vs 0.82, and 2026: 1.16 vs 0.91), but by
+10-21 sessions events are BELOW placebo (0.91 vs 1.07-1.12), the reverse of 2024-26.
+**Revised reading:** the robust pattern (all three windows) is an under-priced move on the filing day itself. It is over before an
+entry at the filing-session close can capture it. The multi-week excess in 2024-26 was regime-specific (it reversed in 2022-23).
+This contradicts our ledger prediction P2 at 21 sessions for 2022-23-like regimes; the ledger is left unedited.
+Massive trial count: 9.

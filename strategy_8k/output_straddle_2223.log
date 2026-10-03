@@ -1,0 +1,184 @@
+
+######## cell 8 ########
+API key loaded (ends 0itp); cache at /Users/atoleugazin/Documents/Projects/QGHACKS/gqh-massive-8k-starter/.massive_cache
+
+######## cell 10 ########
+
+######## cell 12 ########
+119 tertiary tags, 29 secondary, 8 primary
+            primary_category    secondary_category              tertiary_category                                                                                                                                                                                                                      description
+0  leadership_and_governance  executive_leadership                ceo_appointment                                                                                                                                                         New CEO appointment with background, employment terms, and compensation.
+1  leadership_and_governance  executive_leadership                  ceo_departure                                                                                                                                 CEO departure, resignation, retirement, termination, or death with circumstances and transition.
+2  leadership_and_governance  executive_leadership                cfo_appointment                                                                                                                                                             New CFO appointment with background, terms, and transition timeline.
+3  leadership_and_governance  executive_leadership                  cfo_departure                                                                                                                                                                    CFO departure with circumstances and transition arrangements.
+4  leadership_and_governance  executive_leadership  executive_officer_appointment                                                                                                                                                               Other named executive officer appointment with position and terms.
+5  leadership_and_governance  executive_leadership    executive_officer_departure                                                                                                                                                                      Other named executive officer departure with circumstances.
+6  leadership_and_governance  executive_leadership  executive_compensation_change  Material executive or director compensation changes including new employment agreements, amendments, severance, change-in-control provisions, or equity awards. Consolidates all compensation-related events into a single tag.
+
+######## cell 14 ########
+1655 sessions in the calendar; last completed session 2026-10-02. Sessions per year: 2022: 251, 2023: 250, 2024: 252, 2025: 250, 2026: 251
+
+######## cell 16 ########
+2,093 'ceo_departure' disclosures across all filers, 2022-01-01..2023-12-31
+2,052 'cfo_departure' disclosures across all filers, 2022-01-01..2023-12-31
+4,593 'executive_officer_departure' disclosures across all filers, 2022-01-01..2023-12-31
+167 pooled ceo_departure/cfo_departure/executive_officer_departure events across 74 tickers; {'executive_officer_departure': 111, 'cfo_departure': 29, 'ceo_departure': 27}
+167 in-sample events across 74 of the top 100; 0 were filed on a non-session day (weekend or holiday)
+filing_date  2022  2023
+events         76    91
+
+######## cell 18 ########
+
+######## cell 20 ########
+  in-sample: 25/167 events, 45s
+  in-sample: 50/167 events, 90s
+  in-sample: 75/167 events, 128s
+  in-sample: 100/167 events, 165s
+  in-sample: 125/167 events, 195s
+  in-sample: 150/167 events, 232s
+in-sample: 167 events -> 435 priced (event, bucket) pairs; 62 drops; 263s
+                                                                   dropped
+reason                                                                    
+1m: ATM pair did not trade on or near the pre-event session             22
+2m: ATM pair did not trade on or near the pre-event session             14
+2m: no expiry 46-80 days out                                            10
+3-6m: ATM pair did not trade on or near the pre-event session            9
+could not recover spot from the chain (no liquid near-dated pair)        2
+1m: no expiry 21-45 days out                                             2
+3-6m: no paired strikes near spot                                        2
+2m: no paired strikes near spot                                          1
+        median dte  median moneyness  median abs_spot_gap  median implied_move  median atm_volume
+bucket                                                                                           
+1m            30.0             0.001                0.002                0.065               65.0
+2m            58.0             0.003                0.003                0.095              227.0
+3-6m         121.0             0.002                0.007                0.134               89.5
+   ticker      t_pre    spot_pre      K                   call                    put  call_px  put_px  implied_move
+2    GILD 2022-01-05   72.638035   72.5  O:GILD220520C00072500  O:GILD220520P00072500     3.95    4.50      0.116330
+5    INTC 2022-01-07   53.428975   52.5  O:INTC220414C00052500  O:INTC220414P00052500     3.80    3.01      0.127459
+8      PG 2022-01-11  158.558228  160.0    O:PG220520C00160000    O:PG220520P00160000     5.45    8.30      0.086719
+11    NEE 2022-01-24   81.574282   82.5   O:NEE220617C00082500   O:NEE220617P00082500     4.86    6.90      0.144163
+14     HD 2022-01-26  356.140036  355.0    O:HD220520C00355000    O:HD220520P00355000    24.40   20.93      0.127281
+17   CSCO 2022-01-28   55.417441   55.0  O:CSCO220617C00055000  O:CSCO220617P00055000     3.85    4.05      0.142554
+
+######## cell 22 ########
+22,518 rows: 74 tickers × buckets × 2 entries × 3 OTM levels × horizons
+mean P&L, % of spot at entry     0     1     2     3     5    10    21    42    63   exp
+Stock only (synthetic)        0.00  0.28  0.19  0.23  0.05  0.39  0.41  1.20  1.33  3.27
+1 · Long call                 0.00  0.08  0.03  0.03 -0.07  0.07 -0.15 -0.14 -0.34  1.00
+2 · Covered call              0.00  0.25  0.17  0.26  0.16  0.34  0.50  1.26  1.38  2.64
+3 · Protective put            0.00  0.16  0.02  0.10 -0.02  0.25  0.15  0.27  0.06  0.43
+4 · Collar                    0.00  0.12  0.01  0.10  0.07  0.22  0.27  0.59  0.17  0.64
+5 · Cash-secured put          0.00  0.12  0.16  0.16  0.12  0.23  0.22  0.53  1.07  1.43
+6 · Long ATM straddle        -0.57 -0.68 -0.65 -0.66 -0.70 -0.65 -0.79 -1.11 -1.56 -1.56
+
+######## cell 24 ########
+In-sample · executive_officer_departure · 3-6m options · entry = post · OTM 5% · n = 153 events. * = 95% bootstrap CI excludes zero.
+                            h=1      h=2      h=3      h=5     h=10     h=21     h=42     h=63   expiry
+P&L per $1 spot                                                                                        
+Stock only (synthetic)   +0.28%   +0.19%   +0.23%   +0.05%   +0.39%   +0.41%   +1.20%   +1.33%  +3.27%*
+1 · Long call            +0.08%   +0.03%   +0.03%   -0.07%   +0.07%   -0.15%   -0.14%   -0.34%   +1.00%
+2 · Covered call        +0.25%*   +0.17%   +0.26%   +0.16%   +0.34%   +0.50%  +1.26%*   +1.38%  +2.64%*
+3 · Protective put       +0.16%   +0.02%   +0.10%   -0.02%   +0.25%   +0.15%   +0.27%   +0.06%   +0.43%
+4 · Collar               +0.12%   +0.01%   +0.10%   +0.07%   +0.22%   +0.27%   +0.59%   +0.17%   +0.64%
+5 · Cash-secured put     +0.12%   +0.16%   +0.16%   +0.12%   +0.23%   +0.22%   +0.53%  +1.07%*  +1.43%*
+6 · Long ATM straddle   -0.68%*  -0.65%*  -0.66%*  -0.70%*  -0.65%*  -0.79%*  -1.11%*  -1.56%*   -1.56%
+
+######## cell 26 ########
+  placebo: 25/120 events, 45s
+  placebo: 50/120 events, 90s
+  placebo: 75/120 events, 137s
+  placebo: 100/120 events, 181s
+placebo: 120 events -> 304 priced (event, bucket) pairs; 50 drops; 220s
+cell24:103: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+Events minus ordinary days, mean P&L per $1 spot. * = the 95% interval on the difference excludes zero.
+                            h=1      h=2     h=3     h=5    h=10     h=21    h=42    h=63   expiry
+P&L per $1 spot                                                                                   
+Stock only (synthetic)   +0.45%   +0.41%  +0.57%  +0.32%  +0.72%   +0.07%  -0.36%  -1.14%   +4.07%
+1 · Long call            +0.16%   +0.12%  +0.16%  +0.01%  +0.23%   -0.28%  -0.90%  -0.99%   +1.65%
+2 · Covered call        +0.33%*   +0.30%  +0.48%  +0.35%  +0.60%   +0.56%  +0.30%  -0.23%   +2.63%
+3 · Protective put       +0.29%   +0.03%  +0.23%  +0.04%  +0.23%   -0.34%  -1.03%  -1.67%   +1.24%
+4 · Collar               +0.15%   -0.08%  +0.13%  +0.07%  +0.14%   +0.17%  -0.07%  -0.76%   +0.56%
+5 · Cash-secured put    +0.17%*  +0.32%*  +0.29%  +0.25%  +0.42%   +0.44%  +0.20%  +0.89%  +2.61%*
+6 · Long ATM straddle    -0.14%   -0.20%  -0.24%  -0.35%  -0.37%  -1.00%*  -1.10%  -1.32%   -0.91%
+
+######## cell 28 ########
+                         edge  horizons_ci_excludes_0  n_events
+strategy                                                       
+2 · Covered call       +1.16%                       0       141
+5 · Cash-secured put   +1.08%                       1       146
+4 · Collar             +0.22%                       0       137
+1 · Long call          +0.16%                       0       147
+3 · Protective put     -0.04%                       0       138
+6 · Long ATM straddle  -1.00%                       1       143
+In-sample answer: after a 'executive_officer_departure' 8-K, the strategy with the largest edge over ordinary days is '2 · Covered call' (3-6m options, entry = post, OTM 5%).
+
+######## cell 30 ########
+3-6m ATM pair on the pre-event session: median implied move to expiry 13.3%, median |realized| 8.6%; realized beat implied in 32% of events
+                   n mean_ratio ci_lo ci_hi median_ratio share_above_1
+group   horizon                                                       
+events  1        154       1.13  0.96  1.33         0.89           47%
+        2        152       1.03  0.87  1.20         0.74           37%
+        3        150       1.02  0.88  1.18         0.76           41%
+        5        150       1.00  0.87  1.13         0.81           39%
+        10       147       0.92  0.82  1.03         0.86           41%
+        21       143       0.91  0.80  1.02         0.77           37%
+        42       144       0.94  0.82  1.05         0.80           37%
+        63       139       0.90  0.79  1.01         0.71           35%
+        exp      138       0.89  0.77  1.02         0.71           36%
+placebo 1        106       0.88  0.72  1.05         0.64           36%
+        2        106       0.90  0.76  1.05         0.72           38%
+        3        105       0.99  0.83  1.16         0.82           43%
+        5        107       1.03  0.88  1.19         0.83           45%
+        10       105       1.07  0.91  1.24         0.87           43%
+        21       101       1.12  0.95  1.32         0.83           44%
+        42       100       1.04  0.90  1.20         0.81           43%
+        63        96       0.96  0.81  1.12         0.73           39%
+        exp       99       0.92  0.80  1.05         0.76           39%
+
+cash_secured_put, events minus placebo (straddle_2223 2022-01-01..2023-12-31):
+            strategy horizon  n_a  n_b    mean_a    mean_b  difference     ci_lo     ci_hi
+45  cash_secured_put       1  148  104  0.001212 -0.000451    0.001663  0.000080  0.003396
+46  cash_secured_put       2  145  103  0.001552 -0.001611    0.003163  0.000908  0.005522
+47  cash_secured_put       3  148  102  0.001597 -0.001296    0.002892 -0.000105  0.006007
+48  cash_secured_put       5  145  103  0.001169 -0.001327    0.002496 -0.001443  0.006459
+49  cash_secured_put      10  146  103  0.002303 -0.001937    0.004239 -0.001400  0.009709
+50  cash_secured_put      21  143  102  0.002184 -0.002246    0.004430 -0.005245  0.014452
+51  cash_secured_put      42  146  102  0.005294  0.003254    0.002040 -0.008984  0.014403
+52  cash_secured_put      63  137   97  0.010652  0.001765    0.008887 -0.006554  0.024699
+53  cash_secured_put     exp  134   93  0.014349 -0.011712    0.026062  0.006064  0.047902
+
+protective_put, events minus placebo (straddle_2223 2022-01-01..2023-12-31):
+          strategy horizon  n_a  n_b    mean_a    mean_b  difference     ci_lo     ci_hi
+27  protective_put       1  148  103  0.001567 -0.001293    0.002861 -0.000892  0.006415
+28  protective_put       2  143  102  0.000213 -0.000102    0.000315 -0.004398  0.005179
+29  protective_put       3  146  102  0.001034 -0.001250    0.002284 -0.004265  0.007960
+30  protective_put       5  143  103 -0.000165 -0.000557    0.000392 -0.007544  0.008202
+31  protective_put      10  141  101  0.002457  0.000122    0.002336 -0.009023  0.013991
+32  protective_put      21  136   98  0.001500  0.004939   -0.003438 -0.021358  0.013800
+33  protective_put      42  138   98  0.002662  0.012917   -0.010255 -0.032944  0.012929
+34  protective_put      63  132   90  0.000643  0.017382   -0.016740 -0.054028  0.017283
+35  protective_put     exp  127   89  0.004289 -0.008074    0.012362 -0.024164  0.047210
+
+long_call, events minus placebo (straddle_2223 2022-01-01..2023-12-31):
+     strategy horizon  n_a  n_b    mean_a    mean_b  difference     ci_lo     ci_hi
+9   long_call       1  153  105  0.000793 -0.000856    0.001649 -0.001182  0.004353
+10  long_call       2  152  105  0.000346 -0.000886    0.001233 -0.002373  0.004908
+11  long_call       3  151  104  0.000314 -0.001323    0.001637 -0.003082  0.006836
+12  long_call       5  150  104 -0.000659 -0.000765    0.000106 -0.006320  0.006738
+13  long_call      10  147  103  0.000668 -0.001656    0.002324 -0.006304  0.010676
+14  long_call      21  147  103 -0.001507  0.001322   -0.002829 -0.016747  0.011054
+15  long_call      42  147  102 -0.001413  0.007546   -0.008960 -0.029138  0.010222
+16  long_call      63  142   98 -0.003427  0.006442   -0.009869 -0.039813  0.018175
+17  long_call     exp  143  103  0.009978 -0.006507    0.016486 -0.013655  0.045026
+
+stock, events minus placebo (straddle_2223 2022-01-01..2023-12-31):
+  strategy horizon  n_a  n_b    mean_a    mean_b  difference     ci_lo     ci_hi
+0    stock       1  153  104  0.002834 -0.001675    0.004509 -0.000268  0.009458
+1    stock       2  151  104  0.001871 -0.002272    0.004143 -0.001876  0.010268
+2    stock       3  149  104  0.002309 -0.003395    0.005704 -0.002571  0.014225
+3    stock       5  149  104  0.000478 -0.002707    0.003184 -0.008068  0.013903
+4    stock      10  146  102  0.003902 -0.003327    0.007230 -0.008456  0.024077
+5    stock      21  143   98  0.004051  0.003338    0.000713 -0.025088  0.025379
+6    stock      42  143   98  0.011998  0.015604   -0.003605 -0.035439  0.029913
+7    stock      63  138   94  0.013312  0.024737   -0.011425 -0.055461  0.032794
+8    stock     exp  137   97  0.032706 -0.008041    0.040747 -0.005556  0.086868

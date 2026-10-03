@@ -32,6 +32,20 @@ def display(obj):
     print(obj.to_string() if hasattr(obj, "to_string") else obj, flush=True)
 
 
+STRADDLE = '''
+# Trial 9 (HYPOTHESIS_9.md): long ATM straddle = buy C_K + P_K; 4% of premium round-trip cost.
+STRADDLE_COST = 0.04
+if "straddle" not in STRATEGIES:
+    STRATEGIES.append("straddle")
+    STRATEGY_LABEL["straddle"] = "6 · Long ATM straddle"
+    _strategy_pnl_base = strategy_pnl
+    def strategy_pnl(m_e, m_x, S_e, S_x, otm):
+        out = _strategy_pnl_base(m_e, m_x, S_e, S_x, otm)
+        prem = m_e["C_K"] + m_e["P_K"]
+        out["straddle"] = ((m_x["C_K"] + m_x["P_K"]) - prem) / S_e - STRADDLE_COST * prem / S_e
+        return out
+'''
+
 PEER_EVENTS = '''
 import sys as _sys
 _sys.path.insert(0, PEERS_DIR)
@@ -68,6 +82,7 @@ def main():
     ap.add_argument("--start", required=True)
     ap.add_argument("--end", required=True)
     ap.add_argument("--label", required=True)
+    ap.add_argument("--straddle", action="store_true", help="add a long ATM straddle (trial 9) to the strategy library")
     ap.add_argument("--events", choices=["exec", "settlement", "peers", "cfo_appointment", "ceo_appointment", "cfo_departure"], default="exec")
     args = ap.parse_args()
     cells = json.loads(NB.read_text())["cells"]
@@ -86,6 +101,8 @@ def main():
         if "events = build_events(EVENT_TAG, STUDY_START, STUDY_END, TOP_100)" in src:
             head, tail = src.split("events = build_events(EVENT_TAG, STUDY_START, STUDY_END, TOP_100)", 1)
             src = head + (PEER_EVENTS if args.events == "peers" else POOLED_EVENTS) + "\n".join(l for l in tail.splitlines() if "sample(5" not in l and "supporting_text" not in l and "max_colwidth" not in l)
+        if args.straddle and "results = evaluate(priced)" in src:
+            src = src.replace("results = evaluate(priced)", STRADDLE + "\nresults = evaluate(priced)", 1)
         print(f"\n######## cell {i} ########", flush=True)
         # The starter's API cell (cell 8) runs UNCHANGED. A dropped connection raises inside it; we simply re-run the
         # failing cell, and every response already fetched is served from the starter's on-disk cache.
