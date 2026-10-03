@@ -17,3 +17,15 @@ In-sample ranking (edge over placebo, avg of 21/42/exp): protective put +0.25%, 
 cash-secured put -0.06%, covered call -0.35%. None significant at any horizon.
 
 Trials so far: 1 (pre-registered). The pre-declared sensitivity grid is next.
+
+## Pre-declared sensitivity grid (2026-10-03, `grid.py`, cached data, no new API calls)
+3 buckets × 2 entries × 3 OTM levels × 2 tag definitions = 36 specifications (plus the 1 headline already counted
+inside it), each at 21/42/exp. Cash-secured put, events minus placebo:
+- Tradeable (entry=post) cells: 54. Positive: 5. CI > 0: **0**. CI < 0: 0.
+- Mean difference by bucket (all exits, post): 1m -0.54%, 2m -0.17%, 3-6m -0.10%. **Prediction 3 (stronger
+  in short-dated puts) is reversed**: selling short-dated puts after exits does WORST.
+- CEO+CFO only (n ≈ 44-53): uniformly negative (about -0.2% to -1.2%), none significant.
+- 1m options expire before 42 sessions, so those cells are empty by construction.
+Conclusion: the null result is robust, not a quirk of one parameter. Direction consistently points to exec exits
+being under-priced (selling puts loses relative to ordinary days), matching the realized/implied ratio.
+Trial count for the Deflated Sharpe / multiple-testing discussion: 37 specifications × 3 horizons.
