@@ -20,3 +20,4 @@ experiments/__pycache__/
 gqh-webull-backtrader-starter/examples/backtest/.env
 strategy/data/
 *.zip
+strategy_8k/output/*.pkl

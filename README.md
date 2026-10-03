@@ -29,6 +29,7 @@ cd gqh-massive-8k-starter && ./setup.sh          # creates .venv; put MASSIVE_AP
 .venv/bin/python ../strategy_8k/run_window.py --events exec --start 2024-01-01 --end 2025-12-31 --label is
 .venv/bin/python ../strategy_8k/run_window.py --events exec --start 2026-01-01 --end 2026-08-31 --label oos
 .venv/bin/python ../strategy_8k/run_window.py --events exec --start A --end B --label sealed   # judges' window
+# or open strategy_8k/exec_exits_8k.ipynb (set START/END) with the starter's kernel
 cd .. && gqh-massive-8k-starter/.venv/bin/python strategy_8k/grid.py && gqh-massive-8k-starter/.venv/bin/python notes/figures_8k.py
 ```
 
@@ -40,7 +41,8 @@ cd .. && gqh-massive-8k-starter/.venv/bin/python strategy_8k/grid.py && gqh-mass
 | `lab/` | Thematic ideas: weather→softs, GLP-1, open-source AI | `LAB_PLAN.md`, `RESULTS.md` |
 | `strategy_8k/` | Massive 8-K options bonus | `HYPOTHESIS*.md`, `run_window.py`, `grid.py`, `peers.py`, `TRIALS.md` |
 | `experiments/` | Earlier pilots (SEC→volume, Gemini earnings text, weather vs Kalshi) | `PLAN.md`, `RESULTS.md`, `SEMANTIC_*.md` |
-| `notes/` | Quant note and bonus note (HTML → PDF), figure scripts | `quant_note.pdf`, `massive_note.pdf` |
+| `FORWARD_LEDGER.md` | Hash-stamped live positions and sealed-window predictions, written before outcomes exist | `FORWARD_LEDGER.sha256` |
+| `notes/` | Quant note and bonus note (HTML → PDF), figure scripts, team FAQ | `quant_note.pdf`, `massive_note.pdf` |
 | `gqh-*-starter/` | Sponsor starter kits (Webull backtrader, Massive notebook) | unchanged except `examples/backtest/public_data.py` |
 
 Rebuild a PDF after editing: `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --no-pdf-header-footer --print-to-pdf=notes/quant_note.pdf "file://$PWD/notes/quant_note.html"`
