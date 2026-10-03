@@ -298,11 +298,20 @@
    "33a1000 10-03 00:11 Portfolio TSMOM+H5+H7 in-sample (IS Sharpe 0.85); OOS next, once",
    "ab348ce 10-03 00:11 Portfolio OOS (once): H5/H7 fail to replicate; portfolio Sharpe 0.46 vs TSMOM 0.90",
    "13a9663 10-03 00:39 Pre-register trials 3 (competitor spillover -> peer calls) and 4 (settlement -> CSP)",
-   "b401a20 10-03 01:00 Trials 3-4 (competitor spillover calls, settlement CSP): both fail; logged",
-   "fc6d0a4 10-03 09:39 Nine-pitfall statistical audit across all ETF strategies",
-   "43c82ae 10-03 11:05 Quant note (5pp + appendix) and Massive bonus note (2pp), figures reproducible",
-   "ec3ba29 10-03 11:13 Pre-register idea lab: weather->softs, GLP-1 events, open-source AI events; triage of 10 ideas",
-   "7f7494b 10-03 11:15 Idea lab: weather->softs, GLP-1, open-source AI all fail; logged"
+   "87b2732 10-03 01:00 Trials 3-4 (competitor spillover calls, settlement CSP): both fail; logged",
+   "232df54 10-03 09:39 Nine-pitfall statistical audit across all ETF strategies",
+   "bf4c8ff 10-03 11:05 Quant note (5pp + appendix) and Massive bonus note (2pp), figures reproducible",
+   "3bc97b9 10-03 11:13 Pre-register idea lab: weather->softs, GLP-1 events, open-source AI events; triage of 10 ideas",
+   "44c1ff8 10-03 11:15 Idea lab: weather->softs, GLP-1, open-source AI all fail; logged",
+   "ffeda9b 10-03 11:22 Repo cleanup: README, requirements, one-command run_all.py; add pilots and starter kits; note trial count 27",
+   "604e0bc 10-03 11:31 Fix financing/borrow-cost assumptions before computing corrected results",
+   "d3a820a 10-03 11:33 Steps 1-4: financing correction, AQR validation, stress/tails/bootstrap, capital deployment",
+   "fce7e21 10-03 11:33 Quant note: financed headline (IS 0.29 / OOS 0.72), AQR validation, stress tests, capital deployment",
+   "330f80b 10-03 11:34 Ignore downloaded data and share zips",
+   "ba8ca79 10-03 11:37 Download AQR factor file in strategy/download.py; add openpyxl",
+   "97b7a04 10-03 11:38 Forward ledger: live October positions and sealed-window predictions (hash-stamped)",
+   "71b5f57 10-03 11:42 Massive notebook wrapper (clean-kernel tested), team FAQ; untrack Massive-derived pickles",
+   "cce0a45 10-03 11:42 Notes: forward ledger and notebook references; Massive note back to 2 pages"
   ],
   "hypothesis_commits": [
    "6b6764d"
