@@ -39,6 +39,7 @@ def simulate(ev, px, rets, hold, end):
             entries.setdefault(k, []).append(r.ticker)
     full_idx = {d: i for i, d in enumerate(px.index)}
     active = []
+    simulate.log = []  # (entry day, ticker, beta, taken?)
     for k in range(len(days)):
         still = []
         for p in active:
@@ -52,6 +53,7 @@ def simulate(ev, px, rets, hold, end):
         active = still
         for t in entries.get(k, []):
             if len(active) * W >= CAP - 1e-9 or np.isnan(px.iat[full_idx[days[k]], px.columns.get_loc(t)]):
+                simulate.log.append((days[k], t, np.nan, False))
                 continue
             j = full_idx[days[k]]
             hs = rets[t].iloc[max(0, j - 260):j - 10].to_numpy()
@@ -60,6 +62,7 @@ def simulate(ev, px, rets, hold, end):
             beta = float(np.clip(np.cov(hs[ok], ms[ok])[0, 1] / ms[ok].var(), 0.5, 1.5)) if ok.sum() >= 120 else 1.0
             tcost[k] += W * COST_STK + W * beta * COST_SPY
             active.append((col[t], beta, k + hold))
+            simulate.log.append((days[k], t, beta, True))
     return pd.DataFrame({"gross": gross, "tcost": tcost, "short_base": short_base}, index=days)
 
 
