@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Trade the 8-K: Executive Exits</title>
+<style>
+@page { size: Letter; margin: 0.65in 0.7in; }
+body { font-family: "Charter", "Georgia", serif; font-size: 11pt; line-height: 1.27; color: #111; }
+h1 { font-size: 14pt; margin: 0 0 2pt; } .sub { color: #444; margin-bottom: 4pt; }
+h2 { font-size: 12pt; margin: 6pt 0 2pt; border-bottom: 1px solid #bbb; }
+p { margin: 0 0 4pt; text-align: justify; } ul { margin: 0 0 4pt; padding-left: 15pt; } li { margin-bottom: 1pt; }
+table { border-collapse: collapse; width: 100%; margin: 2pt 0 4pt; font-size: 11pt; }
+th, td { border-bottom: 1px solid #ddd; padding: 1pt 3pt; text-align: right; } th { border-bottom: 1.5px solid #555; }
+td:first-child, th:first-child { text-align: left; } .s { font-weight: 700; }
+img { width: 100%; } .cap { margin: 0 0 4pt; } code { font-size: 10.5pt; }
+</style></head><body>
+<h1>Trade the 8-K: Executive Exits Are Under-Priced, but Selling Puts Into Them Does Not Pay</h1>
+<div class="sub">Gator Quant Hacks 2026 · Massive bonus · Team: [team member names] · Code: [public GitHub URL], <code>strategy_8k/</code></div>
+
+<h2>1. Hypothesis (committed before any option price was requested: <code>dbbfe6c</code>)</h2>
+<p><b>Categories:</b> <code>ceo_departure</code> + <code>cfo_departure</code> + <code>executive_officer_departure</code>, pooled. <b>Strategy:</b> 5 · cash-secured put, 5% OTM, 3–6m expiry, entered at the close of the filing session. <b>Why the market should misprice it:</b> a leadership exit is vivid but ambiguous news. Nervous holders bid up downside puts (demand pressure, Gârleanu, Pedersen &amp; Poteshman 2009), while for mega-caps the business rarely changes overnight. So the put seller earns an event premium on top of the ordinary variance risk premium, measured against a placebo of the same names on ordinary days. We pre-declared three predictions: (P1) CSP beats placebo at 21/42/exp; (P2) realized/implied move ratio is <i>below</i> placebo; (P3) the effect is stronger in 1m options. We only looked at event counts (189 in-sample) beforehand.</p>
+
+<h2>2. Method</h2>
+<p>The starter notebook's own cells run unchanged (<code>run_window.py</code> executes sections 1–7 for any <code>--start/--end</code>). Only the event table is replaced: the three tags are pooled, with one event per ticker within 5 days. Top-100 universe; spot comes from put-call parity; P&amp;L is per $1 of spot; the placebo is 120 ordinary sessions for the same tickers at least 30 days from any event; 95% bootstrap CIs. In-sample: 2024-01-01..2025-12-31 (189 events, 77 tickers). Out-of-sample: 2026-01-01..2026-08-31, run once (67 events, 48 tickers).</p>
+
+<h2>3. Results at every fixed horizon (headline spec, events minus placebo, % of spot)</h2>
+<table>
+<tr><th>Sessions</th><th>1</th><th>2</th><th>3</th><th>5</th><th>10</th><th>21</th><th>42</th><th>63</th><th>exp</th></tr>
+<tr><td>CSP, IS</td><td>−0.04</td><td>−0.13</td><td>−0.05</td><td>−0.24</td><td>−0.32</td><td>−0.38</td><td>+0.10</td><td>−0.06</td><td>+0.11</td></tr>
+<tr><td>&nbsp;&nbsp;95% CI</td><td>±0.18</td><td>[−.37,.09]</td><td>±0.24</td><td>[−.58,.07]</td><td>[−.81,.14]</td><td>[−1.0,.25]</td><td>±0.98</td><td>±1.2</td><td>[−1.2,1.5]</td></tr>
+<tr><td>CSP, OOS</td><td>+0.05</td><td>+0.20</td><td>+0.24</td><td>+0.21</td><td>+0.46</td><td>+0.66</td><td class="s">+1.62*</td><td class="s">+2.52*</td><td>+1.65</td></tr>
+<tr><td>Stock only, OOS</td><td>+0.21</td><td>+0.72</td><td>+0.78</td><td>+0.79</td><td>+2.29</td><td class="s">+6.84*</td><td class="s">+8.97*</td><td>+8.43</td><td>+2.80</td></tr>
+</table>
+<p class="cap">* = 95% CI excludes 0. OOS CIs: 42d [+0.14, +3.12], 63d [+0.76, +4.18]. In-sample, the best of the five strategies over placebo was the protective put (+0.25%), and none was significant at any horizon.</p>
+<p><b>Verdict on the trade: it fails.</b> In-sample, the CSP is indistinguishable from ordinary days at every horizon (P1 fails). Out-of-sample it turns positive, but the sign flip comes from the stock: exec-exit names rallied +6.8–9.0% versus ordinary days in 2026, and a short put is long delta. This is regime luck, not the volatility premium we hypothesized.</p>
+<img src="fig3_8k_ratio.png">
+<p class="cap"><b>Figure.</b> |Realized| ÷ implied move (3–6m ATM straddle read on the pre-event session, √t-scaled), mean and 95% CI. Red: exec-exit events; grey: same names on ordinary days.</p>
+<p><b>What did replicate (the opposite of P2):</b> after executive exits the stock moves <b>more</b> than the chain priced, relative to ordinary days. In-sample, 1–21 sessions: 1.00–1.13 vs placebo 0.80–0.92. Out-of-sample: 1.28–1.43 vs 0.92–1.06 at 5–21 sessions (21d: 1.43 [1.08, 1.83] vs 0.99 [0.83, 1.14]). The market treats an executive exit like an ordinary day and under-prices it. That is the opposite of the put-seller's story, and it explains why selling puts did not pay.</p>
+
+<h2>4. Sensitivity (pre-declared grid, <code>grid.py</code>)</h2>
+<p>We varied 3 expiry buckets × 2 entry times × 3 OTM levels (3/5/10%) × 2 category definitions (all exits vs CEO+CFO only) = 36 specs at 21/42/exp. Of the 54 tradeable (post-entry) cells, 5 are positive and <b>0</b> are significant. Mean CSP edge by bucket is 1m −0.54%, 2m −0.17%, 3–6m −0.10%: <b>P3 is reversed</b>. Short-dated puts sold after exits do worst, consistent with under-priced event risk. CEO+CFO-only (≈50 events) is negative in every cell.</p>
+
+<h2>5. Trials and other categories (all pre-registered in git, all reported)</h2>
+<ul>
+<li><b>Trial 2, post-hoc and labeled as such:</b> exec exits → protective put. OOS +6.1% (21d) and +7.7% (42d), but below the stock-only edge (+6.8% / +9.0%), so the option subtracted value. It fails the pre-registered credit rule.</li>
+<li><b>Trial 3:</b> adverse 8-K at any ≥ $1B filer (cyber, disaster, closure, business exit, bankruptcy) → long call on top-100 peers sharing a 4-digit SIC code. IS 131 events: −0.6% / −1.4% at 21/42d; OOS 40 events: −1.0% / +2.1%, n.s. Fails. A naive SIC map paired micro-cap biotechs with MRK/LLY, so a point-in-time $1B materiality filter was required.</li>
+<li><b>Trial 4:</b> <code>settlement_agreement</code> → CSP. IS 24 events, ≈0 then negative, and 1-day realized/implied 1.11 vs 0.85 (uncertainty did not fall). Only 5 OOS events: untestable.</li>
+</ul>
+
+<h2>6. What would break it, and how we would trade it</h2>
+<p><b>Break conditions:</b> small samples (67 OOS events) and overlapping horizons; the static 2026 top-100 list (survivorship); filing date ≠ announcement time (most exits are pre-announced by press release; EDGAR acceptance timestamps would refine entry); daily last-trade marks instead of NBBO mid. <b>Trade (prediction for the sealed window):</b> the replicated finding points to a <b>delta-hedged long 1m straddle</b> on the filer, entered at the filing-session close and held 5–21 sessions. It is not tested here because it was not pre-registered. We predict a positive realized-minus-implied P&amp;L on the judges' window, and we predict CSP on exec exits will <i>not</i> beat placebo there. <b>Realism:</b> top-100 ATM options trade nearly every session; at 1–2 contracts per event, ADV is not binding. With about 100 events a year this is a small-capacity, event-driven sleeve. <b>Sealed-window command:</b> <code>cd gqh-massive-8k-starter && .venv/bin/python ../strategy_8k/run_window.py --start A --end B --label sealed</code>.</p>
+</body></html>
