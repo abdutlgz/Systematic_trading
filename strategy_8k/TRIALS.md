@@ -79,3 +79,22 @@ stopped. **Not testable OOS**: too few events, which is itself a capacity/breadt
 
 Massive trial total: 4 hypotheses (exec-exit CSP, exec-exit protective put, competitor calls, settlement CSP);
 none survives. The one replicated measurement remains: realized > implied after executive exits.
+
+## Trials 5-7, discovery stage (2022-01-01..2023-12-31; HYPOTHESIS_5.md; API cell unchanged), run 2026-10-03
+Headline spec: 3-6m, entry=post, OTM 5%; events minus placebo (120 ordinary sessions per tag).
+
+**Trial 5, cfo_appointment → CSP: FAILS discovery** (needs >= 2 positive starred key horizons; got 0).
+34 priced events / 32 tickers. CSP 10d +0.01%, 21d +0.00%, 42d -0.41%, exp +2.34% [-0.31%, +5.06%]; none starred.
+Per the pre-registered rule we STOP: no confirmation or 2026 run, and no search of other tags for replacement stars.
+Descriptive: the stock itself drifted up after appointments (+0.5% to +1.1% vs placebo, n.s.). The tech subset (6 events) is
+positive everywhere but far too small to mean anything.
+
+**Trial 6, ceo_appointment → CSP:** 14 events. 10d +0.66%, 21d -0.31%, 42d +0.86%, exp +1.10%; none starred at key horizons.
+**Trial 7, cfo_departure → CSP (predicted no edge):** 26 events. 10d +0.09%, 21d -0.32%, 42d -0.93%, exp -0.33%; none starred.
+Consistent with the prediction; the stock lagged after CFO exits (-1.4% at 21d, -4.9% to expiry, n.s.).
+
+**Star accounting (tip: use starred cells):** at the pre-registered key horizons, 0 of 97 valid cells are starred vs 4.9 expected by
+chance. Across ALL horizons in the notebook's own boards, 8 of 135 strategy cells are starred vs 6.75 expected by chance, and
+all at 1-5 sessions (e.g., cfo_appointment covered call/protective put/collar at day 1, +0.4-0.6%). Their number is what
+chance predicts, so we do not treat them as signals.
+Massive trial count: 7 (exec-exit CSP, exec-exit protective put, competitor calls, settlement CSP, CFO/CEO appointment CSP, CFO departure CSP).

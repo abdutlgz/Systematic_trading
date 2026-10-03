@@ -68,12 +68,12 @@ def main():
     ap.add_argument("--start", required=True)
     ap.add_argument("--end", required=True)
     ap.add_argument("--label", required=True)
-    ap.add_argument("--events", choices=["exec", "settlement", "peers"], default="exec")
+    ap.add_argument("--events", choices=["exec", "settlement", "peers", "cfo_appointment", "ceo_appointment", "cfo_departure"], default="exec")
     args = ap.parse_args()
     cells = json.loads(NB.read_text())["cells"]
-    tags = {"exec": TAGS, "settlement": ["settlement_agreement"], "peers": []}[args.events]
+    tags = {"exec": TAGS, "settlement": ["settlement_agreement"], "peers": []}.get(args.events, [args.events])
     label_tag = {"exec": "executive_officer_departure", "settlement": "settlement_agreement",
-                 "peers": "business_line_exit"}[args.events]
+                 "peers": "business_line_exit"}.get(args.events, args.events)
     g = {"display": display, "__name__": "__main__", "POOLED_TAGS": tags, "DEDUPE_DAYS": DEDUPE_DAYS,
          "PEERS_DIR": str(Path(__file__).resolve().parent)}
     for i, c in enumerate(cells[: LAST_CELL + 1]):
