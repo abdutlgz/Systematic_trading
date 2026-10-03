@@ -2,26 +2,28 @@
 <html lang="en"><head><meta charset="utf-8">
 <title>Quant Note: Acquirer Drift</title>
 <style>
-@page { size: Letter; margin: 0.75in 0.8in; }
+@page { size: Letter; margin: 1in; @bottom-center { content: counter(page); font-family: Georgia, serif; font-size: 11pt; color: #666; } }
 body { font-family: "Charter", "Georgia", serif; font-size: 11pt; line-height: 1.3; color: #111; }
 h1 { font-size: 15pt; margin: 0 0 2pt; line-height: 1.2; }
 .sub { font-size: 11pt; color: #444; margin-bottom: 5pt; }
 h2 { font-size: 12.5pt; margin: 8pt 0 3pt; border-bottom: 1px solid #bbb; padding-bottom: 1pt; }
 h3 { font-size: 11.5pt; margin: 4pt 0 2pt; }
-p { margin: 0 0 4.5pt; text-align: justify; }
+p { margin: 0 0 4.5pt; text-align: left; }
 ul { margin: 0 0 4.5pt 0; padding-left: 16pt; } li { margin-bottom: 1.5pt; }
 table { border-collapse: collapse; width: 100%; margin: 3pt 0 5pt; font-size: 11pt; }
 th, td { border-bottom: 1px solid #ddd; padding: 1.2pt 4pt; text-align: right; }
 th { border-bottom: 1.5px solid #555; font-weight: 600; } td:first-child, th:first-child { text-align: left; }
 .cap { font-size: 11pt; color: #333; margin: 1pt 0 5pt; } .cap b { color: #111; }
-figure { margin: 3pt 0; } img { width: 100%; }
+figure { margin: 2pt 0; } img { width: 86%; display: block; margin: 0 auto; }
+.tl td:last-child, .tl th:last-child { text-align: left; }
 .box { background: #f4f6f9; border-left: 3px solid #1f4e8c; padding: 4pt 8pt; margin: 4pt 0 5pt; }
-.pb { page-break-before: always; } code { font-size: 10.5pt; }
+.pb { page-break-before: always; } code { font-size: 11pt; }
 .ref p { text-align: left; margin-bottom: 2pt; }
+table, figure, .box { break-inside: avoid; } h2, h3 { break-after: avoid; }
 </style></head><body>
 
 <h1>Acquirers Overpay, Markets Learn Slowly: A Market-Neutral 8-K Event Strategy Found by a Pre-Registered, Multiple-Testing-Controlled Search</h1>
-<div class="sub">Gator Quant Hacks 2026 · Systematic Trading Track · Team: [team member names] · Code: [public GitHub URL] · Reproduce: <code>python event8k/grid.py --oos</code>, <code>python event8k/acq_analysis.py</code></div>
+<div class="sub">Gator Quant Hacks 2026 · Systematic Trading Track · Team: [team member names] · Code: [public GitHub URL] · Reproduce: <code>python event8k/replay.py</code> (Table 1, no key) · full rebuild: <code>event8k/build_grid.py</code> → <code>grid.py --oos</code> → <code>acq_analysis.py</code></div>
 
 <h2>1. Summary</h2>
 <p>When a US company worth $2B or more files an 8-K announcing an <b>acquisition agreement</b> (Massive 8-K disclosure category), we short its stock at the next close, hedge market beta with SPY, and hold for 60 trading days, at 2% of capital per event. The rule was selected <i>blindly</i> from a pre-registered grid of 165 event × holding × size configurations, using in-sample data only (Jan 2022–Sep 2025). Its single out-of-sample run (Oct 2025–Sep 2026) confirmed it. Net of 10 bps per side and a 1%/yr borrow fee: <b>in-sample Sharpe 0.98</b> (8.3%/yr, max drawdown −7.6%), <b>out-of-sample Sharpe 0.82</b> (9.9%/yr, −12.2%), with beta to SPY of −0.02. Every calendar year from 2022 to 2026 is positive.</p>
@@ -29,10 +31,10 @@ figure { margin: 3pt 0; } img { width: 100%; }
 
 <h2>2. Economic Hypothesis</h2>
 <p><b>Why acquirers drift down.</b> Bidders systematically overpay. Management hubris and the winner's curse in competitive auctions (Roll 1986), empire building, and optimistic synergy forecasts mean that the average large deal destroys acquirer value (Moeller, Schlingemann &amp; Stulz 2005). The market reacts to the announcement, but only partly: acquirers keep underperforming for months to years afterwards (Loughran &amp; Vijh 1997; Savor &amp; Lu 2009 for stock-financed deals), as integration costs, financing and diluted guidance arrive gradually. <b>Who is on the other side:</b> holders anchored to management's synergy story, analysts who revise slowly, and index and passive owners who keep the stock regardless. <b>Why it persists:</b> each deal is idiosyncratic and hard to value in real time, shorting is costly and squeeze-prone, and the information arrives as soft text (8-K exhibits), not numbers. <b>Testable predictions</b> (checked in Section 5): the drift comes from acquirers, not deal targets; it is event-specific (not a property of these stocks on other dates); it builds over weeks, not on day 1; it is not a market-beta bet.</p>
-<p><b>How we found it, and why that matters.</b> We did not start here. After 32 pre-registered hypotheses (Section 5.4), we committed a grid to git <i>before</i> running it (<code>event8k/GRID_PLAN.md</code>): 34 event definitions × {20, 60, 120} sessions × {≥$2B, ≥$10B}, with a fixed winner rule (best cell surviving BHY; if none, the highest deflated Sharpe). No cell survived BHY. The fallback winner was this one. The hypothesis above explains a pattern found by search, which we disclose prominently, and the out-of-sample test is the evidence that matters.</p>
+<p><b>How we found it.</b> After 32 pre-registered hypotheses (Section 5.4), we committed a grid to git <i>before</i> running it (<code>event8k/GRID_PLAN.md</code>): 34 event definitions × {20, 60, 120} sessions × {≥$2B, ≥$10B}, with a fixed winner rule (best BHY survivor, else highest deflated Sharpe). None survived BHY, and this cell was the fallback winner. The rationale explains a pattern found by search, so the out-of-sample test is the evidence that matters.</p>
 
-<h2>3. Data and Universe</h2>
-<p><b>Events:</b> Massive Filings &amp; Disclosures API (sponsor data), 8-K category <code>acquisition_agreement</code>, all US filers, 2022-01-01 to 2026-09-30 (taxonomy coverage begins in 2022), with one event per filer per 30 days. <b>Universe:</b> filer market cap ≥ $2B <i>on the day before filing</i> (Massive point-in-time reference data), giving 1,109 events across 705 tickers. Firms later acquired or delisted remain in the sample; the 3.7% of events with no point-in-time cap are excluded. <b>Prices:</b> Massive daily bars, split- and dividend-adjusted; SPY is the hedge. <b>Access:</b> Massive REST API with the hackathon key: <code>/stocks/filings/8-K/vX/disclosures</code> (events), <code>/v3/reference/tickers/{t}?date=</code> (point-in-time cap), <code>/v2/aggs</code> (bars). About 60k requests are cached on disk; the raw data is licensed and not committed, and <code>event8k/build_grid.py</code> rebuilds it. <b>Attribution only:</b> Kenneth French 5 factors + momentum; CBOE VIX. <b>Split:</b> 4.75 years of data, so the track's 20% rule binds (0.95 years &lt; 2 years). In-sample is 2022-01-01 to 2025-09-30; out-of-sample is 2025-10-01 to 2026-09-30, run once for the winner. Disclosure: an earlier, different 8-K strategy (abrupt CFO exits) was evaluated once on the same OOS window; the winner was chosen without looking at it. <b>Missing data:</b> no forward-filling from later data; a stock that stops printing is carried at its last close.</p>
+<h2>3. Data &amp; Universe</h2>
+<p><b>Events:</b> Massive Filings &amp; Disclosures API (sponsor data), 8-K category <code>acquisition_agreement</code>, all US filers, 2022-01-01 to 2026-09-30 (taxonomy coverage begins in 2022), with one event per filer per 30 days. <b>Universe:</b> filer market cap ≥ $2B <i>on the day before filing</i> (Massive point-in-time reference data), giving 1,109 events across 705 tickers. Firms later acquired or delisted remain in the sample; the 3.7% of events with no point-in-time cap are excluded. <b>Prices:</b> Massive daily bars, split- and dividend-adjusted; SPY is the hedge. <b>Access:</b> Massive REST API with the hackathon key: <code>/stocks/filings/8-K/vX/disclosures</code> (events), <code>/v3/reference/tickers/{t}?date=</code> (point-in-time cap), <code>/v2/aggs</code> (bars). About 60k requests are cached on disk; the raw data is licensed and not committed, and <code>event8k/build_grid.py</code> rebuilds it. <b>Attribution only:</b> Kenneth French 5 factors + momentum; CBOE VIX. <b>Split:</b> 4.75 years of data, so the track's 20% rule binds (0.95 years &lt; 2 years). In-sample is 2022-01-01 to 2025-09-30; out-of-sample is 2025-10-01 to 2026-09-30, run once for the winner. (An earlier, different 8-K strategy was evaluated once on this window; the winner was chosen without it.) <b>Missing data:</b> never forward-filled from later data; a stock that stops printing is carried at its last close.</p>
 
 <h2>4. Methodology</h2>
 <ul>
@@ -40,17 +42,24 @@ figure { margin: 3pt 0; } img { width: 100%; }
 <li><b>Position:</b> short 2% of capital per event; long SPY × β (β from sessions −260 to −11, clipped to [0.5, 1.5]); hold 60 sessions, exit at the close. Gross short is capped at 100% of capital: new events are skipped while the book is full (13% of IS entries, 33% OOS).</li>
 <li><b>Costs:</b> 10 bps per side on stocks (half-spread plus slippage for ≥$2B names) and 2 bps on SPY; borrow fee 1%/yr on short notional (general collateral for liquid large and mid-caps). Stress cases: 2× costs and 3% borrow. Sharpe is computed on excess returns, with T-bill interest on cash and the short rebate excluded.</li>
 <li><b>Selection statistics:</b> two-sided p-values on in-sample Sharpe t-stats across all 165 valid cells; BHY FDR control (valid under dependence); Holm; deflated Sharpe (Bailey &amp; López de Prado 2014) with N = 165. The direction (long/short) was set by the in-sample sign, which the two-sided tests account for.</li>
-<li><b>Evidence beyond Sharpe:</b> a random-date placebo on the same tickers; a P&amp;L decomposition into stock and hedge legs; execution-lag tests; neighbouring holds and sizes; Fama-French 5 + momentum regression (Newey-West errors).</li>
+<li><b>Daily process (as it would run live):</b> (1) after the close, pull new <code>acquisition_agreement</code> 8-Ks; (2) keep filers with prior-day market cap ≥ $2B; (3) estimate β from past returns; (4) send market-on-close orders next session (short stock 2%, buy β × 2% SPY), skipping entries if gross short would exceed 100%; (5) close the stock and its hedge at the 60th close. The hedge is set at entry and not rebalanced in between, so the backtest P&amp;L includes β drift.</li>
+<li><b>Out-of-sample protocol:</b> grid, selection rule and trade rules were committed before any run; the winner was chosen on in-sample data; the OOS year was run once (<code>grid.py --oos</code>) and reported as is.</li>
+<li><b>Evidence beyond Sharpe:</b> random-date placebo, P&amp;L decomposition, execution lags, neighbouring cells, FF5 + momentum regression (Newey-West).</li>
 </ul>
 
 <h2>5. Results</h2>
 <table>
-<tr><th>Net of costs and borrow</th><th>Ann. return</th><th>Vol</th><th>Sharpe</th><th>t</th><th>Max DD</th><th>Worst month</th><th>Turnover/yr</th></tr>
-<tr><td><b>In-sample</b> (2022–Sep 2025)</td><td>8.3%</td><td>8.5%</td><td><b>0.98</b></td><td>1.90</td><td>−7.6%</td><td>−3.5%</td><td>14.9×</td></tr>
-<tr><td><b>Out-of-sample</b> (Oct 2025–Sep 2026)</td><td>9.9%</td><td>12.1%</td><td><b>0.82</b></td><td>0.82</td><td>−12.2%</td><td>−6.9%</td><td>16.4×</td></tr>
-<tr><td>2× costs, IS / OOS</td><td>7.5% / 8.9%</td><td></td><td>0.88 / 0.74</td><td></td><td>−7.8% / −12.5%</td><td></td><td></td></tr>
-<tr><td>2× costs + 3% borrow, IS / OOS</td><td>5.8% / 7.0%</td><td></td><td>0.68 / 0.58</td><td></td><td>−8.1% / −12.9%</td><td></td><td></td></tr>
-<tr><td>Enter 1 / 5 days later, IS</td><td>7.8% / 9.3%</td><td></td><td>0.92 / 1.12</td><td></td><td></td><td></td><td></td></tr>
+<tr><th>Net of costs and borrow</th><th>Ann. return</th><th>Vol</th><th>Sharpe</th><th>Max DD</th><th>Turnover</th><th>Worst month</th></tr>
+<tr><td><b>In-sample</b> Jan 2022–Sep 2025</td><td>8.3%</td><td>8.5%</td><td><b>0.98</b> (t 1.90)</td><td>−7.6%</td><td>14.9×/yr</td><td>−3.5%</td></tr>
+<tr><td><b>Out-of-sample</b> Oct 2025–Sep 2026</td><td>9.9%</td><td>12.1%</td><td><b>0.82</b> (t 0.82)</td><td>−12.2%</td><td>16.4×/yr</td><td>−6.9%</td></tr>
+</table>
+<p class="cap"><b>Table 1.</b> Required metrics, in-sample and out-of-sample reported separately, every number net of 10 bps/side, 2 bps on SPY and 1%/yr borrow.</p>
+<table>
+<tr><th>Stress test (Sharpe, net)</th><th>In-sample</th><th>Out-of-sample</th></tr>
+<tr><td>Base case</td><td>0.98</td><td>0.82</td></tr>
+<tr><td>2× trading costs</td><td>0.88</td><td>0.74</td></tr>
+<tr><td>2× trading costs + 3%/yr borrow</td><td>0.68</td><td>0.58</td></tr>
+<tr><td>Enter 1 day later / 5 days later</td><td>0.92 / 1.12</td><td>0.77 / 0.77</td></tr>
 </table>
 <figure><img src="fig5_acq_equity.png"><div class="cap"><b>Figure 1.</b> Growth of $1 net of costs and borrow, and drawdown. Shaded: the out-of-sample year, evaluated once. Calendar years: 2022 +3.8%, 2023 +9.8%, 2024 +11.0%, 2025 +9.9%, 2026 YTD +6.2%.</div></figure>
 
@@ -58,22 +67,22 @@ figure { margin: 3pt 0; } img { width: 100%; }
 <ul>
 <li><b>Random-date placebo:</b> shorting the same stocks (behind the 732 in-sample events) on random dates (≥90 days from their deals), with identical sizing and hedging, gives mean Sharpe <b>−0.53</b> (95th percentile −0.13). <b>0 of 100</b> placebos reach 0.98. On ordinary dates these stocks beat their hedge; after an acquisition filing they lag it.</li>
 <li><b>Acquirers, not targets:</b> per event over 60 sessions, the stock returns −0.07% while its β-hedge earns +2.61%. Likely deal targets (post-filing volatility below half the pre-filing level, i.e. pinned to the deal price) are only 43 events (+0.85%); the other 689, mostly acquirers, earn <b>+2.79%</b> each. This is the predicted source.</li>
-<li><b>Not beta, not timing:</b> β to SPY is −0.01 IS and −0.14 OOS; mean P&amp;L on days SPY moves ±2% is about 0. Entering 1 or 5 days late changes little (0.92, 1.12): the drift is slow, there is no same-day lookahead, and there is room to execute.</li>
+<li><b>Not beta, not timing:</b> β to SPY is −0.01 IS / −0.14 OOS; P&amp;L on ±2% SPY days is about 0. Entering 1 or 5 days late barely matters (0.92, 1.12): a slow drift, no lookahead, and room to execute.</li>
 <li><b>Neighbours (IS Sharpe):</b> ≥$2B: 20d 0.62, <b>60d 0.98</b>, 120d 0.88; ≥$10B: 0.36, 0.41, 0.83. All six are positive (a plateau, not a spike); the effect is weaker in mega-caps, which are more efficiently priced.</li>
-<li><b>Factor attribution (full period):</b> market β ≈ 0.01, <b>SMB −0.49</b>, R² 0.44, alpha +3.2%/yr (t = 0.93). The book is short mid/large caps against cap-weighted SPY, so the 2022–26 large-cap premium explains a meaningful share. The placebo, which carries the same size exposure and loses, says the post-filing window adds to it, but we cannot reject that the factor-adjusted alpha is zero.</li>
+<li><b>Factor attribution (full period):</b> market β ≈ 0.01, <b>SMB −0.49</b>, R² 0.44, alpha +3.2%/yr (t = 0.93). Short mid/large caps against cap-weighted SPY earns the 2022–26 large-cap premium. The placebo has the same size tilt and loses, so the post-filing window adds to it, but we cannot reject zero factor-adjusted alpha.</li>
 </ul>
-<h3>5.2 Multiple testing, stated plainly</h3>
-<p>In-sample, 165 cells had at least 40 events; none survives BHY at 5% or Holm; the winner's p = 0.058 and deflated Sharpe probability 0.67. The second-best cells were also shorts after negative or complex corporate events (internal-control weakness, CEO+CFO joint exits, restatements, auditor dismissal), which is consistent with slow incorporation of bad 8-K news but individually insignificant. The out-of-sample year (0.82, 303 new events) is what lifts this above a search artefact; one year is still short (95% CI on OOS Sharpe ≈ ±2).</p>
+<h3>5.2 Multiple testing, stated plainly, and what to expect live</h3>
+<p>In-sample, 165 cells had at least 40 events; none survives BHY at 5% or Holm; the winner's p = 0.058 and deflated Sharpe probability 0.67. The runners-up are also shorts after bad or complex 8-K news (control weaknesses, joint CEO+CFO exits, restatements), consistent with slow incorporation but individually insignificant. The out-of-sample year (0.82, 303 new events) is what lifts this above a search artefact; one year is still short (95% CI on OOS Sharpe ≈ ±2). <b>Expected live Sharpe: about 0.5</b> (≈ 4–5%/yr at 8–10% vol). That is the IS/OOS average of about 0.9, haircut by roughly half for selection from 165 cells (deflated Sharpe probability 0.67) and for the size-factor share of returns.</p>
 <h3>5.3 Strategy 2: cross-asset momentum (diversifier)</h3>
 <p>Our first, fully pre-registered strategy (rules committed before any data, commit <code>6b6764d</code>): 12-month time-series momentum on 10 ETFs, with volatility-scaled positions, monthly rebalancing and a VIX overlay. Net of costs and financing: IS 2008–Sep 2024 Sharpe 0.29, OOS Oct 2024–Sep 2026 Sharpe 0.72; correlation with AQR's TSMOM factor 0.72; <b>correlation with the acquirer short −0.10</b>. It is a credible but low-Sharpe trend premium (in-sample t ≈ 1.2) whose OOS gain was mostly equity beta (0.50). Details are in Appendix B and <code>strategy/</code>.</p>
 <h3>5.4 What did not work: 32 hypotheses + a 165-cell grid, all reported</h3>
-<table>
+<table class="tl">
 <tr><th>Research line (pre-registered in git)</th><th>Trials</th><th>Outcome</th></tr>
-<tr><td>Early pilots: 8-K categories → volume, → direction; Gemini earnings text; weather vs Kalshi</td><td>4</td><td>all failed</td></tr>
-<tr><td>Momentum variants; 10-idea ETF screen (sector momentum, BAB, overnight, turn-of-month, month-end Treasuries, auctions, timed short vol, FX carry, reversal, pre-FOMC); portfolio</td><td>16</td><td>2 screen near-misses failed OOS; momentum kept as Strategy 2</td></tr>
-<tr><td>Thematic: rainfall → cocoa/coffee/sugar/OJ; GLP-1 headlines; open-source AI releases</td><td>3</td><td>no effect</td></tr>
-<tr><td>Massive options bonus: exits, CFO/CEO appointments, competitor spillover, settlements, straddle</td><td>9</td><td>no tradable edge (bonus note)</td></tr>
-<tr><td>8-K stock events: abrupt CFO exits (IS 0.52 / OOS 0.32); then the 165-cell grid → this strategy</td><td>4 + 165</td><td>see above</td></tr>
+<tr><td>Pilots: 8-K → volume/direction, Gemini earnings text, weather vs Kalshi</td><td>4</td><td>all failed</td></tr>
+<tr><td>Momentum variants + 10-idea ETF screen + portfolio</td><td>16</td><td>2 near-misses failed OOS; momentum = Strategy 2</td></tr>
+<tr><td>Themes: rainfall → softs, GLP-1 news, open-source AI</td><td>3</td><td>no effect</td></tr>
+<tr><td>Massive options (bonus note)</td><td>9</td><td>no tradable edge</td></tr>
+<tr><td>8-K stocks: abrupt CFO exits (0.52 / 0.32 OOS); 165-cell grid</td><td>4 + 165</td><td>this strategy</td></tr>
 </table>
 
 <h2>6. Risk Management</h2>
@@ -82,19 +91,19 @@ figure { margin: 3pt 0; } img { width: 100%; }
 <li><b>Squeeze risk (the main tail):</b> the worst positions were IonQ (+83% in 60 days, −1.7% of capital), Rocket Lab (+68%, −1.2%) and QXO (+59%, −1.1%): speculative high-momentum acquirers. Daily VaR95 is 0.97%, ES99 1.78%, worst day −2.4%, skew −0.16, excess kurtosis 0.7: no hidden short-volatility profile.</li>
 <li><b>Regimes:</b> Sharpe 0.65 when VIX &gt; 25 vs 0.97 otherwise; every calendar year positive; ex-best-year (2024) Sharpe 0.86. The OOS drawdown (−12.2%, early 2026) came in a risk-on rally in speculative stocks.</li>
 <li><b>Factor exposure:</b> SMB −0.49. A size-neutral hedge (an equal-weight or mid-cap ETF instead of SPY) is the obvious refinement, but it would be a new trial and is untested here.</li>
-<li><b>Proposed live rules (not backtested, so they would be new trials):</b> a per-name stop-out at +40% against the short; skip names in the top decile of 12-month momentum (squeeze-prone); halve gross if the strategy is down 10% from peak; monitor borrow fees daily and drop names above 3%.</li>
+<li><b>Proposed live rules (untested, so new trials):</b> stop out a name at +40% against us; skip top-decile 12-month-momentum names (squeeze-prone); halve gross after a −10% drawdown; drop names with borrow above 3%.</li>
 </ul>
 
-<h2>7. Liquidity and Capacity</h2>
+<h2>7. Liquidity &amp; Capacity</h2>
 <p>Entries have a median 20-day dollar volume of $72M (10th percentile $17M). With 2% positions and square-root impact (σ<sub>daily</sub>·√(trade/ADV) per side, on top of the fixed 10 bps):</p>
 <table>
 <tr><th>Strategy AUM</th><th>$10M</th><th>$50M</th><th>$100M</th><th>$250M</th><th>$500M</th></tr>
 <tr><td>Median / 95th-pct trade as % of ADV</td><td>0.3% / 1.6%</td><td>1.4% / 7.7%</td><td>2.8% / 15%</td><td>6.9% / 39%</td><td>14% / 77%</td></tr>
 <tr><td>Extra impact drag (%/yr)</td><td>1.0</td><td>2.3</td><td>3.3</td><td>5.2</td><td>7.3</td></tr>
 </table>
-<p>Against an 8–10% net return, <b>impact takes a third of the edge near $100M and half near $250M</b>, so the realistic capacity is about $100–150M. Larger books should scale position size to ADV (for example, cap each trade at 5% of ADV and work entries over 2–3 days; the lag test shows a 5-day delay costs nothing). About 190–200 entries per year, roughly 4 trades a week. Shorts in ≥$2B names are generally easy to borrow, and the 3%-borrow stress keeps Sharpe at 0.58–0.68. A margin/prime account is required for the short book plus the SPY hedge (gross about 1.7× at full deployment).</p>
+<p>Against an 8–10% net return, <b>impact takes a third of the edge near $100M and half near $250M</b>, so the realistic capacity is about $100–150M. Larger books should cap trades at 5% of ADV and work entries over 2–3 days (a 5-day delay costs nothing). There are about 190–200 entries a year (about 4 trades a week). ≥$2B shorts are generally easy to borrow, and the 3%-borrow stress keeps Sharpe at 0.58–0.68. A prime/margin account carries the short book plus the hedge (about 1.7× gross at full deployment). At full deployment the 100% gross cap skipped 13% (IS) to 33% (OOS) of entries; a 1.5% position size would admit them all at the same gross.</p>
 
-<h2>8. Limitations and Next Steps</h2>
+<h2>8. Limitations &amp; Next Steps</h2>
 <ul>
 <li><b>Selection from a search:</b> no cell survived multiple-testing correction; the evidence rests on one OOS year, the placebo and the literature. A second OOS year is the real test. Our live positions are hash-stamped in <code>FORWARD_LEDGER*.md</code>.</li>
 <li><b>Size factor:</b> factor-adjusted alpha is not significant. Next: a size-matched hedge and a split between cash and stock deals (Savor &amp; Lu predict stock-financed deals drive the effect).</li>

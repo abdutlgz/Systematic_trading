@@ -14,7 +14,10 @@ Bonus: Massive "Trade the 8-K" ([bonus note](notes/massive_note.pdf)).
 Not proven alpha: it does not survive BHY/Holm across the 165 cells, and part of the return is the size factor (alpha t 0.93).
 Random-date placebo: 0 of 100 beat it. 32 hypotheses + 165 grid cells are reported in total.
 
-## Reproduce (lead strategy; needs a Massive API key, sponsor data)
+## Reproduce (lead strategy)
+Quick check, no key needed: `python event8k/replay.py` recomputes Table 1 from the committed daily returns.
+
+Full rebuild (needs a Massive API key, sponsor data):
 ```sh
 cd gqh-massive-8k-starter && ./setup.sh             # put MASSIVE_API_KEY in .env (git-ignored)
 .venv/bin/python ../event8k/build_grid.py           # events + point-in-time caps + prices (~45 min first time, cached after)
