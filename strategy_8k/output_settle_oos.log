@@ -1,0 +1,111 @@
+
+######## cell 8 ########
+API key loaded (ends 0itp); cache at /Users/atoleugazin/Documents/Projects/QGHACKS/gqh-massive-8k-starter/.massive_cache
+
+######## cell 10 ########
+
+######## cell 12 ########
+119 tertiary tags, 29 secondary, 8 primary
+          primary_category   secondary_category                 tertiary_category                                                                                                                                                      description
+0  operations_and_strategy  material_agreements  supply_or_distribution_agreement                                                                      Material supply, distribution, or purchasing commitment establishing long-term obligations.
+1  operations_and_strategy  material_agreements                   lease_agreement                                                  Significant lease for real property, equipment, or facilities including operating, finance, and sale-leaseback.
+2  operations_and_strategy  material_agreements              settlement_agreement  Settlement resolving material litigation, regulatory proceedings, or disputes. Use this instead of material_litigation when the event is the settlement itself.
+3  operations_and_strategy  material_agreements      partnership_or_collaboration                                                   Partnership, collaboration, or commercial relationship agreement affecting operations or competitive position.
+
+######## cell 14 ########
+1655 sessions in the calendar; last completed session 2026-10-02. Sessions per year: 2022: 251, 2023: 250, 2024: 252, 2025: 250, 2026: 251
+
+######## cell 16 ########
+273 'settlement_agreement' disclosures across all filers, 2026-01-01..2026-08-31
+5 pooled settlement_agreement events across 4 tickers; {'settlement_agreement': 5}
+5 in-sample events across 4 of the top 100; 0 were filed on a non-session day (weekend or holiday)
+filing_date  2026
+events          5
+
+######## cell 18 ########
+
+######## cell 20 ########
+in-sample: 5 events -> 15 priced (event, bucket) pairs; 0 drops; 10s
+        median dte  median moneyness  median abs_spot_gap  median implied_move  median atm_volume
+bucket                                                                                           
+1m            32.0            -0.003                0.001                0.054              174.0
+2m            58.0             0.013                0.005                0.078               66.0
+3-6m         121.0             0.013                0.008                0.124               51.0
+   ticker      t_pre    spot_pre      K                  call                   put  call_px  put_px  implied_move
+2     WFC 2026-01-21   86.365220   87.5  O:WFC260515C00087500  O:WFC260515P00087500     6.25    5.55      0.136629
+5     DUK 2026-07-16  125.397821  125.0  O:DUK261016C00125000  O:DUK261016P00125000     4.70    4.00      0.069379
+8     JNJ 2026-07-27  265.723861  270.0  O:JNJ261218C00270000  O:JNJ261218P00270000    15.75   17.30      0.124377
+11    DUK 2026-08-04  123.317340  125.0  O:DUK261218C00125000  O:DUK261218P00125000     5.55    6.50      0.097715
+14    ABT 2026-08-19  114.487617  115.0  O:ABT261218C00115000  O:ABT261218P00115000     7.58    6.90      0.126477
+
+######## cell 22 ########
+678 rows: 4 tickers × buckets × 2 entries × 3 OTM levels × horizons
+mean P&L, % of spot at entry    0     1     2     3     5    10    21    42    63    exp
+Stock only (synthetic)        0.0 -0.17 -0.18 -0.77 -1.28 -0.91 -3.43 -4.02 -7.95 -16.79
+1 · Long call                 0.0 -0.01 -0.20 -0.56 -0.93 -0.58 -2.04 -3.04 -6.44  -6.63
+2 · Covered call              0.0 -0.14  0.01 -0.31 -0.73 -0.50 -2.07 -1.84 -3.95 -12.75
+3 · Protective put            0.0 -0.12  0.04 -0.52 -0.76 -0.77 -2.79 -3.73 -7.99 -11.58
+4 · Collar                    0.0 -0.08  0.23 -0.06 -0.20 -0.37 -1.44 -1.55 -4.00  -7.55
+5 · Cash-secured put          0.0 -0.05 -0.22 -0.24 -0.53 -0.14 -0.63 -0.28  0.05  -5.20
+
+######## cell 24 ########
+In-sample · settlement_agreement · 3-6m options · entry = post · OTM 5% · n = 4 events. * = 95% bootstrap CI excludes zero.
+                           h=1     h=2     h=3     h=5    h=10    h=21    h=42    h=63   expiry
+P&L per $1 spot                                                                                
+Stock only (synthetic)  -0.17%  -0.18%  -0.77%  -1.28%  -0.91%  -3.43%  -4.02%  -7.95%  -16.79%
+1 · Long call           -0.01%  -0.20%  -0.56%  -0.93%  -0.58%  -2.04%  -3.04%  -6.44%   -6.63%
+2 · Covered call        -0.14%  +0.01%  -0.31%  -0.73%  -0.50%  -2.07%  -1.84%  -3.95%  -12.75%
+3 · Protective put      -0.12%  +0.04%  -0.52%  -0.76%  -0.77%  -2.79%  -3.73%  -7.99%  -11.58%
+4 · Collar              -0.08%  +0.23%  -0.06%  -0.20%  -0.37%  -1.44%  -1.55%  -4.00%   -7.55%
+5 · Cash-secured put    -0.05%  -0.22%  -0.24%  -0.53%  -0.14%  -0.63%  -0.28%  +0.05%   -5.20%
+
+######## cell 26 ########
+  placebo: 25/120 events, 48s
+  placebo: 50/120 events, 96s
+  placebo: 75/120 events, 143s
+  placebo: 100/120 events, 191s
+placebo: 120 events -> 327 priced (event, bucket) pairs; 33 drops; 227s
+cell24:103: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+Events minus ordinary days, mean P&L per $1 spot. * = the 95% interval on the difference excludes zero.
+Traceback (most recent call last):
+  File "/Users/atoleugazin/Documents/Projects/QGHACKS/gqh-massive-8k-starter/.venv/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'difference'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/atoleugazin/Documents/Projects/QGHACKS/gqh-massive-8k-starter/../strategy_8k/run_window.py", line 112, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/Users/atoleugazin/Documents/Projects/QGHACKS/gqh-massive-8k-starter/../strategy_8k/run_window.py", line 98, in main
+    exec(compile(src, f"cell{i}", "exec"), g)
+  File "cell26", line 26, in <module>
+  File "cell24", line 56, in fmt_board
+  File "/Users/atoleugazin/Documents/Projects/QGHACKS/gqh-massive-8k-starter/.venv/lib/python3.12/site-packages/pandas/core/frame.py", line 12437, in apply
+    return op.apply().__finalize__(self, method="apply")
+           ^^^^^^^^^^
+  File "/Users/atoleugazin/Documents/Projects/QGHACKS/gqh-massive-8k-starter/.venv/lib/python3.12/site-packages/pandas/core/apply.py", line 1015, in apply
+    return self.apply_standard()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/atoleugazin/Documents/Projects/QGHACKS/gqh-massive-8k-starter/.venv/lib/python3.12/site-packages/pandas/core/apply.py", line 1167, in apply_standard
+    results, res_index = self.apply_series_generator()
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/atoleugazin/Documents/Projects/QGHACKS/gqh-massive-8k-starter/.venv/lib/python3.12/site-packages/pandas/core/apply.py", line 1183, in apply_series_generator
+    results[i] = self.func(v, *self.args, **self.kwargs)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "cell24", line 51, in cell
+  File "/Users/atoleugazin/Documents/Projects/QGHACKS/gqh-massive-8k-starter/.venv/lib/python3.12/site-packages/pandas/core/series.py", line 959, in __getitem__
+    return self._get_value(key)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/atoleugazin/Documents/Projects/QGHACKS/gqh-massive-8k-starter/.venv/lib/python3.12/site-packages/pandas/core/series.py", line 1046, in _get_value
+    loc = self.index.get_loc(label)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/atoleugazin/Documents/Projects/QGHACKS/gqh-massive-8k-starter/.venv/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'difference'

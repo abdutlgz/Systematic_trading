@@ -31,6 +31,20 @@ def display(obj):
     print(obj.to_string() if hasattr(obj, "to_string") else obj, flush=True)
 
 
+PEER_EVENTS = '''
+import sys as _sys
+_sys.path.insert(0, PEERS_DIR)
+import peers as _peers
+_raw, _m = _peers.peer_events(STUDY_START, STUDY_END, TOP_100)
+events = _m.drop_duplicates(["ticker", "filing_date"]).sort_values("filing_date").reset_index(drop=True)
+events["t_0"] = events["filing_date"].map(session_on_or_after)
+events["t_pre"] = events["t_0"].map(session_before)
+events["days_since_prev_event"] = events.groupby("ticker")["filing_date"].diff().dt.days
+events["supporting_text"] = ""
+print(f"{len(events)} competitor-spillover peer events, {events.cik.nunique()} distinct troubled filers,",
+      f"{events.ticker.nunique()} peer tickers;", events.tag.value_counts().to_dict())
+'''
+
 POOLED_EVENTS = '''
 _parts = [build_events(t, STUDY_START, STUDY_END, TOP_100).assign(tag=t) for t in POOLED_TAGS]
 events = pd.concat(_parts).sort_values(["ticker", "filing_date"]).reset_index(drop=True)
@@ -42,7 +56,7 @@ for _r in events.itertuples():
         _last[_r.ticker] = _r.filing_date
 events = events[_keep].sort_values("filing_date").reset_index(drop=True)
 events["days_since_prev_event"] = events.groupby("ticker")["filing_date"].diff().dt.days
-print(f"{len(events)} pooled exec-exit events across {events.ticker.nunique()} tickers;",
+print(f"{len(events)} pooled {'/'.join(POOLED_TAGS)} events across {events.ticker.nunique()} tickers;",
       events.tag.value_counts().to_dict())
 '''
 
@@ -60,9 +74,14 @@ def main():
     ap.add_argument("--start", required=True)
     ap.add_argument("--end", required=True)
     ap.add_argument("--label", required=True)
+    ap.add_argument("--events", choices=["exec", "settlement", "peers"], default="exec")
     args = ap.parse_args()
     cells = json.loads(NB.read_text())["cells"]
-    g = {"display": display, "__name__": "__main__", "POOLED_TAGS": TAGS, "DEDUPE_DAYS": DEDUPE_DAYS}
+    tags = {"exec": TAGS, "settlement": ["settlement_agreement"], "peers": []}[args.events]
+    label_tag = {"exec": "executive_officer_departure", "settlement": "settlement_agreement",
+                 "peers": "business_line_exit"}[args.events]
+    g = {"display": display, "__name__": "__main__", "POOLED_TAGS": tags, "DEDUPE_DAYS": DEDUPE_DAYS,
+         "PEERS_DIR": str(Path(__file__).resolve().parent)}
     for i, c in enumerate(cells[: LAST_CELL + 1]):
         if c["cell_type"] != "code":
             continue
@@ -74,11 +93,11 @@ def main():
             src = src.replace("\n        resp = SESSION.get(full_url, timeout=60)", RETRY_GET)
         if "events = build_events(EVENT_TAG, STUDY_START, STUDY_END, TOP_100)" in src:
             head, tail = src.split("events = build_events(EVENT_TAG, STUDY_START, STUDY_END, TOP_100)", 1)
-            src = head + POOLED_EVENTS + "\n".join(l for l in tail.splitlines() if "sample(5" not in l and "supporting_text" not in l and "max_colwidth" not in l)
+            src = head + (PEER_EVENTS if args.events == "peers" else POOLED_EVENTS) + "\n".join(l for l in tail.splitlines() if "sample(5" not in l and "supporting_text" not in l and "max_colwidth" not in l)
         print(f"\n######## cell {i} ########", flush=True)
         exec(compile(src, f"cell{i}", "exec"), g)
         if i == 10:  # the window under test replaces the notebook's study window (events AND placebo use it)
-            g["STUDY_START"], g["STUDY_END"], g["EVENT_TAG"] = args.start, args.end, "executive_officer_departure"
+            g["STUDY_START"], g["STUDY_END"], g["EVENT_TAG"] = args.start, args.end, label_tag
     for name in ("events", "results", "board", "placebo_results", "diff", "ranking"):
         if name in g:
             obj = g[name]

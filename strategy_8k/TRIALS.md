@@ -61,3 +61,21 @@ pre-registered and is not tested here. It is the stated next step for the sealed
 
 Final trial count: 37 in-sample specs (trial 1 grid) + 1 post-hoc strategy (trial 2), each at 9 horizons;
 OOS run once on the headline spec only.
+
+## Trials 3 and 4 (pre-registered in HYPOTHESIS_3.md, run 2026-10-03). 3-6m, entry=post, events minus placebo.
+
+**Trial 3: competitor spillover → long call on the top-100 peer (same SIC, filer >= $1B).**
+IS: 131 peer events, 53 troubled filers, 24 peers. Long call 21d -0.63% [-2.1, +0.8], 42d -1.44% [-4.0, +1.2];
+peer stock-only 21d -0.10%, 42d -1.84% (CIs include 0). Peers did NOT outperform. **Fails in-sample.**
+OOS (once): 40 events, 24 filers, 11 peers. Long call 21d -1.00% [-4.0, +2.0], 42d +2.06% [-1.9, +6.0].
+**Fails** (CIs include 0 at both 21 and 42, per the pre-registered rule). Peer clustering would widen these CIs further.
+
+**Trial 4: settlement_agreement → cash-secured put.**
+IS: 24 events / 18 tickers (21 priced). CSP 21d +0.25% [-0.4, +1.0], 42d -0.41%, 63d -1.84%, exp -1.59%; 1-day
+realized/implied ratio 1.11 vs placebo 0.85 (higher, the opposite of the "uncertainty resolves" prediction).
+**Fails in-sample.**
+OOS: only 5 settlement events in 2026-01..08. The notebook's statistics need >= 5 priced events per cell, and the run
+stopped. **Not testable OOS**: too few events, which is itself a capacity/breadth finding.
+
+Massive trial total: 4 hypotheses (exec-exit CSP, exec-exit protective put, competitor calls, settlement CSP);
+none survives. The one replicated measurement remains: realized > implied after executive exits.

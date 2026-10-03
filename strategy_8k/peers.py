@@ -92,8 +92,10 @@ def peer_events(start, end, top):
     for (tk, d) in set(zip(m["filer_ticker"], m["filing_date"])):
         if not isinstance(tk, str) or not tk:
             continue
-        p = mget(S, f"/v3/reference/tickers/{tk}", {"date": (d - pd.Timedelta(days=1)).strftime("%Y-%m-%d")}) \
-            if True else {}
+        try:
+            p = mget(S, f"/v3/reference/tickers/{tk}", {"date": (d - pd.Timedelta(days=1)).strftime("%Y-%m-%d")})
+        except RuntimeError:
+            p = {}  # no reference record: market cap unknown, so the event is excluded
         caps[(tk, d)] = (p.get("results") or {}).get("market_cap")
     m["filer_cap"] = [caps.get((tk, d)) for tk, d in zip(m["filer_ticker"], m["filing_date"])]
     m = m[m["filer_cap"].fillna(0) >= MIN_CAP]

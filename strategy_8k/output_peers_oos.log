@@ -1,0 +1,163 @@
+
+######## cell 8 ########
+API key loaded (ends 0itp); cache at /Users/atoleugazin/Documents/Projects/QGHACKS/gqh-massive-8k-starter/.massive_cache
+
+######## cell 10 ########
+
+######## cell 12 ########
+119 tertiary tags, 29 secondary, 8 primary
+          primary_category secondary_category    tertiary_category                                                                                           description
+0  operations_and_strategy      restructuring   restructuring_plan  Restructuring or cost reduction initiative with expected charges, timeline, and anticipated savings.
+1  operations_and_strategy      restructuring     facility_closure             Facility closures, consolidations, or relocations with locations, employees, and charges.
+2  operations_and_strategy      restructuring  workforce_reduction  Significant layoffs, RIFs, or voluntary separation programs with positions, severance, and timeline.
+3  operations_and_strategy      restructuring   business_line_exit                 Decision to exit or discontinue a business line, product category, or market segment.
+
+######## cell 14 ########
+1655 sessions in the calendar; last completed session 2026-10-02. Sessions per year: 2022: 251, 2023: 250, 2024: 252, 2025: 250, 2026: 251
+
+######## cell 16 ########
+40 competitor-spillover peer events, 24 distinct troubled filers, 11 peer tickers; {'business_line_exit': 18, 'cybersecurity_incident': 12, 'facility_closure': 4, 'going_concern': 3, 'natural_disaster_impact': 2, 'voluntary_bankruptcy': 1}
+40 in-sample events across 11 of the top 100; 0 were filed on a non-session day (weekend or holiday)
+filing_date  2026
+events         40
+
+######## cell 18 ########
+
+######## cell 20 ########
+  in-sample: 25/40 events, 56s
+in-sample: 40 events -> 112 priced (event, bucket) pairs; 8 drops; 90s
+                                                               dropped
+reason                                                                
+3-6m: ATM pair did not trade on or near the pre-event session        5
+1m: ATM pair did not trade on or near the pre-event session          3
+        median dte  median moneyness  median abs_spot_gap  median implied_move  median atm_volume
+bucket                                                                                           
+1m            29.0             0.000                0.002                0.069               36.0
+2m            62.0            -0.002                0.004                0.103              100.5
+3-6m         122.0            -0.005                0.006                0.138               48.0
+   ticker      t_pre    spot_pre      K                   call                    put  call_px  put_px  implied_move
+2     CVX 2026-01-02  155.861141  155.0   O:CVX260515C00155000   O:CVX260515P00155000     8.36    7.30      0.100474
+5     XOM 2026-01-02  122.615680  125.0   O:XOM260515C00125000   O:XOM260515P00125000     5.05    7.50      0.102352
+8    NVDA 2026-01-08  185.187879  185.0  O:NVDA260515C00185000  O:NVDA260515P00185000    19.95   17.41      0.201741
+11    AMD 2026-01-08  204.710353  200.0   O:AMD260515C00200000   O:AMD260515P00200000    28.50   21.20      0.242782
+14   ADBE 2026-01-09  333.695029  330.0  O:ADBE260515C00330000  O:ADBE260515P00330000    30.33   20.20      0.151426
+17    MMM 2026-02-23  165.847687  165.0   O:MMM260618C00165000   O:MMM260618P00165000    12.00    9.90      0.132049
+
+######## cell 22 ########
+5,565 rows: 11 tickers × buckets × 2 entries × 3 OTM levels × horizons
+mean P&L, % of spot at entry    0     1     2     3     5    10    21    42     63    exp
+Stock only (synthetic)        0.0 -0.41 -0.03  0.07  0.32  0.94  2.13  6.26  10.38  16.99
+1 · Long call                 0.0 -0.18  0.11  0.16  0.35  0.57  1.06  2.47   5.16   8.18
+2 · Covered call              0.0 -0.38 -0.12 -0.03  0.17  0.47  1.11  4.18   6.68  10.20
+3 · Protective put            0.0 -0.36  0.05  0.08  0.32  0.76  1.79  4.22   7.26  11.74
+4 · Collar                    0.0 -0.32 -0.04 -0.02  0.16  0.29  0.77  2.14   3.49   5.55
+5 · Cash-secured put          0.0 -0.05 -0.09 -0.01  0.02  0.11  0.21  1.85   2.93   4.51
+
+######## cell 24 ########
+In-sample · business_line_exit · 3-6m options · entry = post · OTM 5% · n = 34 events. * = 95% bootstrap CI excludes zero.
+                            h=1     h=2     h=3     h=5    h=10    h=21     h=42      h=63    expiry
+P&L per $1 spot                                                                                     
+Stock only (synthetic)   -0.41%  -0.03%  +0.07%  +0.32%  +0.94%  +2.13%  +6.26%*  +10.38%*  +16.99%*
+1 · Long call            -0.18%  +0.11%  +0.16%  +0.35%  +0.57%  +1.06%   +2.47%   +5.16%*   +8.18%*
+2 · Covered call         -0.38%  -0.12%  -0.03%  +0.17%  +0.47%  +1.11%  +4.18%*   +6.68%*  +10.20%*
+3 · Protective put       -0.36%  +0.05%  +0.08%  +0.32%  +0.76%  +1.79%  +4.22%*   +7.26%*  +11.74%*
+4 · Collar              -0.32%*  -0.04%  -0.02%  +0.16%  +0.29%  +0.77%  +2.14%*   +3.49%*   +5.55%*
+5 · Cash-secured put     -0.05%  -0.09%  -0.01%  +0.02%  +0.11%  +0.21%  +1.85%*   +2.93%*   +4.51%*
+
+######## cell 26 ########
+  placebo: 25/117 events, 63s
+  placebo: 50/117 events, 114s
+  placebo: 75/117 events, 162s
+  placebo: 100/117 events, 213s
+placebo: 117 events -> 309 priced (event, bucket) pairs; 20 drops; 250s
+cell24:103: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+Events minus ordinary days, mean P&L per $1 spot. * = the 95% interval on the difference excludes zero.
+                            h=1     h=2     h=3     h=5    h=10    h=21     h=42     h=63    expiry
+P&L per $1 spot                                                                                    
+Stock only (synthetic)   -0.80%  -0.47%  -0.31%  -0.13%  -1.08%  -1.86%   +4.71%   +7.52%  +12.19%*
+1 · Long call            -0.31%  -0.10%  +0.05%  +0.27%  -0.43%  -1.00%   +2.06%   +4.61%    +7.68%
+2 · Covered call         -0.58%  -0.32%  -0.22%  -0.21%  -0.53%  -1.11%  +3.15%*  +5.24%*   +6.20%*
+3 · Protective put       -0.71%  -0.24%  -0.16%  +0.03%  -0.73%  -1.29%   +3.07%   +5.69%    +9.20%
+4 · Collar              -0.49%*  -0.10%  -0.09%  -0.09%  -0.13%  -0.49%  +1.64%*  +3.34%*   +3.80%*
+5 · Cash-secured put     -0.06%  -0.19%  -0.07%  -0.05%  -0.43%  -0.67%   +1.48%   +2.13%   +2.38%*
+
+######## cell 28 ########
+                        edge  horizons_ci_excludes_0  n_events
+strategy                                                      
+3 · Protective put    +3.66%                       0        32
+1 · Long call         +2.92%                       0        33
+2 · Covered call      +2.75%                       2        32
+4 · Collar            +1.65%                       2        32
+5 · Cash-secured put  +1.06%                       1        34
+In-sample answer: after a 'business_line_exit' 8-K, the strategy with the largest edge over ordinary days is '3 · Protective put' (3-6m options, entry = post, OTM 5%).
+
+######## cell 30 ########
+3-6m ATM pair on the pre-event session: median implied move to expiry 14.7%, median |realized| 9.3%; realized beat implied in 37% of events
+                   n mean_ratio ci_lo ci_hi median_ratio share_above_1
+group   horizon                                                       
+events  1         35       0.98  0.70  1.31         0.70           37%
+        2         35       1.01  0.74  1.33         0.84           43%
+        3         35       0.94  0.70  1.19         0.76           37%
+        5         34       1.09  0.84  1.36         1.02           50%
+        10        32       1.25  0.97  1.53         1.13           53%
+        21        33       1.27  0.94  1.62         0.98           48%
+        42        31       1.04  0.73  1.41         0.88           45%
+        63        24       1.24  0.86  1.67         0.95           42%
+        exp       23       1.11  0.71  1.57         0.73           43%
+placebo 1         97       1.04  0.83  1.27         0.75           40%
+        2         97       1.01  0.82  1.22         0.72           36%
+        3         97       0.99  0.84  1.17         0.87           37%
+        5        101       0.96  0.83  1.11         0.84           44%
+        10       100       0.93  0.76  1.11         0.58           31%
+        21        94       0.95  0.76  1.17         0.72           33%
+        42        85       0.91  0.75  1.09         0.78           32%
+        63        54       0.92  0.67  1.24         0.59           20%
+        exp       56       0.77  0.55  1.08         0.45           20%
+
+cash_secured_put, events minus placebo (peers_oos 2026-01-01..2026-08-31):
+            strategy horizon  n_a  n_b    mean_a    mean_b  difference     ci_lo     ci_hi
+45  cash_secured_put       1   34   95 -0.000536  0.000113   -0.000649 -0.004643  0.003721
+46  cash_secured_put       2   34   95 -0.000869  0.000985   -0.001854 -0.007213  0.003991
+47  cash_secured_put       3   34   95 -0.000143  0.000550   -0.000693 -0.006610  0.005717
+48  cash_secured_put       5   34   95  0.000216  0.000688   -0.000472 -0.007606  0.006917
+49  cash_secured_put      10   34   95  0.001142  0.005414   -0.004272 -0.014551  0.005733
+50  cash_secured_put      21   34   95  0.002133  0.008801   -0.006669 -0.023080  0.006896
+51  cash_secured_put      42   32   80  0.018505  0.003727    0.014779 -0.002036  0.031539
+52  cash_secured_put      63   25   53  0.029329  0.008001    0.021327 -0.005155  0.041945
+53  cash_secured_put     exp   23   57  0.045132  0.021381    0.023752  0.008602  0.038826
+
+protective_put, events minus placebo (peers_oos 2026-01-01..2026-08-31):
+          strategy horizon  n_a  n_b    mean_a    mean_b  difference     ci_lo     ci_hi
+27  protective_put       1   34   93 -0.003600  0.003524   -0.007124 -0.014687  0.000588
+28  protective_put       2   34   93  0.000544  0.002906   -0.002363 -0.013049  0.008786
+29  protective_put       3   34   93  0.000813  0.002444   -0.001630 -0.013309  0.010577
+30  protective_put       5   33   95  0.003167  0.002882    0.000285 -0.014446  0.016384
+31  protective_put      10   32   95  0.007591  0.014928   -0.007336 -0.032418  0.017603
+32  protective_put      21   32   89  0.017932  0.030840   -0.012908 -0.050019  0.022391
+33  protective_put      42   31   79  0.042173  0.011520    0.030653 -0.015824  0.077107
+34  protective_put      63   23   50  0.072590  0.015717    0.056873 -0.036421  0.137429
+35  protective_put     exp   22   56  0.117398  0.025424    0.091974 -0.017343  0.218208
+
+long_call, events minus placebo (peers_oos 2026-01-01..2026-08-31):
+     strategy horizon  n_a  n_b    mean_a    mean_b  difference     ci_lo     ci_hi
+9   long_call       1   34   98 -0.001828  0.001308   -0.003136 -0.009424  0.004130
+10  long_call       2   34   98  0.001116  0.002085   -0.000969 -0.010137  0.009302
+11  long_call       3   34   98  0.001629  0.001113    0.000516 -0.009535  0.011504
+12  long_call       5   34   98  0.003509  0.000851    0.002657 -0.010394  0.016584
+13  long_call      10   33   98  0.005716  0.010016   -0.004300 -0.024504  0.015875
+14  long_call      21   33   93  0.010621  0.020639   -0.010018 -0.039907  0.019896
+15  long_call      42   32   83  0.024704  0.004060    0.020644 -0.018716  0.059579
+16  long_call      63   24   55  0.051575  0.005435    0.046140 -0.027725  0.110878
+17  long_call     exp   24   57  0.081805  0.004963    0.076841 -0.020381  0.190647
+
+stock, events minus placebo (peers_oos 2026-01-01..2026-08-31):
+  strategy horizon  n_a  n_b    mean_a    mean_b  difference     ci_lo     ci_hi
+0    stock       1   34   96 -0.004137  0.003900   -0.008037 -0.019832  0.004089
+1    stock       2   34   96 -0.000326  0.004398   -0.004724 -0.020412  0.011220
+2    stock       3   34   96  0.000670  0.003805   -0.003135 -0.020631  0.015047
+3    stock       5   33   98  0.003233  0.004541   -0.001308 -0.023324  0.022975
+4    stock      10   32   98  0.009384  0.020193   -0.010809 -0.043803  0.022502
+5    stock      21   32   91  0.021265  0.039856   -0.018590 -0.066062  0.028398
+6    stock      42   31   82  0.062595  0.015523    0.047072 -0.014027  0.100381
+7    stock      63   24   52  0.103846  0.028656    0.075190 -0.024838  0.161432
+8    stock     exp   23   56  0.169853  0.047907    0.121946  0.007475  0.246306
