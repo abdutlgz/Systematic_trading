@@ -1,0 +1,10 @@
+.env
+.env.*
+!.env.example
+.secrets/
+__pycache__/
+.venv/
+.DS_Store
+experiments/raw/
+strategy/data/*.csv
+*.pyc
