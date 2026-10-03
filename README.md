@@ -5,10 +5,12 @@ plus the Massive "Trade the 8-K" bonus ([bonus note](notes/massive_note.pdf)).
 
 | | In-sample 2008–Sep 2024 | Out-of-sample Oct 2024–Sep 2026 (run once) |
 |---|---:|---:|
-| Net Sharpe (10 bps/side) | 0.26 | 0.90 |
-| Max drawdown | −28.3% | −12.6% |
+| Net Sharpe (10 bps/side + financing) | 0.29 | 0.72 |
+| Annual return | 2.8% | 8.7% |
+| Max drawdown | −27.5% | −13.3% |
 | Turnover | 7.3×/yr | 7.3×/yr |
 
+Correlation with AQR's published TSMOM factor: 0.72. Unfinanced original spec: 0.26 / 0.90 (see `strategy/FINANCING.md`).
 We do not claim a proven edge (in-sample t ≈ 1.05; out-of-sample alpha ≈ 0). The project's value is the testing:
 27 pre-registered trials, a nine-pitfall statistical audit, and every failure reported.
 

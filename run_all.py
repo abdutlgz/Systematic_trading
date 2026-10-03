@@ -12,6 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).parent
 STEPS = [
     ["strategy/run_all.py", "--oos"],      # momentum: data, backtest, analysis (Table 1, Fig 1, Sections 5-7)
+    ["strategy/risk_capital.py"],          # financing correction (headline), AQR check, stress, capital (Sections 1, 5-7)
     ["screen/download.py"],                # data for the 10-hypothesis screen
     ["screen/screen.py"],                  # Appendix A
     ["screen/portfolio.py", "--oos"],      # Section 5.3 portfolio row
