@@ -22,3 +22,19 @@ stock, so "short any $2B stock / long SPY" may earn money regardless of the even
 - **Economic reading:** acquirers that sign deals then lag the market for about 3 months (overpayment / winner's curse, Roll 1986;
   post-merger underperformance, Loughran & Vijh 1997; Moeller, Schlingemann & Stulz 2005). It is a known anomaly re-found by a
   blind search, which is reassuring for the pipeline but limits its novelty.
+
+## Winner OOS, run ONCE (2025-10-01..2026-09-30; `python event8k/grid.py --oos`)
+| Short acquisition_agreement filers >= $2B, 60 sessions, SPY-hedged | IS | **OOS** | Full 4.7 yrs |
+|---|---:|---:|---:|
+| Net Sharpe | 0.98 | **0.82** | 0.93 |
+| t | 1.90 | 0.82 | **2.01** |
+| Ann. return / vol | 8.3% / 8.5% | 9.9% / 12.1% | |
+| Max DD | | -12.2% | |
+| Beta to SPY | -0.01 | -0.14 | -0.02 |
+303 new OOS events. **Replicates out of sample.**
+Factor attribution (full period, FF5 + Mom, to 2026-08): alpha +3.2%/yr, t 0.93; SMB -0.49 (short mid-caps vs large-cap SPY), R² 0.44.
+Part of the return is the 2022-26 large-over-small size premium. The random-date placebo (same tickers and the same size exposure,
+Sharpe -0.53) shows the post-filing window adds something beyond it, but the factor-adjusted alpha is not significant.
+Correlation with the momentum strategy: -0.10.
+Honest standing: the highest t of any strategy in the project (2.01 over 4.7 years) and the strongest placebo result, but it was
+selected from 165 cells and does not survive BHY/Holm in-sample.

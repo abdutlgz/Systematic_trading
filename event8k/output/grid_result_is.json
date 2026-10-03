@@ -1,0 +1,24 @@
+{
+ "winner": {
+  "cell": "acquisition_agreement|2B|60",
+  "defn": "acquisition_agreement",
+  "size": "2B",
+  "hold": 60,
+  "n_is": 732,
+  "valid": true,
+  "direction": "short",
+  "sharpe": 0.9825757177073996,
+  "t": 1.896699601694851,
+  "p": 0.0578675963173112,
+  "ann_ret": 0.08347915490171358,
+  "vol": 0.08495951344746418,
+  "sr_h1": 1.174195404150636,
+  "sr_h2": 0.6954629612639822,
+  "avg_gross": 0.8568690095846649,
+  "bhy_q": 1.0,
+  "holm_p": 1.0,
+  "dsr_prob": 0.6695394095358776
+ },
+ "n_valid": 165,
+ "n_bhy": 0
+}
