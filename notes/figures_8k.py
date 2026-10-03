@@ -23,16 +23,16 @@ def ratio(res):
     return pd.DataFrame(rows, columns=["h", "mean", "lo", "hi", "n"]).set_index("h")
 
 
-fig, axes = plt.subplots(1, 2, figsize=(7.2, 2.4), sharey=True)
-for ax, lab, title in zip(axes, ["is", "oos"], ["In-sample 2024-25", "Out-of-sample Jan-Aug 2026"]):
+fig, axes = plt.subplots(1, 3, figsize=(7.4, 2.25), sharey=True)
+for ax, lab, title in zip(axes, ["straddle_2223", "is", "oos"], ["2022-23 (straddle test)", "2024-25 (in-sample)", "Jan-Aug 2026 (OOS)"]):
     for key, col, name in [("results", "#b33", "Exec-exit events"), ("placebo_results", "#777", "Same names, ordinary days")]:
         d = ratio(pd.read_pickle(O / f"{lab}_{key}.pkl"))
         x = np.arange(len(H)) + (0.12 if key == "results" else -0.12)
         ax.errorbar(x, d["mean"], yerr=[d["mean"] - d["lo"], d["hi"] - d["mean"]], fmt="o", ms=3.5, color=col,
                     capsize=2, lw=1, label=name)
         d.to_csv(OUT / f"ratio_{lab}_{key}.csv")
-    ax.axhline(1, color="k", lw=0.7, ls="--"); ax.set_xticks(range(len(H))); ax.set_xticklabels(H)
-    ax.set_title(title, fontsize=9); ax.set_xlabel("Sessions after filing"); ax.grid(alpha=0.25)
+    ax.axhline(1, color="k", lw=0.7, ls="--"); ax.set_xticks(range(len(H))); ax.set_xticklabels(H, fontsize=7)
+    ax.set_title(title, fontsize=9); ax.set_xlabel("Sessions after filing", fontsize=8); ax.grid(alpha=0.25)
 axes[0].set_ylabel("|realized| / implied move"); axes[0].legend(frameon=False, fontsize=7)
 fig.tight_layout(); fig.savefig(OUT / "fig3_8k_ratio.png", dpi=220)
 print("ok")
