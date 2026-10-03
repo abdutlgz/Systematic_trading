@@ -4,4 +4,5 @@ pandas>=2.0
 scipy>=1.10
 matplotlib>=3.7
 pypdf>=4.0
+openpyxl>=3.0
 # Massive bonus pipeline uses gqh-massive-8k-starter/requirements.txt (Python 3.10+)

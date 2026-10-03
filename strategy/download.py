@@ -60,6 +60,10 @@ def main():
         raw = fetch(f"https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/{f}.zip")
         zipfile.ZipFile(io.BytesIO(raw)).extractall(DATA)
         print(f, "ok")
+    # AQR Time Series Momentum factors (implementation check only)
+    (DATA / "AQR_TSMOM_monthly.xlsx").write_bytes(fetch(
+        "https://www.aqr.com/-/media/AQR/Documents/Insights/Data-Sets/Time-Series-Momentum-Factors-Monthly.xlsx"))
+    print("AQR TSMOM ok")
 
 
 if __name__ == "__main__":
