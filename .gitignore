@@ -10,3 +10,4 @@ strategy/data/*.csv
 *.pyc
 strategy/data/*.zip
 screen/data/
+gqh-massive-8k-starter/.sec_sic_cache.json
