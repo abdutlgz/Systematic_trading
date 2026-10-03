@@ -9,3 +9,4 @@ experiments/raw/
 strategy/data/*.csv
 *.pyc
 strategy/data/*.zip
+screen/data/
