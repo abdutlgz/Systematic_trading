@@ -12,3 +12,13 @@ Strategy B's cfo_departure[ABRUPT] is not in the top 15 under this grid's mechan
 
 Caveat to test: nearly every top cell is a SHORT hedged with cap-weighted SPY. In 2023-24 mega-cap tech drove SPY far above the average
 stock, so "short any $2B stock / long SPY" may earn money regardless of the event. Random-date placebo on the winner: see below.
+
+## Winner diagnostics (in-sample, before OOS)
+- **Random-date placebo** (the same 732 tickers, random dates, short + SPY hedge, 100 runs): mean Sharpe **-0.53**, 95th pct -0.13; **0%**
+  reach the winner's 0.98. So the mega-cap/SPY explanation is ruled out: on ordinary dates these stocks BEAT their hedge.
+- **Decomposition** (per event, 60 sessions): stock -0.07%, beta × SPY +2.61%, so a short-hedged P&L of +2.67% (event-level t 4.66,
+  overlapping dates, so overstated; the portfolio-level t of 1.90 is the honest one).
+  Likely deal targets (post-announcement vol < 50% of pre-vol): n = 43, +0.85%. Others (mostly acquirers): n = 689, **+2.79%**.
+- **Economic reading:** acquirers that sign deals then lag the market for about 3 months (overpayment / winner's curse, Roll 1986;
+  post-merger underperformance, Loughran & Vijh 1997; Moeller, Schlingemann & Stulz 2005). It is a known anomaly re-found by a
+  blind search, which is reassuring for the pipeline but limits its novelty.
