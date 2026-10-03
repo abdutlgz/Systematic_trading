@@ -1,0 +1,18 @@
+{
+ "V2_IS_sharpe": 0.51546379408724,
+ "placebo": {
+  "mean": 0.02692090113867236,
+  "p95": 0.6549425280454079,
+  "share_ge_V2": 0.09
+ },
+ "gross_short": {
+  "mean": 0.2672204472843451,
+  "max": 0.46
+ },
+ "deflated": {
+  "n_trials": 5,
+  "sr0_annual_benchmark": 0.3994434825496226,
+  "prob_sharpe_gt_0": 0.8393853880586661,
+  "deflated_sharpe_prob": 0.5883350547791807
+ }
+}
