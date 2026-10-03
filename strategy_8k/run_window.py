@@ -10,6 +10,7 @@ import argparse
 import json
 import pickle
 import sys
+import time
 from pathlib import Path
 
 import matplotlib
@@ -60,13 +61,6 @@ print(f"{len(events)} pooled {'/'.join(POOLED_TAGS)} events across {events.ticke
       events.tag.value_counts().to_dict())
 '''
 
-# Connection drops raise instead of retrying in the starter; retry them too.
-RETRY_GET = '''
-        try:
-            resp = SESSION.get(full_url, timeout=30)
-        except requests.RequestException:
-            time.sleep(min(2 ** attempt, 20))
-            continue'''
 
 
 def main():
@@ -89,13 +83,21 @@ def main():
         if src.lstrip().startswith("# Optional"):
             continue
         src = "\n".join(l for l in src.splitlines() if not l.lstrip().startswith(("%", "!")))
-        if i == 8:
-            src = src.replace("\n        resp = SESSION.get(full_url, timeout=60)", RETRY_GET)
         if "events = build_events(EVENT_TAG, STUDY_START, STUDY_END, TOP_100)" in src:
             head, tail = src.split("events = build_events(EVENT_TAG, STUDY_START, STUDY_END, TOP_100)", 1)
             src = head + (PEER_EVENTS if args.events == "peers" else POOLED_EVENTS) + "\n".join(l for l in tail.splitlines() if "sample(5" not in l and "supporting_text" not in l and "max_colwidth" not in l)
         print(f"\n######## cell {i} ########", flush=True)
-        exec(compile(src, f"cell{i}", "exec"), g)
+        # The starter's API cell (cell 8) runs UNCHANGED. A dropped connection raises inside it; we simply re-run the
+        # failing cell, and every response already fetched is served from the starter's on-disk cache.
+        for attempt in range(6):
+            try:
+                exec(compile(src, f"cell{i}", "exec"), g)
+                break
+            except (ConnectionError, TimeoutError, OSError) as e:  # requests' errors subclass these
+                if attempt == 5:
+                    raise
+                print(f"  cell {i}: network error ({type(e).__name__}); re-running from cache, attempt {attempt + 2}", flush=True)
+                time.sleep(10 * (attempt + 1))
         if i == 10:  # the window under test replaces the notebook's study window (events AND placebo use it)
             g["STUDY_START"], g["STUDY_END"], g["EVENT_TAG"] = args.start, args.end, label_tag
     for name in ("events", "results", "board", "placebo_results", "diff", "ranking"):
