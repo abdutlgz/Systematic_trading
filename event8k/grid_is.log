@@ -1,0 +1,185 @@
+CEO_AND_CFO|2B|20                             n=  75 short SR +0.31 t +0.60
+CEO_AND_CFO|2B|60                             n=  75 short SR +0.88 t +1.69
+CEO_AND_CFO|2B|120                            n=  75 short SR +0.69 t +1.33
+acquisition_agreement|2B|20                   n= 732 short SR +0.62 t +1.21
+acquisition_agreement|2B|60                   n= 732 short SR +0.98 t +1.90
+acquisition_agreement|2B|120                  n= 732 short SR +0.88 t +1.69
+acquisition_agreement|10B|20                  n= 285 short SR +0.36 t +0.70
+acquisition_agreement|10B|60                  n= 285 short SR +0.41 t +0.78
+acquisition_agreement|10B|120                 n= 285 short SR +0.83 t +1.60
+auditor_dismissal|2B|20                       n=  86 short SR +0.80 t +1.55
+auditor_dismissal|2B|60                       n=  86 short SR +0.73 t +1.41
+auditor_dismissal|2B|120                      n=  86 short SR +0.46 t +0.89
+ceo_appointment|2B|20                         n= 376 short SR +0.20 t +0.39
+ceo_appointment|2B|60                         n= 376 short SR +0.20 t +0.39
+ceo_appointment|2B|120                        n= 376 short SR +0.52 t +1.00
+ceo_appointment|10B|20                        n= 169 long  SR -0.04 t -0.07
+ceo_appointment|10B|60                        n= 169 short SR +0.02 t +0.04
+ceo_appointment|10B|120                       n= 169 short SR +0.15 t +0.29
+ceo_departure|2B|20                           n= 707 short SR +0.71 t +1.37
+ceo_departure|2B|60                           n= 707 short SR +0.76 t +1.46
+ceo_departure|2B|120                          n= 707 short SR +0.71 t +1.38
+ceo_departure|10B|20                          n= 297 short SR +0.19 t +0.37
+ceo_departure|10B|60                          n= 297 short SR +0.33 t +0.64
+ceo_departure|10B|120                         n= 297 short SR +0.48 t +0.92
+ceo_departure[ABRUPT]|2B|20                   n= 124 short SR +0.67 t +1.29
+ceo_departure[ABRUPT]|2B|60                   n= 124 short SR +0.07 t +0.14
+ceo_departure[ABRUPT]|2B|120                  n= 124 short SR +0.37 t +0.72
+ceo_departure[ABRUPT]|10B|20                  n=  41 short SR +0.08 t +0.16
+ceo_departure[ABRUPT]|10B|60                  n=  41 short SR +0.08 t +0.16
+ceo_departure[ABRUPT]|10B|120                 n=  41 short SR +0.31 t +0.61
+cfo_appointment|2B|20                         n= 937 short SR -0.15 t -0.29
+cfo_appointment|2B|60                         n= 937 short SR +0.06 t +0.12
+cfo_appointment|2B|120                        n= 937 short SR +0.06 t +0.13
+cfo_appointment|10B|20                        n= 369 long  SR +0.03 t +0.06
+cfo_appointment|10B|60                        n= 369 long  SR +0.19 t +0.36
+cfo_appointment|10B|120                       n= 369 short SR -0.13 t -0.26
+cfo_departure|2B|20                           n= 865 short SR -0.10 t -0.19
+cfo_departure|2B|60                           n= 865 long  SR -0.05 t -0.11
+cfo_departure|2B|120                          n= 865 short SR -0.07 t -0.14
+cfo_departure|10B|20                          n= 323 long  SR -0.21 t -0.41
+cfo_departure|10B|60                          n= 323 long  SR +0.02 t +0.04
+cfo_departure|10B|120                         n= 323 short SR -0.00 t -0.00
+cfo_departure[ABRUPT]|2B|20                   n= 208 short SR +0.17 t +0.32
+cfo_departure[ABRUPT]|2B|60                   n= 208 short SR +0.47 t +0.91
+cfo_departure[ABRUPT]|2B|120                  n= 208 short SR +0.52 t +1.01
+cfo_departure[ABRUPT]|10B|20                  n=  60 short SR +0.19 t +0.37
+cfo_departure[ABRUPT]|10B|60                  n=  60 short SR +0.42 t +0.81
+cfo_departure[ABRUPT]|10B|120                 n=  60 short SR +0.31 t +0.60
+cybersecurity_incident|2B|20                  n=  94 short SR -0.14 t -0.27
+cybersecurity_incident|2B|60                  n=  94 short SR +0.11 t +0.21
+cybersecurity_incident|2B|120                 n=  94 long  SR +0.03 t +0.07
+cybersecurity_incident|10B|20                 n=  41 short SR +0.46 t +0.89
+cybersecurity_incident|10B|60                 n=  41 short SR +0.42 t +0.82
+cybersecurity_incident|10B|120                n=  41 short SR +0.27 t +0.52
+deal_termination|2B|20                        n= 668 short SR -0.25 t -0.47
+deal_termination|2B|60                        n= 668 short SR +0.34 t +0.65
+deal_termination|2B|120                       n= 668 short SR +0.49 t +0.94
+deal_termination|10B|20                       n= 285 short SR -0.07 t -0.14
+deal_termination|10B|60                       n= 285 short SR +0.25 t +0.49
+deal_termination|10B|120                      n= 285 short SR +0.42 t +0.81
+debt_issuance|2B|20                           n=2140 short SR -0.01 t -0.02
+debt_issuance|2B|60                           n=2140 short SR +0.62 t +1.19
+debt_issuance|2B|120                          n=2140 short SR +0.37 t +0.71
+debt_issuance|10B|20                          n=1340 short SR +0.07 t +0.13
+debt_issuance|10B|60                          n=1340 short SR +0.38 t +0.73
+debt_issuance|10B|120                         n=1340 short SR +0.03 t +0.07
+director_departure|2B|20                      n=2541 short SR +0.31 t +0.60
+director_departure|2B|60                      n=2541 short SR +0.14 t +0.28
+director_departure|2B|120                     n=2541 short SR +0.66 t +1.27
+director_departure|10B|20                     n=1048 short SR -0.36 t -0.70
+director_departure|10B|60                     n=1048 short SR +0.07 t +0.14
+director_departure|10B|120                    n=1048 short SR +0.11 t +0.22
+divestiture_agreement|2B|20                   n= 311 short SR +0.72 t +1.38
+divestiture_agreement|2B|60                   n= 311 short SR +0.36 t +0.70
+divestiture_agreement|2B|120                  n= 311 short SR +0.28 t +0.55
+divestiture_agreement|10B|20                  n= 153 short SR +0.83 t +1.60
+divestiture_agreement|10B|60                  n= 153 short SR +0.76 t +1.46
+divestiture_agreement|10B|120                 n= 153 short SR +0.64 t +1.24
+dividend_policy_change|2B|20                  n= 103 short SR -0.13 t -0.24
+dividend_policy_change|2B|60                  n= 103 short SR +0.17 t +0.34
+dividend_policy_change|2B|120                 n= 103 short SR +0.31 t +0.59
+dividend_policy_change|10B|20                 n=  48 long  SR -0.05 t -0.09
+dividend_policy_change|10B|60                 n=  48 short SR +0.43 t +0.84
+dividend_policy_change|10B|120                n=  48 short SR +0.18 t +0.34
+executive_officer_departure|2B|20             n=2583 short SR +0.30 t +0.58
+executive_officer_departure|2B|60             n=2583 short SR +0.31 t +0.59
+executive_officer_departure|2B|120            n=2583 short SR +0.09 t +0.18
+executive_officer_departure|10B|20            n=1127 short SR -0.15 t -0.30
+executive_officer_departure|10B|60            n=1127 short SR +0.64 t +1.23
+executive_officer_departure|10B|120           n=1127 short SR +0.55 t +1.05
+financial_restatement|2B|20                   n=  43 short SR +0.87 t +1.68
+financial_restatement|2B|60                   n=  43 short SR +0.62 t +1.20
+financial_restatement|2B|120                  n=  43 short SR -0.04 t -0.07
+guidance_issuance_or_update|2B|20             n=1523 short SR +0.10 t +0.20
+guidance_issuance_or_update|2B|60             n=1523 short SR -0.01 t -0.01
+guidance_issuance_or_update|2B|120            n=1523 short SR +0.10 t +0.19
+guidance_issuance_or_update|10B|20            n= 716 short SR -0.15 t -0.28
+guidance_issuance_or_update|10B|60            n= 716 short SR +0.36 t +0.70
+guidance_issuance_or_update|10B|120           n= 716 short SR +0.33 t +0.64
+internal_control_weakness|2B|20               n=  79 short SR +0.92 t +1.77
+internal_control_weakness|2B|60               n=  79 short SR +0.70 t +1.35
+internal_control_weakness|2B|120              n=  79 short SR +0.34 t +0.66
+material_charge_or_gain|2B|20                 n= 197 short SR -0.05 t -0.09
+material_charge_or_gain|2B|60                 n= 197 short SR +0.11 t +0.21
+material_charge_or_gain|2B|120                n= 197 short SR +0.45 t +0.86
+material_charge_or_gain|10B|20                n= 114 short SR -0.11 t -0.21
+material_charge_or_gain|10B|60                n= 114 short SR +0.40 t +0.77
+material_charge_or_gain|10B|120               n= 114 short SR +0.48 t +0.93
+material_litigation|2B|20                     n= 271 short SR +0.15 t +0.28
+material_litigation|2B|60                     n= 271 short SR +0.49 t +0.95
+material_litigation|2B|120                    n= 271 short SR +0.02 t +0.05
+material_litigation|10B|20                    n=  97 short SR +0.45 t +0.88
+material_litigation|10B|60                    n=  97 short SR +0.19 t +0.37
+material_litigation|10B|120                   n=  97 long  SR +0.33 t +0.64
+public_offering|2B|20                         n= 627 short SR +0.36 t +0.69
+public_offering|2B|60                         n= 627 short SR +0.35 t +0.68
+public_offering|2B|120                        n= 627 short SR +0.36 t +0.69
+public_offering|10B|20                        n= 183 short SR +0.47 t +0.90
+public_offering|10B|60                        n= 183 short SR +0.13 t +0.24
+public_offering|10B|120                       n= 183 short SR +0.13 t +0.24
+regulatory_decision|2B|20                     n= 267 long  SR +0.13 t +0.26
+regulatory_decision|2B|60                     n= 267 short SR -0.07 t -0.14
+regulatory_decision|2B|120                    n= 267 long  SR +0.03 t +0.07
+regulatory_decision|10B|20                    n=  79 long  SR +0.16 t +0.32
+regulatory_decision|10B|60                    n=  79 long  SR +0.19 t +0.36
+regulatory_decision|10B|120                   n=  79 long  SR +0.50 t +0.96
+regulatory_investigation|2B|20                n= 136 short SR +0.19 t +0.36
+regulatory_investigation|2B|60                n= 136 long  SR +0.02 t +0.03
+regulatory_investigation|2B|120               n= 136 long  SR +0.11 t +0.22
+regulatory_investigation|10B|20               n=  71 short SR +0.16 t +0.30
+regulatory_investigation|10B|60               n=  71 long  SR +0.23 t +0.44
+regulatory_investigation|10B|120              n=  71 long  SR +0.45 t +0.88
+restructuring_plan|2B|20                      n= 244 short SR +0.35 t +0.67
+restructuring_plan|2B|60                      n= 244 short SR -0.01 t -0.02
+restructuring_plan|2B|120                     n= 244 short SR +0.37 t +0.71
+restructuring_plan|10B|20                     n= 112 short SR +0.41 t +0.80
+restructuring_plan|10B|60                     n= 112 short SR +0.23 t +0.44
+restructuring_plan|10B|120                    n= 112 short SR +0.54 t +1.05
+settlement_agreement|2B|20                    n= 312 short SR +0.35 t +0.67
+settlement_agreement|2B|60                    n= 312 short SR +0.51 t +0.99
+settlement_agreement|2B|120                   n= 312 short SR +0.39 t +0.76
+settlement_agreement|10B|20                   n= 155 short SR +0.43 t +0.82
+settlement_agreement|10B|60                   n= 155 short SR +0.33 t +0.63
+settlement_agreement|10B|120                  n= 155 short SR -0.08 t -0.16
+share_repurchase_program|2B|20                n=1259 short SR -0.10 t -0.20
+share_repurchase_program|2B|60                n=1259 short SR -0.00 t -0.01
+share_repurchase_program|2B|120               n=1259 short SR +0.10 t +0.19
+share_repurchase_program|10B|20               n= 541 short SR -0.32 t -0.62
+share_repurchase_program|10B|60               n= 541 long  SR -0.08 t -0.16
+share_repurchase_program|10B|120              n= 541 short SR -0.03 t -0.06
+significant_contract_award|2B|20              n=  73 short SR +0.18 t +0.35
+significant_contract_award|2B|60              n=  73 short SR +0.19 t +0.36
+significant_contract_award|2B|120             n=  73 short SR +0.30 t +0.59
+strategic_initiative|2B|20                    n= 384 short SR +0.17 t +0.34
+strategic_initiative|2B|60                    n= 384 short SR +0.66 t +1.27
+strategic_initiative|2B|120                   n= 384 short SR +0.46 t +0.88
+strategic_initiative|10B|20                   n= 203 short SR -0.07 t -0.13
+strategic_initiative|10B|60                   n= 203 short SR +0.51 t +0.99
+strategic_initiative|10B|120                  n= 203 short SR +0.60 t +1.15
+workforce_reduction|2B|20                     n= 213 short SR +0.34 t +0.66
+workforce_reduction|2B|60                     n= 213 short SR -0.02 t -0.05
+workforce_reduction|2B|120                    n= 213 short SR +0.32 t +0.61
+workforce_reduction|10B|20                    n=  95 short SR +0.44 t +0.84
+workforce_reduction|10B|60                    n=  95 short SR +0.23 t +0.44
+workforce_reduction|10B|120                   n=  95 short SR +0.52 t +1.00
+
+Valid cells: 165 (of 204). Survive BHY 5%: 0. Survive Holm 5%: 0.
+                               cell  n_is direction  sharpe     t     p  bhy_q  holm_p  dsr_prob  sr_h1  sr_h2  ann_ret  avg_gross
+0       acquisition_agreement|2B|60   732     short   0.983 1.897 0.058  1.000   1.000     0.670  1.174  0.695    0.083      0.857
+1   internal_control_weakness|2B|20    79     short   0.917 1.771 0.077  1.000   1.000     0.623  0.563  1.239    0.015      0.033
+2      acquisition_agreement|2B|120   732     short   0.876 1.691 0.091  1.000   1.000     0.592  0.689  0.932    0.083      0.929
+3                 CEO_AND_CFO|2B|60    75     short   0.876 1.691 0.091  1.000   1.000     0.592  0.637  1.116    0.016      0.094
+4       financial_restatement|2B|20    43     short   0.868 1.676 0.094  1.000   1.000     0.591  0.843  0.977    0.010      0.018
+5     acquisition_agreement|10B|120   285     short   0.830 1.602 0.109  1.000   1.000     0.559  0.885  0.733    0.048      0.721
+6      divestiture_agreement|10B|20   153     short   0.828 1.598 0.110  1.000   1.000     0.558  1.663  0.068    0.011      0.068
+7           auditor_dismissal|2B|20    86     short   0.802 1.548 0.122  1.000   1.000     0.536  0.925  0.664    0.013      0.037
+8               ceo_departure|2B|60   707     short   0.756 1.460 0.144  1.000   1.000     0.502  0.481  0.864    0.066      0.829
+9      divestiture_agreement|10B|60   153     short   0.756 1.459 0.145  1.000   1.000     0.502  0.972  0.541    0.017      0.201
+10          auditor_dismissal|2B|60    86     short   0.730 1.409 0.159  1.000   1.000     0.482  0.938  0.490    0.025      0.110
+11      divestiture_agreement|2B|20   311     short   0.715 1.381 0.167  1.000   1.000     0.470  0.662  0.741    0.017      0.140
+12             ceo_departure|2B|120   707     short   0.715 1.379 0.168  1.000   1.000     0.470  0.761  0.561    0.070      0.929
+13              ceo_departure|2B|20   707     short   0.709 1.369 0.171  1.000   1.000     0.466  0.779  0.532    0.029      0.315
+14  internal_control_weakness|2B|60    79     short   0.699 1.349 0.177  1.000   1.000     0.459  0.653  0.758    0.023      0.100
+
+WINNER by the pre-registered rule: acquisition_agreement|2B|60 (short), IS Sharpe +0.98, t +1.90, BHY q 1.000, DSR 0.67  [NOTHING survives correction]
