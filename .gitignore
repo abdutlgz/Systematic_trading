@@ -11,3 +11,4 @@ strategy/data/*.csv
 strategy/data/*.zip
 screen/data/
 gqh-massive-8k-starter/.sec_sic_cache.json
+lab/data/
