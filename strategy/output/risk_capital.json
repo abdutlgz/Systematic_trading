@@ -1,0 +1,355 @@
+{
+ "financing_components": {
+  "A_institutional_IS": {
+   "interest": 0.005754844082729272,
+   "borrow": -0.0019603588572470335
+  },
+  "A_institutional_OOS": {
+   "interest": -0.022503915711406086,
+   "borrow": -0.0007773628403700291
+  },
+  "B_retail_IS": {
+   "interest": -0.01103385324767664,
+   "borrow": -0.0032672647620783893
+  },
+  "B_retail_OOS": {
+   "interest": -0.05361965021299607,
+   "borrow": -0.0012956047339500484
+  }
+ },
+ "financed": {
+  "spec_1x|IS": {
+   "ann_return": 0.0246,
+   "ann_vol": 0.1248,
+   "sharpe": 0.2568,
+   "max_drawdown": -0.2832,
+   "turnover_per_year": 7.3484,
+   "worst_month": -0.1041
+  },
+  "spec_1x|OOS": {
+   "ann_return": 0.1121,
+   "ann_vol": 0.1263,
+   "sharpe": 0.9045,
+   "max_drawdown": -0.1258,
+   "turnover_per_year": 7.2987,
+   "worst_month": -0.0725
+  },
+  "A_institutional_1x|IS": {
+   "ann_return": 0.0285,
+   "ann_vol": 0.1248,
+   "sharpe": 0.2872,
+   "max_drawdown": -0.2749,
+   "turnover_per_year": 7.3484,
+   "worst_month": -0.1008
+  },
+  "A_institutional_1x|OOS": {
+   "ann_return": 0.0865,
+   "ann_vol": 0.1263,
+   "sharpe": 0.72,
+   "max_drawdown": -0.1326,
+   "turnover_per_year": 7.2987,
+   "worst_month": -0.0733
+  },
+  "B_retail_1x|IS": {
+   "ann_return": 0.01,
+   "ann_vol": 0.1248,
+   "sharpe": 0.1422,
+   "max_drawdown": -0.3329,
+   "turnover_per_year": 7.3484,
+   "worst_month": -0.1046
+  },
+  "B_retail_1x|OOS": {
+   "ann_return": 0.0527,
+   "ann_vol": 0.1263,
+   "sharpe": 0.4697,
+   "max_drawdown": -0.1416,
+   "turnover_per_year": 7.2987,
+   "worst_month": -0.0757
+  },
+  "spec_2x|IS": {
+   "ann_return": 0.017,
+   "ann_vol": 0.1249,
+   "sharpe": 0.1978,
+   "max_drawdown": -0.3031,
+   "turnover_per_year": 7.3484,
+   "worst_month": -0.1049
+  },
+  "spec_2x|OOS": {
+   "ann_return": 0.104,
+   "ann_vol": 0.1264,
+   "sharpe": 0.8462,
+   "max_drawdown": -0.1265,
+   "turnover_per_year": 7.2987,
+   "worst_month": -0.0726
+  },
+  "A_institutional_2x|IS": {
+   "ann_return": 0.0209,
+   "ann_vol": 0.1249,
+   "sharpe": 0.2283,
+   "max_drawdown": -0.2994,
+   "turnover_per_year": 7.3484,
+   "worst_month": -0.1016
+  },
+  "A_institutional_2x|OOS": {
+   "ann_return": 0.0786,
+   "ann_vol": 0.1264,
+   "sharpe": 0.6619,
+   "max_drawdown": -0.1354,
+   "turnover_per_year": 7.2987,
+   "worst_month": -0.0734
+  },
+  "B_retail_2x|IS": {
+   "ann_return": 0.0026,
+   "ann_vol": 0.1249,
+   "sharpe": 0.0833,
+   "max_drawdown": -0.3639,
+   "turnover_per_year": 7.3484,
+   "worst_month": -0.1054
+  },
+  "B_retail_2x|OOS": {
+   "ann_return": 0.045,
+   "ann_vol": 0.1264,
+   "sharpe": 0.4117,
+   "max_drawdown": -0.1443,
+   "turnover_per_year": 7.2987,
+   "worst_month": -0.0758
+  }
+ },
+ "aqr": {
+  "IS": {
+   "months": 201,
+   "end": "2024-09",
+   "corr": {
+    "TSMOM": 0.72,
+    "TSMOM^CM": 0.482,
+    "TSMOM^EQ": 0.474,
+    "TSMOM^FI": 0.428,
+    "TSMOM^FX": 0.469
+   },
+   "beta_to_TSMOM": 0.58637588168833,
+   "alpha_monthly": -0.000524904491994174,
+   "sharpe_ours": 0.21186898874688512,
+   "sharpe_aqr": 0.3724049912902212
+  },
+  "OOS": {
+   "months": 20,
+   "end": "2026-05",
+   "corr": {
+    "TSMOM": 0.561,
+    "TSMOM^CM": -0.216,
+    "TSMOM^EQ": 0.792,
+    "TSMOM^FI": 0.125,
+    "TSMOM^FX": 0.546
+   },
+   "beta_to_TSMOM": 0.8253701261911928,
+   "alpha_monthly": 3.923823687160642e-05,
+   "sharpe_ours": 0.5506000707830974,
+   "sharpe_aqr": 0.9747697041090719
+  }
+ },
+ "stress": {
+  "GFC (Sep 08-Mar 09)": {
+   "strategy": 0.1682,
+   "strategy_maxDD": -0.0845,
+   "SPY": -0.4638,
+   "60/40": -0.272
+  },
+  "Euro crisis / US downgrade (Jul-Oct 11)": {
+   "strategy": -0.0662,
+   "strategy_maxDD": -0.1294,
+   "SPY": -0.1784,
+   "60/40": -0.0726
+  },
+  "Taper tantrum (May-Jun 13)": {
+   "strategy": -0.0702,
+   "strategy_maxDD": -0.0585,
+   "SPY": -0.0555,
+   "60/40": -0.0524
+  },
+  "Oil/China (Aug 15-Feb 16)": {
+   "strategy": 0.016,
+   "strategy_maxDD": -0.0668,
+   "SPY": -0.1108,
+   "60/40": -0.0441
+  },
+  "Volmageddon (Jan-Feb 18)": {
+   "strategy": -0.1088,
+   "strategy_maxDD": -0.1156,
+   "SPY": -0.0906,
+   "60/40": -0.0603
+  },
+  "Q4 2018 selloff": {
+   "strategy": -0.1196,
+   "strategy_maxDD": -0.1262,
+   "SPY": -0.1892,
+   "60/40": -0.1058
+  },
+  "COVID crash (Feb-Mar 20)": {
+   "strategy": -0.0318,
+   "strategy_maxDD": -0.0713,
+   "SPY": -0.334,
+   "60/40": -0.1891
+  },
+  "2022 rates bear": {
+   "strategy": 0.2345,
+   "strategy_maxDD": -0.0967,
+   "SPY": -0.2406,
+   "60/40": -0.2053
+  },
+  "Aug 2024 vol spike": {
+   "strategy": -0.0694,
+   "strategy_maxDD": -0.0776,
+   "SPY": -0.0786,
+   "60/40": -0.0339
+  },
+  "Apr 2025 tariff shock (OOS)": {
+   "strategy": -0.0962,
+   "strategy_maxDD": -0.0962,
+   "SPY": -0.115,
+   "60/40": -0.0716
+  }
+ },
+ "tails": {
+  "IS": {
+   "VaR95_daily": 0.01260289178024256,
+   "ES95_daily": 0.018779913158277865,
+   "VaR99_daily": 0.022230518590034103,
+   "ES99_daily": 0.030473900104900722,
+   "VaR95_monthly": 0.04948385871455363,
+   "ES95_monthly": 0.06946882285962759
+  },
+  "OOS": {
+   "VaR95_daily": 0.012062416677410223,
+   "ES95_daily": 0.019543596911068016,
+   "VaR99_daily": 0.024237160097946846,
+   "ES99_daily": 0.029317888603927787,
+   "VaR95_monthly": 0.05068601481734478,
+   "ES95_monthly": 0.06389369443828119
+  }
+ },
+ "bootstrap": {
+  "12m": {
+   "ann_return_p5": -0.13892281021902908,
+   "ann_return_p50": 0.02597641002946205,
+   "ann_return_p95": 0.20235668241202084,
+   "prob_loss": 0.3989,
+   "maxDD_p50": -0.06934381680980661,
+   "maxDD_p5": -0.18534490041425655,
+   "maxDD_p1": -0.23253577125639338
+  },
+  "36m": {
+   "ann_return_p5": -0.0716085612071226,
+   "ann_return_p50": 0.025503947182247355,
+   "ann_return_p95": 0.12600497441965464,
+   "prob_loss": 0.3274,
+   "maxDD_p50": -0.13372626380077757,
+   "maxDD_p5": -0.2810688782799372,
+   "maxDD_p1": -0.3586349862650001
+  }
+ },
+ "crisis": {
+  "corr_all_days": 0.057123772029520195,
+  "corr_spy_down_2pct_days": -0.13682067301094752,
+  "mean_ret_on_spy_down_2pct_days": 5.544981000744603e-05,
+  "n_days": 200,
+  "mean_monthly_ret_spy_down_months": -0.0003397891731137455,
+  "mean_monthly_ret_spy_up_months": 0.005198309947392849,
+  "mean_spy_in_down_months": -0.03939863875012951
+ },
+ "leverage": {
+  "IS": {
+   "gross_mean": 1.8160569771016994,
+   "gross_max": 2.232363187241454,
+   "net_mean": 0.5090707935374353,
+   "long_mean": 1.1625638853195672,
+   "short_mean": 0.653493091782132,
+   "share_days_gross_gt_2": 0.3542111506524318,
+   "regT_initial_equity_needed_max": 1.116181593620727,
+   "maintenance_30pct_max": 0.6697089561724362
+  },
+  "OOS": {
+   "gross_mean": 1.9880946224498293,
+   "gross_max": 2.1189659234351934,
+   "net_mean": 1.4696054792041606,
+   "long_mean": 1.7288500508269948,
+   "short_mean": 0.2592445716228344,
+   "share_days_gross_gt_2": 0.35129740518962077,
+   "regT_initial_equity_needed_max": 1.0594829617175967,
+   "maintenance_30pct_max": 0.635689777030558
+  }
+ },
+ "rounding": {
+  "$5,000": {
+   "mean_abs_weight_error": 0.05314346941059578,
+   "p95": 0.09943479767500239
+  },
+  "$10,000": {
+   "mean_abs_weight_error": 0.02619823977995489,
+   "p95": 0.04840854315616319
+  },
+  "$25,000": {
+   "mean_abs_weight_error": 0.01068025728829436,
+   "p95": 0.020007246414104916
+  },
+  "$100,000": {
+   "mean_abs_weight_error": 0.0027122454464010757,
+   "p95": 0.004842404528431732
+  },
+  "$1,000,000": {
+   "mean_abs_weight_error": 0.00025774883055944617,
+   "p95": 0.00042870394421940514
+  }
+ },
+ "adv_capacity": {
+  "UUP": {
+   "ADV_$m": 38.691,
+   "p95_trade_weight": 0.666,
+   "AUM_at_5pct_ADV_$m": 2.906
+  },
+  "DBC": {
+   "ADV_$m": 25.522,
+   "p95_trade_weight": 0.315,
+   "AUM_at_5pct_ADV_$m": 4.047
+  },
+  "VNQ": {
+   "ADV_$m": 345.997,
+   "p95_trade_weight": 0.249,
+   "AUM_at_5pct_ADV_$m": 69.453
+  },
+  "IEF": {
+   "ADV_$m": 812.362,
+   "p95_trade_weight": 0.573,
+   "AUM_at_5pct_ADV_$m": 70.888
+  },
+  "EFA": {
+   "ADV_$m": 1303.354,
+   "p95_trade_weight": 0.258,
+   "AUM_at_5pct_ADV_$m": 252.618
+  },
+  "EEM": {
+   "ADV_$m": 1405.127,
+   "p95_trade_weight": 0.252,
+   "AUM_at_5pct_ADV_$m": 278.35
+  },
+  "GLD": {
+   "ADV_$m": 3186.685,
+   "p95_trade_weight": 0.354,
+   "AUM_at_5pct_ADV_$m": 450.069
+  },
+  "TLT": {
+   "ADV_$m": 3419.898,
+   "p95_trade_weight": 0.361,
+   "AUM_at_5pct_ADV_$m": 474.085
+  },
+  "IWM": {
+   "ADV_$m": 7564.903,
+   "p95_trade_weight": 0.196,
+   "AUM_at_5pct_ADV_$m": 1925.61
+  },
+  "SPY": {
+   "ADV_$m": 39298.901,
+   "p95_trade_weight": 0.099,
+   "AUM_at_5pct_ADV_$m": 19754.678
+  }
+ }
+}
