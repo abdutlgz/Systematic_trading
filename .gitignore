@@ -18,3 +18,5 @@ experiments/__pycache__/
 **/.venv/
 **/__pycache__/
 gqh-webull-backtrader-starter/examples/backtest/.env
+strategy/data/
+*.zip
