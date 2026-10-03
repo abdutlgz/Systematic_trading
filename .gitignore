@@ -12,3 +12,9 @@ strategy/data/*.zip
 screen/data/
 gqh-massive-8k-starter/.sec_sic_cache.json
 lab/data/
+experiments/results/
+experiments/__pycache__/
+.ipynb_checkpoints/
+**/.venv/
+**/__pycache__/
+gqh-webull-backtrader-starter/examples/backtest/.env
