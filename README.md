@@ -1,20 +1,30 @@
 # Gator Quant Hacks 2026: Systematic Trading Track
 
-**Submission:** cross-asset time-series momentum with a pre-registered VIX overlay ([quant note](notes/quant_note.pdf)),
-plus the Massive "Trade the 8-K" bonus ([bonus note](notes/massive_note.pdf)).
+**Lead strategy: short acquisition-agreement 8-K filers, SPY-hedged** ([quant note](notes/quant_note.pdf)). Found by a pre-registered
+165-cell 8-K event grid (selection on in-sample only), then confirmed once out of sample. Strategy 2: cross-asset momentum.
+Bonus: Massive "Trade the 8-K" ([bonus note](notes/massive_note.pdf)).
 
-| | In-sample 2008–Sep 2024 | Out-of-sample Oct 2024–Sep 2026 (run once) |
+| Short acquisition filers ≥ $2B, 60 sessions, net of costs + borrow | In-sample Jan 2022–Sep 2025 | Out-of-sample Oct 2025–Sep 2026 (run once) |
 |---|---:|---:|
-| Net Sharpe (10 bps/side + financing) | 0.29 | 0.72 |
-| Annual return | 2.8% | 8.7% |
-| Max drawdown | −27.5% | −13.3% |
-| Turnover | 7.3×/yr | 7.3×/yr |
+| Sharpe | 0.98 | 0.82 |
+| Annual return | 8.3% | 9.9% |
+| Max drawdown | −7.6% | −12.2% |
+| Beta to SPY | −0.01 | −0.14 |
 
-Correlation with AQR's published TSMOM factor: 0.72. Unfinanced original spec: 0.26 / 0.90 (see `strategy/FINANCING.md`).
-We do not claim a proven edge (in-sample t ≈ 1.05; out-of-sample alpha ≈ 0). The project's value is the testing:
-27 pre-registered trials, a nine-pitfall statistical audit, and every failure reported.
+Not proven alpha: it does not survive BHY/Holm across the 165 cells, and part of the return is the size factor (alpha t 0.93).
+Random-date placebo: 0 of 100 beat it. 32 hypotheses + 165 grid cells are reported in total.
 
-## Reproduce (main track)
+## Reproduce (lead strategy; needs a Massive API key, sponsor data)
+```sh
+cd gqh-massive-8k-starter && ./setup.sh             # put MASSIVE_API_KEY in .env (git-ignored)
+.venv/bin/python ../event8k/build_grid.py           # events + point-in-time caps + prices (~45 min first time, cached after)
+.venv/bin/python ../event8k/acq_volume.py           # dollar volume for capacity
+cd .. && python event8k/grid.py --oos               # grid, BHY/DSR selection, winner OOS
+python event8k/acq_analysis.py                      # Table 1, robustness, capacity, Figure 1
+```
+Derived Massive data is not committed (licensed); the scripts rebuild it.
+
+## Reproduce (Strategy 2 momentum, screen, audit, labs: free data)
 ```sh
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
@@ -36,7 +46,8 @@ cd .. && gqh-massive-8k-starter/.venv/bin/python strategy_8k/grid.py && gqh-mass
 ## Map of the repo (pre-registration first, then results; see `git log`)
 | Folder | What | Key files |
 |---|---|---|
-| `strategy/` | Momentum strategy (submission) | `HYPOTHESIS.md` (committed before any data), `backtest.py`, `analysis.py`, `TRIALS.md` |
+| `event8k/` | **Lead strategy**: 8-K event grid + acquirer short | `GRID_PLAN.md`, `GRID_RESULTS.md`, `grid.py`, `acq_analysis.py`, `HYPOTHESIS.md` (CFO-exit short) |
+| `strategy/` | Strategy 2: momentum | `HYPOTHESIS.md` (committed before any data), `backtest.py`, `analysis.py`, `TRIALS.md` |
 | `screen/` | 10-hypothesis ETF screen, portfolio, audit | `SCREEN_PLAN.md`, `DEVIATION.md`, `RESULTS_IS.md`, `RESULTS_OOS.md`, `AUDIT.md` |
 | `lab/` | Thematic ideas: weather→softs, GLP-1, open-source AI | `LAB_PLAN.md`, `RESULTS.md` |
 | `strategy_8k/` | Massive 8-K options bonus | `HYPOTHESIS*.md`, `run_window.py`, `grid.py`, `peers.py`, `TRIALS.md` |

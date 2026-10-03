@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Quant Note: Cross-Asset Trend</title>
+<style>
+@page { size: Letter; margin: 0.8in 0.85in; }
+body { font-family: "Charter", "Georgia", serif; font-size: 11pt; line-height: 1.32; color: #111; }
+h1 { font-size: 15.5pt; margin: 0 0 2pt; line-height: 1.2; }
+.sub { font-size: 11pt; color: #444; margin-bottom: 6pt; }
+h2 { font-size: 12.5pt; margin: 9pt 0 3pt; border-bottom: 1px solid #bbb; padding-bottom: 1pt; }
+p { margin: 0 0 5pt; text-align: justify; }
+ul { margin: 0 0 5pt 0; padding-left: 16pt; } li { margin-bottom: 1.5pt; }
+table { border-collapse: collapse; width: 100%; margin: 3pt 0 6pt; font-size: 11pt; }
+th, td { border-bottom: 1px solid #ddd; padding: 1.5pt 4pt; text-align: right; }
+th { border-bottom: 1.5px solid #555; font-weight: 600; } td:first-child, th:first-child { text-align: left; }
+.cap { font-size: 11pt; color: #333; margin: 1pt 0 6pt; } .cap b { color: #111; }
+figure { margin: 4pt 0; } img { width: 100%; }
+.row { display: flex; gap: 12pt; align-items: center; } .row img { width: 46%; }
+.box { background: #f4f6f9; border-left: 3px solid #1f4e8c; padding: 4pt 8pt; margin: 4pt 0 6pt; }
+.pb { page-break-before: always; } code { font-size: 10.5pt; }
+.ref p { text-align: left; margin-bottom: 2pt; }
+</style></head><body>
+
+<h1>Cross-Asset Time-Series Momentum with a Pre-Registered VIX Overlay, and 31 Ideas That Did Not Survive</h1>
+<div class="sub">Gator Quant Hacks 2026 · Systematic Trading Track · Team: [team member names] · Code: [public GitHub URL] · Reproduce: <code>python strategy/run_all.py --oos</code></div>
+
+<h2>1. Summary</h2>
+<p>We trade ten liquid ETFs (equities, Treasuries, gold, commodities, the US dollar and REITs) in the direction of each asset's own 12-month return, sized to equal volatility, rebalanced monthly, and executed one day after the signal at 10 bps per side. An extension cuts exposure in half when the VIX closes above 30. Every rule was committed to git (commit <code>6b6764d</code>) before any price was downloaded. Net of trading costs <i>and</i> financing (interest on cash and margin, short-borrow fees), the in-sample (2008–Sep 2024) Sharpe is <b>0.29</b> (max drawdown −27.5%). The single out-of-sample run (Oct 2024–Sep 2026) gave <b>0.72</b> (+8.7%/yr, max drawdown −13.3%), and 0.66 at doubled costs. Our returns correlate 0.72 with AQR's published TSMOM factor.</p>
+<div class="box">We do not claim a proven edge. The in-sample t-statistic is 1.05, the out-of-sample Sharpe's 95% interval is [−0.48, +2.35], and out-of-sample returns are explained by a 0.50 equity beta (alpha t = −0.07). The strategy is a cheap, transparent, diversifying trend premium with expected Sharpe near its long-run 0.3, not 0.7. Our main contribution is the testing: 32 pre-registered trials across five research lines, a nine-pitfall statistical audit, and full disclosure of what failed (Section 5.3).</div>
+
+<h2>2. Economic Hypothesis (written before results)</h2>
+<p><b>Edge and counterparty.</b> Prices under-react to new information and then trend as it diffuses, and late investors chase the move (Moskowitz, Ooi &amp; Pedersen 2012; Hurst, Ooi &amp; Pedersen 2017). The other side is hedgers and slow-moving capital who trade regardless of trend: central banks and corporates in FX, producers hedging commodities, and investors rebalancing to fixed weights. <b>Why it persists:</b> it is part behavioral bias and part risk premium. Trend followers lose in choppy, reversing markets, which limits arbitrage capital.</p>
+<p><b>Our extension.</b> Momentum losses cluster after volatility spikes, when trends reverse sharply (Daniel &amp; Moskowitz 2016; Barroso &amp; Santa-Clara 2015). We predicted that halving exposure when the VIX is above 30 lowers drawdowns without destroying the premium. <b>Testable predictions:</b> (1) positive net Sharpe in- and out-of-sample; (2) a plateau: 3/6/9-month lookbacks also positive; (3) the overlay lowers max drawdown. <b>It fails if</b> out-of-sample Sharpe ≤ 0 or only the 12-month lookback works.</p>
+
+<h2>3. Data and Universe</h2>
+<p><b>Instruments:</b> SPY, EFA, EEM, IWM (equity); TLT, IEF (Treasuries); GLD, DBC (commodities); UUP (USD); VNQ (REITs). All are broad index ETFs listed by March 2007; the signal waits for 252 days of history. <b>Prices:</b> Yahoo Finance daily closes, split- and dividend-adjusted (total return), 2007-01-03 to 2026-09-30. <b>VIX:</b> CBOE close via Yahoo <code>^VIX</code> (identical to FRED VIXCLS, whose endpoint timed out); a market close, never revised. <b>Attribution only:</b> Kenneth French daily 5 factors + momentum. <b>Split:</b> 18.75 years of data; 20% would be 3.75 years, so the 2-year cap binds. IS 2008-01-02 to 2024-09-30 (16.75 yrs); OOS 2024-10-01 to 2026-09-30, run once. <b>Data issues:</b> missing days are dropped, never forward-filled from later data; the VIX uses its last known close. <b>Survivorship:</b> no single stocks, but the ETF menu was chosen in 2026 with knowledge that these funds became large. We disclose this as residual bias.</p>
+
+<h2>4. Methodology</h2>
+<ul>
+<li><b>Signal (month-end close t):</b> sign of the trailing 252-day total return of each ETF.</li>
+<li><b>Sizing:</b> each asset targets 10%/√N annualized volatility using a 60-day EWMA estimate known at t; per-asset weight capped at ±0.5; gross leverage capped at 2.0×; cash earns 0% (conservative).</li>
+<li><b>Execution:</b> weights decided at close t are traded at close t+1. Holdings drift with prices between monthly rebalances, and turnover is measured against drifted holdings.</li>
+<li><b>Costs:</b> 5 bps commission/spread + 5 bps slippage = <b>10 bps per side</b>. These ETFs' quoted spreads are about 1–3 bps and Webull charges no commission, so 10 bps is conservative. All results are also shown at 20 bps.</li>
+<li><b>Overlay:</b> all weights × 0.5 if the VIX close at t &gt; 30 (threshold fixed a priori, never tuned).</li>
+<li><b>Financing (added after the OOS run as a cost correction; no signal or weight changes; assumptions committed before computing):</b> cash = 1 − Σw earns the T-bill rate; a margin debit pays T-bill + 0.5%; shorts pay a 0.3%/yr borrow fee. Retail stress case: 0% on cash, T-bill + 3% on debit, 0.5% borrow. The original spec (0% cash, free leverage) is shown for transparency: it overstated OOS returns by about 2.5%/yr because the strategy was net long 1.47× in 2024–26.</li>
+<li><b>Pre-declared trials:</b> base 12m, base + overlay (primary), lookbacks 3/6/9m (in-sample only), 2× costs. Engine: our own event-driven pandas simulator, cross-checked against a vectorized version (identical numbers).</li>
+<li><b>Evidence beyond Sharpe:</b> Deflated Sharpe Ratio (Bailey &amp; López de Prado 2014), a 200-run random-sign placebo, execution-lag sensitivity, probability of backtest overfitting via CSCV (Bailey et al. 2017), multiple-testing corrections (Harvey, Liu &amp; Zhu 2016), and factor regressions with Newey-West errors.</li>
+</ul>
+
+<h2>5. Results</h2>
+<table>
+<tr><th>Net of costs</th><th>Ann. return</th><th>Volatility</th><th>Sharpe</th><th>Max DD</th><th>Turnover/yr</th><th>Worst month</th></tr>
+<tr><td><b>Primary, in-sample</b> (2008–24)</td><td>2.8%</td><td>12.5%</td><td><b>0.29</b></td><td>−27.5%</td><td>7.3×</td><td>−10.1%</td></tr>
+<tr><td><b>Primary, out-of-sample</b> (Oct 24–Sep 26)</td><td>8.7%</td><td>12.6%</td><td><b>0.72</b></td><td>−13.3%</td><td>7.3×</td><td>−7.3%</td></tr>
+<tr><td>Primary at 2× trading costs, IS / OOS</td><td>2.1% / 7.9%</td><td>12.5% / 12.6%</td><td>0.23 / 0.66</td><td>−29.9% / −13.5%</td><td>7.3×</td><td>−10.2% / −7.3%</td></tr>
+<tr><td>Retail financing, IS / OOS</td><td>1.0% / 5.3%</td><td>12.5% / 12.6%</td><td>0.14 / 0.47</td><td>−33.3% / −14.2%</td><td>7.3×</td><td>−10.5% / −7.6%</td></tr>
+<tr><td>Original spec (no financing), IS / OOS</td><td>2.5% / 11.2%</td><td>12.5% / 12.6%</td><td>0.26 / 0.90</td><td>−28.3% / −12.6%</td><td>7.3×</td><td>−10.4% / −7.2%</td></tr>
+</table>
+<p class="cap"><b>Table 1.</b> In-sample and out-of-sample performance, net of 10 bps/side and institutional financing unless stated. Base strategy without the overlay: IS 0.25, OOS 0.90 (original spec). Lookback plateau (in-sample Sharpe): 3m 0.18, 6m 0.30, 9m 0.26, 12m 0.25. All are positive, so the result is not a single lucky parameter.</p>
+<figure><img src="fig1_equity.png"><div class="cap"><b>Figure 1.</b> Growth of $1 net of costs (log scale) vs SPY total return, with drawdown. Shaded: the out-of-sample period, evaluated once.</div></figure>
+
+<h3 style="font-size:11.5pt;margin:4pt 0 2pt">5.1 How much of this is real?</h3>
+<ul>
+<li><b>Implementation check:</b> monthly correlation 0.72 with AQR's published TSMOM factor (201 months; 0.43–0.48 with each asset-class sleeve). Our lower Sharpe (0.21 vs 0.37 in excess-return terms) matches AQR's larger breadth: about 58 futures markets vs our 10 ETFs (Grinold &amp; Kahn's fundamental law).</li>
+<li><b>Luck:</b> Deflated Sharpe probability 0.80 (N = 5 momentum trials) and 0.76 (N = 20). Only 0.5% of 200 random-sign placebos with identical sizing and costs beat it (placebo mean −0.27, 95th percentile 0.10).</li>
+<li><b>Lookahead:</b> same-bar execution (a deliberate bug) adds only +0.05 Sharpe (0.31). Lags of 2 and 5 days give 0.21 and 0.25. The decay is smooth, with no leak.</li>
+<li><b>Costs:</b> the break-even cost is 54 bps per side, 5.4× our assumption.</li>
+<li><b>Factor attribution:</b> in-sample alpha is +1.6%/yr (t = 0.64), loading on the equity momentum factor (β = 0.35, t = 16). Out-of-sample alpha is ≈ 0 (t = −0.07) with market β = 0.50 (t = 12.5), R² = 0.60. The OOS gain is trend-following into a rising equity market, not new alpha.</li>
+<li><b>Sample length:</b> two years of out-of-sample data cannot separate 0.3 from 0.7. The OOS Sharpe's 95% interval is roughly ±1.4. We set expectations at the long-run in-sample level.</li>
+</ul>
+<h3 style="font-size:11.5pt;margin:4pt 0 2pt">5.2 Did the extension work?</h3>
+<p>Partly. In-sample, the overlay cut max drawdown from −29.4% to −28.3% at the same Sharpe. Out-of-sample it <b>never triggered</b>: the VIX was above 30 on 14 days and peaked at 52.3 on 8 April 2025, but no month-end close exceeded 25.2. A month-end check misses short volatility spikes. This is a design lesson; we did not change the rule after seeing it (Section 8).</p>
+
+<h3 style="font-size:11.5pt;margin:4pt 0 2pt">5.3 What did not work: 32 trials in total</h3>
+<table>
+<tr><th>Research line (all pre-registered in git)</th><th>Trials</th><th>Best in-sample</th><th>Out-of-sample</th></tr>
+<tr><td>Early pilots: SEC 8-K categories → volume; → price direction; Gemini earnings text → volume; NYC weather vs Kalshi</td><td>4</td><td>+1.0% forecast gain (target 5%)</td><td>all failed</td></tr>
+<tr><td>Momentum variants (this note)</td><td>5</td><td>Sharpe 0.30 (6m)</td><td>primary 0.72 financed (0.90 unfinanced)</td></tr>
+<tr><td>10-hypothesis ETF screen: sector momentum, betting-against-beta, overnight drift, turn-of-month, month-end Treasury, auction cycle, timed short vol, FX carry, weekly reversal, pre-FOMC drift</td><td>10</td><td>month-end Treasury 0.68 (t 3.2); timed short vol 0.63</td><td>−0.29 and +0.11 (failed)</td></tr>
+<tr><td>Thematic lab: rainfall in growing regions → cocoa/coffee/sugar/OJ futures; GLP-1 headlines → exposed stocks; open-source AI releases → software ETF</td><td>3</td><td>weather Sharpe −0.37; event t-stats |t| &lt; 0.9</td><td>not run (failed in-sample)</td></tr>
+<tr><td>Massive 8-K options (bonus note; 3-stage star design)</td><td>9</td><td>stars at chance rate</td><td>none replicated</td></tr>
+<tr><td>Portfolio momentum + 2 screen sleeves (disclosed deviation)</td><td>1</td><td>0.85</td><td>0.46 (DD −6.4%)</td></tr>
+</table>
+<p>No screened idea met our pre-registered promotion rule. The Deflated Sharpe probability flagged the two best (0.84 and 0.71 &lt; 0.90), and both then failed out-of-sample: the statistics did their job. After a Holm correction only the month-end Treasury rule was significant in-sample; it lost money out-of-sample. CSCV gives a probability of backtest overfitting of 0.21 for our selection process. Pre-FOMC drift (Lucca &amp; Moench 2015) reproduced the literature's post-2015 decay (half-sample Sharpes 0.79 → 0.06), a check that the pipeline finds known effects. Overnight drift, weekly reversal and sector momentum break even below realistic costs.</p>
+
+<h2>6. Risk Management</h2>
+<ul>
+<li><b>Limits (implemented):</b> per-asset volatility targeting; |weight| ≤ 0.5 per ETF, so a 10% gap in one asset costs at most 5% of capital; gross ≤ 2.0×; net exposure is unconstrained by design (trend can be net short). With 10 assets across 6 asset classes, no sector limit is needed.</li>
+<li><b>De-risking (implemented):</b> the VIX &gt; 30 half-exposure rule; the monthly rebalance resets volatility weights as realized volatility rises.</li>
+<li><b>Leverage and margin:</b> gross averages 1.8× (IS) to 2.0× (OOS) and drifts above the 2.0× cap on 35% of days (max 2.23×), so a portfolio-margin or futures account is needed (Reg T initial margin would require 1.12× equity at the peak). <b>Factor exposure:</b> market β 0.08 in-sample, rising to 0.50 out-of-sample; equity momentum β 0.35. Investors should treat this as a trend/momentum sleeve, not market-neutral alpha.</li>
+<li><b>Stress tests</b> (strategy / SPY): GFC Sep 08–Mar 09 <b>+16.8% / −46.4%</b>; 2022 rates bear <b>+23.5% / −24.1%</b>; COVID crash −3.2% / −33.4%; but sharp V-shaped reversals hurt: Volmageddon Feb 2018 −10.9% / −9.1%, Q4 2018 −12.0% / −18.9%, Apr 2025 tariffs (OOS) −9.6% / −11.5%. It protects in slow, trending bear markets and loses when trends snap back within weeks. Correlation with SPY is 0.06 overall and −0.14 on days SPY falls more than 2%.</li>
+<li><b>Tails and expectations:</b> daily VaR95 1.3%, ES99 3.1%; monthly VaR95 5.0%, ES95 7.0%. A block bootstrap of in-sample months (10,000 paths) gives P(losing year) = 40%, and a median 3-year max drawdown of −13% (5th percentile −28%). Investors must expect frequent flat or losing years.</li>
+<li><b>Proposed live rules (not backtested, so they would be new trials):</b> check the VIX trigger daily, not monthly; halve gross exposure after a −20% drawdown from peak and restore it after a new 3-month high; stop trading if realized volatility exceeds 2× target for 10 days. These must be validated on new data before use.</li>
+</ul>
+
+<h2>7. Liquidity and Capacity</h2>
+<p>We size each trade against the prior 20-day average dollar volume (ADV) and charge square-root market impact (cost = σ<sub>daily</sub> × √(trade / ADV), coefficient 1) on top of the fixed 10 bps:</p>
+<table>
+<tr><th>Strategy AUM</th><th>$1M</th><th>$10M</th><th>$50M</th><th>$100M</th></tr>
+<tr><td>Median / 95th-pct trade as % of ADV</td><td>0.002% / 0.15%</td><td>0.02% / 1.5%</td><td>0.08% / 7.4%</td><td>0.16% / 14.8%</td></tr>
+<tr><td>Trades above 10% of ADV</td><td>0%</td><td>1.5%</td><td>4.0%</td><td>6.7%</td></tr>
+<tr><td>Extra impact drag (bps/yr)</td><td>20</td><td>62</td><td>140</td><td>198</td></tr>
+</table>
+<p>Gross return is about 3.2%/yr (2.5% after fixed costs), so <b>impact eats about half the edge near $40–50M</b>. Capacity is set by the two thin funds, UUP (USD, ADV ≈ $33M) and DBC (ADV ≈ $28M); SPY, TLT and EFA could absorb hundreds of millions. Replacing UUP/DBC with currency and commodity futures would raise capacity by an order of magnitude; that is our first next step. Turnover of 7.3×/yr is low, so the fixed-cost drag is about 0.7%/yr. <b>Deployment:</b> about 6 market-on-close orders per monthly rebalance. Whole-share rounding error is 2.6% of weights at $10k, 1.1% at $25k and 0.3% at $100k, so the minimum practical account is about $25k. Under a strict 5%-of-ADV rule for the 95th-percentile trade, UUP binds at about $3M and DBC at about $4M; above that we split those orders over 2–5 days, and the next limits are VNQ/IEF at about $70M.</p>
+
+<h2>8. Limitations and Next Steps</h2>
+<ul>
+<li><b>Short OOS, weak significance:</b> no result here is significant after accounting for 32 trials. At a true Sharpe of 0.3, reaching t = 2 takes about 45 years of data; we have 18.75.</li>
+<li><b>Hindsight in the menu:</b> the ten ETFs were picked in 2026. A broader futures universe (Databento, 1980s onward) would remove this and lengthen the sample.</li>
+<li><b>Overlay design flaw:</b> month-end checks miss short volatility spikes. A daily trigger is pre-registered as future work and will be tested only on data after 2026-10-03.</li>
+<li><b>Simplifications:</b> 0% yield on idle cash (understates returns when rates are positive); closing-price fills; Yahoo data quality not audited against a second vendor.</li>
+<li><b>Forward test, already started:</b> October 2026 positions and dated predictions are committed in <code>FORWARD_LEDGER.md</code> (SHA-256 <code>7ba0181b…94b2b</code>, commit <code>97b7a04</code>) before any outcome exists. Live results can be checked against the backtest without trusting us.</li>
+<li><b>Next:</b> futures universe for capacity; paper-trade before any capital.</li>
+</ul>
+
+<div class="ref">
+<h2>References</h2>
+<p>Bailey, D., Borwein, J., López de Prado, M. &amp; Zhu, Q. (2014). Pseudo-Mathematics and Financial Charlatanism. <i>Notices of the AMS</i>. · Bailey, D. et al. (2017). The Probability of Backtest Overfitting. <i>J. Computational Finance</i>.</p>
+<p>Bailey, D. &amp; López de Prado, M. (2014). The Deflated Sharpe Ratio. <i>J. Portfolio Management</i>. · Barroso, P. &amp; Santa-Clara, P. (2015). Momentum Has Its Moments. <i>JFE</i>.</p>
+<p>Daniel, K. &amp; Moskowitz, T. (2016). Momentum Crashes. <i>JFE</i>. · Harvey, C., Liu, Y. &amp; Zhu, H. (2016). …and the Cross-Section of Expected Returns. <i>RFS</i>.</p>
+<p>Hurst, B., Ooi, Y. H. &amp; Pedersen, L. (2017). A Century of Evidence on Trend-Following Investing. <i>JPM</i>. · Lucca, D. &amp; Moench, E. (2015). The Pre-FOMC Announcement Drift. <i>JF</i>.</p>
+<p>López de Prado, M. (2018). <i>Advances in Financial Machine Learning</i>. Wiley. · Moskowitz, T., Ooi, Y. H. &amp; Pedersen, L. (2012). Time Series Momentum. <i>JFE</i>.</p>
+<p>Data: Yahoo Finance; CBOE VIX; Kenneth French Data Library; US Treasury Fiscal Data; Federal Reserve FOMC calendars; FRED; Massive (8-K disclosures, options). Tools: Python, pandas, NumPy, SciPy, matplotlib, backtrader (Webull starter).</p>
+</div>
+
+<div class="pb"></div>
+<h2>Appendix A (outside the page limit). Ten-hypothesis screen, in-sample, net of costs</h2>
+<table>
+<tr><th>Hypothesis</th><th>Sharpe</th><th>2× costs</th><th>Halves</th><th>t</th><th>Max DD</th><th>Defl. SR prob</th></tr>
+<tr><td>H5 Month-end Treasury extension</td><td>0.68</td><td>0.45</td><td>0.75 / 0.62</td><td>3.21</td><td>−13%</td><td>0.84</td></tr>
+<tr><td>H7 VIX-term-structure-timed short vol</td><td>0.63</td><td>0.60</td><td>0.96 / 0.35</td><td>2.34</td><td>−25%</td><td>0.71</td></tr>
+<tr><td>H10 Pre-FOMC drift</td><td>0.47</td><td>0.25</td><td>0.79 / 0.06</td><td>1.91</td><td>−8%</td><td>0.49</td></tr>
+<tr><td>H4 Turn-of-month</td><td>0.27</td><td>0.12</td><td>0.29 / 0.25</td><td>1.37</td><td>−19%</td><td>0.15</td></tr>
+<tr><td>H6 Treasury auction cycle</td><td>0.24</td><td>0.09</td><td>0.34 / 0.16</td><td>1.04</td><td>−23%</td><td>0.16</td></tr>
+<tr><td>H2 Betting-against-beta, sectors</td><td>0.16</td><td>0.15</td><td>0.08 / 0.36</td><td>0.80</td><td>−79%</td><td>0.06</td></tr>
+<tr><td>H1 Sector momentum</td><td>−0.01</td><td>−0.05</td><td>0.01 / −0.04</td><td>−0.06</td><td>−50%</td><td>0.01</td></tr>
+<tr><td>H3 Overnight drift (504× turnover)</td><td>−0.15</td><td>−1.05</td><td>−0.24 / −0.05</td><td>−0.75</td><td>−72%</td><td>0.00</td></tr>
+<tr><td>H8 FX carry (CurrencyShares)</td><td>−0.18</td><td>−0.20</td><td>−0.28 / −0.03</td><td>−0.74</td><td>−49%</td><td>0.00</td></tr>
+<tr><td>H9 Weekly sector reversal</td><td>−0.23</td><td>−0.66</td><td>0.06 / −0.62</td><td>−1.16</td><td>−85%</td><td>0.00</td></tr>
+</table>
+<h2>Appendix B. Nine-pitfall audit (<code>python screen/audit.py</code>)</h2>
+<table>
+<tr><th>Pitfall</th><th>Test and result</th></tr>
+<tr><td>P-hacking</td><td style="text-align:left">Holm/BHY on 15 t-stats: only H5 survives Holm (p = 0.02), none survive BHY; disclosed</td></tr>
+<tr><td>Overfitting</td><td style="text-align:left">CSCV PBO = 0.21; in-sample winner's Sharpe 0.92 → 0.40 out of sample</td></tr>
+<tr><td>Lookahead</td><td style="text-align:left">Execution lag 0/1/2/5: smooth decay; schedules and VIX known before trading; no revised data</td></tr>
+<tr><td>Survivorship</td><td style="text-align:left">Broad ETFs listed before use; menu chosen in 2026 (disclosed)</td></tr>
+<tr><td>Costs</td><td style="text-align:left">Break-even 54 bps/side (5.4× assumed); all results net, plus 2× costs</td></tr>
+<tr><td>Test-set leakage</td><td style="text-align:left">git order: spec before results; HYPOTHESIS.md never edited; one deviation committed before its OOS</td></tr>
+<tr><td>Misleading Sharpe</td><td style="text-align:left">OOS 95% CI [−0.48, +2.35]; monthly AC(1) −0.06; skew/kurtosis reported</td></tr>
+<tr><td>Regime dependence</td><td style="text-align:left">Best year 16% of gains; Sharpe ex-best-year 0.26; VIX&gt;25 regime −0.07</td></tr>
+<tr><td>Capacity</td><td style="text-align:left">Square-root impact; about $50M, bound by UUP/DBC</td></tr>
+</table>
+</body></html>
