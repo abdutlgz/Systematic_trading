@@ -1,74 +1,57 @@
 # Team FAQ: likely judge questions, with short answers (every member should be able to give these)
 
-## The strategy in 30 seconds
-We hold 10 liquid ETFs (US/intl/EM/small-cap equities, long and medium Treasuries, gold, commodities, US dollar, REITs).
-Each month, each ETF goes long if its past 12-month return is positive and short if negative. Each is sized so it contributes
-equal volatility (10%/sqrt(10) each), with caps of 0.5 per ETF and 2x gross. We trade the day after the signal and pay 10 bps per side
-plus financing. If the VIX is above 30 at month-end, we halve everything. Rules were committed to git before we downloaded any data.
+## Lead strategy in 30 seconds
+When a US company worth $2B+ files an 8-K saying it signed an ACQUISITION AGREEMENT (Massive 8-K data), we short its stock at the
+next close, hedge with SPY (sized to the stock's beta), and hold 60 trading days, 2% of capital per event, at most 100% gross short.
+Why: acquirers overpay (winner's curse, hubris; Roll 1986), and the market only slowly realizes the deal destroyed value, so the
+stock lags for months (Loughran & Vijh 1997; Moeller et al. 2005).
 
-## Results
-**Q: Headline numbers?** Net of trading costs and institutional financing: in-sample 2008-Sep 2024 Sharpe 0.29 (2.8%/yr,
-max DD -27.5%); out-of-sample Oct 2024-Sep 2026 Sharpe 0.72 (8.7%/yr, max DD -13.3%). Turnover 7.3x/yr.
+**Headline numbers (net of 10 bps/side and 1%/yr borrow):** in-sample Jan 2022-Sep 2025 Sharpe 0.98 (8.3%/yr, max DD -7.6%);
+out-of-sample Oct 2025-Sep 2026, run once: Sharpe 0.82 (9.9%/yr, max DD -12.2%). Beta to SPY about 0. Every year 2022-26 positive.
 
-**Q: Why should we believe it?** (1) 0.72 correlation with AQR's published TSMOM factor, so it's the real documented effect, not a bug.
-(2) Every lookback (3/6/9/12m) is positive, a plateau. (3) Only 0.5% of 200 random-sign placebos beat it. (4) Survives 2x costs.
-(5) The rule was never changed after seeing data (git history).
+## How did you find it? (be upfront)
+After 32 pre-registered hypotheses, we committed a grid to git BEFORE running it: 34 event types × 3 holding periods × 2 size filters.
+The winner rule was fixed in advance, and the selection used in-sample data only. 165 cells were valid. **None survived the multiple-testing
+correction (BHY/Holm).** This one won by the pre-set fallback (highest deflated Sharpe), then passed its single out-of-sample test.
 
-**Q: Is it statistically significant?** No, and we say so. In-sample t is about 1.05; the out-of-sample 95% interval is roughly ±1.4 Sharpe.
-At a true Sharpe of 0.3 you need about 45 years of data to reach t = 2. We expect about 0.3 going forward, not 0.7.
+**Q: So isn't it p-hacked?** It came from a search, and we say so on page 1. What makes it more than luck: (1) out-of-sample 0.82 on 303 new
+events, chosen without looking; (2) shorting the same stocks on random dates LOSES (Sharpe -0.53) and 0 of 100 placebos beat it;
+(3) the profit comes from acquirers (+2.8% per event), not deal targets, as the theory predicts; (4) every neighbouring setting
+(20/60/120 days, $2B/$10B) is positive; (5) it matches a 40-year academic literature. But we don't call it proven.
 
-**Q: Isn't OOS just the bull market?** Mostly yes. OOS market beta was 0.50 and alpha t = -0.07. Trend was long equities while
-equities rose. We report that ourselves.
-
-**Q: Why is OOS lower than your first draft (0.90)?** The first spec ignored financing. OOS the strategy was net long 1.47x, i.e.
-borrowing 47% of capital; charging T-bill + 0.5% for that costs about 2.3%/yr. We fixed the assumptions in git BEFORE computing them.
-
-**Q: What does the VIX overlay do?** In-sample it cut max drawdown slightly (-29.4% → -28.3%). OOS it never triggered: VIX hit 52
-intraday-month in April 2025, but no month-end close was above 30. Monthly checks miss short spikes. That is a lesson, not something we tuned away.
-
-## Testing honesty
-**Q: How many things did you try?** 32 pre-registered trials: 4 early pilots, 5 momentum variants, 10-idea ETF screen, 3 thematic
-ideas (weather→cocoa/coffee, GLP-1 news, open-source AI releases), 9 Massive options hypotheses, 1 portfolio. All are reported.
-
-**Q: How do you correct for that?** Deflated Sharpe Ratio, Holm/BHY multiple-testing corrections, and CSCV probability of backtest
-overfitting (0.21). The Deflated Sharpe flagged our two best screen ideas (0.84, 0.71 < 0.90) and both then failed OOS.
-
-**Q: Lookahead?** Signals use the close at t; trades happen at t+1. Same-bar trading (a deliberate bug) only adds +0.05 Sharpe, and lags
-of 2 and 5 days decay smoothly. VIX, FOMC and auction schedules are known in advance; no revised macro data is used.
-
-**Q: Survivorship?** Only broad index ETFs that existed before we used them, no single stocks. Residual bias: the ETF menu was picked
-in 2026.
-
-**Q: Did you look at the OOS before finishing?** No. Each OOS run has a commit before it fixing the spec. One deviation (testing a
-portfolio with two screen near-misses) was disclosed in DEVIATION.md before running, and it underperformed.
+**Q: Is it just a market bet?** No: beta to SPY is -0.01 (IS) and -0.14 (OOS); P&L on big market up/down days is about 0.
+**Q: Is it the size factor?** Partly, and we disclose it: SMB loading -0.49, factor-adjusted alpha +3.2%/yr with t 0.93. The placebo carries the
+same size exposure and loses, so the post-deal window adds something, but we can't reject zero alpha after factors.
+**Q: Lookahead?** Filing dates have no time of day, so we enter at the close of the next session. Entering 1 or 5 days later still works
+(Sharpe 0.92, 1.12). Market cap is point-in-time (day before), and beta uses only past data.
+**Q: Survivorship?** All filers, including companies later acquired or delisted; the size filter is point-in-time.
+**Q: Costs?** 10 bps/side stocks, 2 bps SPY, 1%/yr borrow. Doubling costs AND 3% borrow still gives Sharpe 0.68 IS / 0.58 OOS.
 
 ## Risk and capacity
-**Q: When does it lose?** In sharp V-shaped reversals: Feb 2018 -10.9%, Q4 2018 -12%, Apr 2025 -9.6%. It wins in slow bear markets:
-2008 +16.8% (SPY -46%), 2022 +23.5% (SPY -24%). Expect about a 40% chance of a losing year, and a 3-year worst drawdown around -13%
-(1 in 20: -28%).
+**Q: Biggest risk?** Short squeezes in speculative acquirers: IonQ +83% in 60 days (-1.7% of capital), Rocket Lab +68%, QXO +59%.
+The 2% per-name cap limits the damage. Daily VaR95 about 1%, skew -0.16 (no hidden crash profile). The OOS drawdown (-12%, early 2026) came in
+a speculative rally.
+**Q: Capacity?** Median entry stock trades $72M/day. Square-root impact costs 1%/yr at $10M, 3.3% at $100M, so capacity is about $100-150M.
+About 4 trades a week. It needs a margin/prime account (short book + SPY hedge, about 1.7x gross).
+**Q: Why only 2022-2026?** Massive's 8-K categories start in 2022. The next step is parsing SEC EDGAR back to 2004.
 
-**Q: Max loss on one position?** Per-ETF weight is capped at 0.5, so a 10% gap in one ETF costs at most 5% of capital.
+## Strategy 2: cross-asset momentum (our first, fully pre-registered strategy)
+12-month trend on 10 ETFs, vol-scaled, monthly, VIX overlay. Net of costs and financing: IS 2008-2024 Sharpe 0.29, OOS 0.72.
+It correlates 0.72 with AQR's published TSMOM factor (so the code is right) and -0.10 with the acquirer short (a diversifier).
+OOS gains were mostly equity beta (0.50). It protects in slow bear markets (2008 +17%, 2022 +24%) and loses in sharp reversals.
 
-**Q: Capacity?** About $40-50M before square-root market impact eats half the edge. UUP and DBC are the thin ones; with a strict
-5%-of-ADV rule they bind at $3-4M, so we would split those orders over days or switch to futures. Minimum account is about $25k
-(whole-share rounding).
+## Honesty and testing
+**Q: How many things did you try?** 32 hypothesis-level trials (pilots, momentum variants, a 10-idea ETF screen, weather/GLP-1/AI themes,
+9 Massive options tests, the CFO-exit short) plus the 165-cell 8-K grid. All are reported in git.
+**Q: Did you look at OOS and then change things?** No. Every OOS run follows a commit fixing the rule. The OOS year used for the
+grid winner had been evaluated once before for a different 8-K strategy (abrupt CFO exits, Sharpe 0.32), which we disclose.
+**Q: What's the forward test?** FORWARD_LEDGER_3.md (hash-stamped) lists the 50 live shorts as of 2026-10-02; anyone can check them later.
 
-**Q: Leverage/margin?** Gross is about 1.8-2.0x, drifting to 2.23x, so we need a portfolio-margin or futures account. Retail margin
-rates cut OOS Sharpe to 0.47, which we report.
-
-## Massive bonus
-**Q: What did you find?** No tradable edge in leadership 8-Ks. Selling puts after exits or CFO appointments does not beat ordinary days,
-and buying a straddle after exits (trial 9, 2022-23) loses -1.15% vs ordinary days. What IS consistent in all three windows: the
-filing-day move is bigger than options priced (1-day ratio about 1.13-1.16 vs 0.82-0.91). But it reprices within a day, so you cannot
-catch it by entering at the filing-day close. Information is priced fast.
-
-**Q: The workshop said to use starred cells. Did you?** Yes, with a rule fixed in advance. 2022-23 discovery: 0 of 97 key cells starred
-(about 5 expected by chance); 8 of 135 across all horizons (about 7 expected). The best near-star (CFO appointment → CSP at expiry, +2.34%)
-was registered as a follow-up and tested on unseen 2024-25: -0.23%. Stars appear at the chance rate.
-
-**Q: Did you try buying the straddle?** Yes: pre-registered (HYPOTHESIS_9.md) and tested once on 2022-23, a window never used for it.
-It failed: -1.15% vs placebo at 21 days, a 31% hit rate. Entering after the filing is too late; the surprise is gone by then.
+## Massive bonus (options)
+No tradable option edge in leadership 8-Ks: selling puts after exits or CFO appointments doesn't beat ordinary days, and a straddle after
+exits loses. The consistent pattern: the filing-day move is bigger than options priced, but it reprices within a day. Stars in the
+scoreboard appear at the chance rate (0 of 97 key cells).
 
 ## Where things are
-Note: notes/quant_note.pdf · Reproduce: `pip install -r requirements.txt && python run_all.py` · Trial logs: strategy/TRIALS.md,
-screen/RESULTS_*.md, lab/RESULTS.md, strategy_8k/TRIALS.md · Audit: screen/AUDIT.md · Financing: strategy/RISK_CAPITAL.md
+Note: notes/quant_note.pdf · Lead strategy: event8k/ (GRID_PLAN.md, GRID_RESULTS.md, grid.py, acq_analysis.py) · Momentum: strategy/
+· Bonus: notes/massive_note.pdf, strategy_8k/ · Forward ledgers: FORWARD_LEDGER*.md
