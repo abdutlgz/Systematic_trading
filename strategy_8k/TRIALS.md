@@ -98,3 +98,11 @@ chance. Across ALL horizons in the notebook's own boards, 8 of 135 strategy cell
 all at 1-5 sessions (e.g., cfo_appointment covered call/protective put/collar at day 1, +0.4-0.6%). Their number is what
 chance predicts, so we do not treat them as signals.
 Massive trial count: 7 (exec-exit CSP, exec-exit protective put, competitor calls, settlement CSP, CFO/CEO appointment CSP, CFO departure CSP).
+
+## Trial 8 confirmation (HYPOTHESIS_8.md): CFO appointment → CSP to expiry, 2024-01-01..2025-12-31 (unseen for this tag)
+33 events / 29 tickers (27 resolved at expiry); placebo 120 sessions. CSP events minus placebo:
+exp **-0.23%** [-3.07%, +2.14%]; 63d -0.41%; 42d +0.23%; 21d +0.25%; 10d -0.16% (nothing starred).
+**FAIL** (the exp difference is <= 0). Per the rule, no 2026 run. The discovery-period +2.34% did not replicate: a textbook case of a
+near-star that was noise, which is exactly what the two-stage design is meant to catch.
+Final Massive tally: 8 pre-registered trials; no trading rule survives; one measurement replicates (exec-exit moves exceed
+implied moves, IS and OOS).
