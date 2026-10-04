@@ -1,0 +1,39 @@
+{
+  "reviewed_events": 30,
+  "issuer_role_counts": {
+    "acquirer": 19,
+    "target": 10,
+    "mixed_or_complex": 1
+  },
+  "event_kind_counts": {
+    "new_agreement": 23,
+    "financing_update": 2,
+    "bankruptcy_bid": 1,
+    "completed": 1,
+    "termination": 1,
+    "amendment": 1,
+    "proxy_regulatory_update": 1
+  },
+  "forward_rule_eligible_in_sample": 14,
+  "suggested_cases": 20,
+  "suggestion_role_agreements": 19,
+  "suggestion_role_disagreements": [
+    {
+      "ticker": "CRC",
+      "heuristic_role": "target_suggested",
+      "reviewed_role": "acquirer"
+    }
+  ],
+  "previous_unknown_roles": {
+    "acquirer": 8,
+    "target": 1,
+    "mixed_or_complex": 1
+  },
+  "human_gold_labels": 0,
+  "classifier_population_accuracy": null,
+  "scope": "30 original stratified cases; exact-accession parsed SEC Items through licensed vendor; no exhibits",
+  "not_independent_human_validation": true,
+  "not_used_to_refilter_historical_results": true,
+  "labels_sha256": "1335aa14cbc15d80c280cc2ab5790070879aae0c6b3d8d14f281d0651240940a",
+  "sample_sha256": "72158aef2a1e59cf241d7ab6a197338c4cff4132fc4de4939c5bc7acbc9eded5"
+}

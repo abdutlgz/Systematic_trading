@@ -1,0 +1,5 @@
+date,ticker,kind,detail
+2024-11-08,CLSK,carried_mark,last observed mark; current fill unavailable
+2026-04-28,ACLX,cvr_maximum_reserved,USD liability reserve=0.001145674193; not observed fair value
+2026-06-24,CNTA,cvr_maximum_reserved,USD liability reserve=0.00601156804; not observed fair value
+2026-06-24,CNTA,cvr_maximum_reserved,USD liability reserve=0.00645062615; not observed fair value

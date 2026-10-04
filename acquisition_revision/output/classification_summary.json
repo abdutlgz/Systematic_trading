@@ -1,0 +1,21 @@
+{
+  "events": 1109,
+  "text_missing": 0,
+  "heuristic_role_counts": {
+    "unknown": 1043,
+    "acquirer_suggested": 56,
+    "target_suggested": 10
+  },
+  "heuristic_financing_counts": {
+    "mixed_or_unclear": 1071,
+    "cash_suggested": 28,
+    "stock_suggested": 10
+  },
+  "human_labeled_events": 0,
+  "classifier_accuracy": null,
+  "not_used_as_trading_filter": true,
+  "post_event_prices_not_used": true,
+  "sample_events": 30,
+  "sample_seed": 20261003,
+  "warning": "Suggestions use supporting-text snippets, not verified full filings. Unknown is retained."
+}

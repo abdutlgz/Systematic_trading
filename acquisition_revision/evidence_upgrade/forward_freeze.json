@@ -1,0 +1,19 @@
+{
+  "protocol_version": 1,
+  "frozen_utc": "2026-10-04T03:50:10.721883+00:00",
+  "admissions_start": "2026-10-05",
+  "admissions_end": "2027-10-04",
+  "initial_paper_nav": 1000000.0,
+  "external_timestamp_anchor": false,
+  "prospective_returns_observed": 0,
+  "files_sha256": {
+    "FORWARD_PROTOCOL.md": "320d2bff0ed607954bd8b865cca96ba20ef617610f62a11812e4c7aa1f2a59e0",
+    "nyse_sessions.csv": "5786fdfd43dafb08aa347a8ef61f8519a48e62123b0e62db8eba92fcf1272285",
+    "forward.py": "b735ed19b45ed56435698400906067052d5632f0c2fdef4aec11cae943f51d22",
+    "review_decisions.py": "f4631e5903569f6cc4f696f163238b8e8b5f3b6d99eaa24d95a292a0ab35747d",
+    "vendor.py": "baa838701e05a78c967a0a546c03e4478f2f7fb28b62938b4569cdc8ba8ae7fd",
+    "make_calendar.py": "bb970ffa91cd8ec3a63113f580a766dbd9eecd2e1f5299874cf38d16717d9130",
+    "audit_labels.py": "7bb86fd6bb1c852bb96f5d931bdacb19d7a58ce791ec9275946fbca80933ac41",
+    "tests/test_evidence.py": "3a5196e197f98785c55c998ac6872d49bc7178cad32f588faacf8f231d1712bc"
+  }
+}

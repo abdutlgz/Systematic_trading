@@ -1,0 +1,11 @@
+date,ticker,kind,detail
+2024-11-08,CLSK,carried_mark,last observed mark; current fill unavailable
+2024-11-08,CLSK,blocked_issuer_trim,no executable quote
+2024-11-08,CLSK,blocked_issuer_trim,no executable quote
+2024-11-08,CLSK,blocked_issuer_trim,no executable quote
+2024-11-08,CLSK,blocked_issuer_trim,no executable quote
+2024-11-08,PORTFOLIO,unexecutable_limit_breach,"gross=0.773847,issuer=0.020026"
+2025-07-18,BPMC,cvr_maximum_reserved,USD liability reserve=0.0007422963246; not observed fair value
+2026-02-12,AVDL,cvr_maximum_reserved,USD liability reserve=0.001270056223; not observed fair value
+2026-04-28,ACLX,cvr_maximum_reserved,USD liability reserve=0.001058315759; not observed fair value
+2026-06-24,CNTA,cvr_maximum_reserved,USD liability reserve=0.005521117376; not observed fair value

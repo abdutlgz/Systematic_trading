@@ -1,0 +1,14 @@
+{
+  "checked_utc": "2026-10-04T03:56:04.223000+00:00",
+  "evidence_tests_passed": 16,
+  "public_label_checks_passed": true,
+  "licensed_items_verified_locally": true,
+  "licensed_rebuild_receipts_verified_locally": 4080,
+  "saved_reconstruction_report_checked": true,
+  "fresh_download_performed_by_this_verifier": false,
+  "freeze_sha256": "6c7d35e3aa1f0f32cc438660673bea1e17d20e9c91068fc6845bae05331d9522",
+  "frozen_utc": "2026-10-04T03:50:10.721883+00:00",
+  "journal_records": 0,
+  "external_timestamp_anchor": false,
+  "prospective_performance_available": false
+}

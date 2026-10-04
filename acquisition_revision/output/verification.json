@@ -1,0 +1,36 @@
+{
+  "accounting_tests_passed": 16,
+  "ledger_checks": [
+    {
+      "configuration": "accounting_only",
+      "sessions": 1190,
+      "nav_identity_error": 1.3322676295501878e-15,
+      "strict_entry_timing_checked": 904,
+      "metrics_recomputed": true
+    },
+    {
+      "configuration": "issuer_controlled",
+      "sessions": 1190,
+      "nav_identity_error": 1.1102230246251565e-15,
+      "strict_entry_timing_checked": 942,
+      "metrics_recomputed": true
+    },
+    {
+      "configuration": "stress_2x_fees_3pct_borrow",
+      "sessions": 1190,
+      "nav_identity_error": 1.1102230246251565e-15,
+      "strict_entry_timing_checked": 942,
+      "metrics_recomputed": true
+    },
+    {
+      "configuration": "delay_5_sessions",
+      "sessions": 1190,
+      "nav_identity_error": 1.9984014443252818e-15,
+      "strict_entry_timing_checked": 940,
+      "metrics_recomputed": true
+    }
+  ],
+  "placebo_tail_recomputed": true,
+  "keyless_derived_output_replay_only": true,
+  "investable_validation_passed": false
+}

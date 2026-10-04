@@ -1,0 +1,780 @@
+{
+  "generated_utc": "2026-10-04T03:29:09.546114+00:00",
+  "rf_last_observed": "2026-08-31",
+  "test_previously_examined": true,
+  "no_parameter_selection_in_revision": true,
+  "dividend_coverage": 7180,
+  "metrics": {
+    "accounting_only": {
+      "IS": {
+        "sessions": 939,
+        "arithmetic_return": 0.09037809245995959,
+        "cagr": 0.09072826849151538,
+        "vol": 0.08391295675679362,
+        "excess_sharpe": 0.5961272245914448,
+        "total_return_sharpe": 1.077045738263091,
+        "naive_excess_t": 1.1507248236097292,
+        "max_drawdown": -0.07449505803945267,
+        "worst_month": -0.032535631734031845,
+        "turnover_per_year": 14.399873271287875,
+        "trading_fee_per_year": 0.008646394860767426,
+        "borrow_per_year": 0.008472354564045052,
+        "max_gross_short": 1.119345803179523,
+        "max_gross_total": 2.282696811951811,
+        "max_issuer_weight": 0.06107517943725984,
+        "mean_unique_issuers": 41.55058572949947,
+        "max_stale_short_weight": 0.031177106162883213,
+        "stale_exposure_days": 1,
+        "accepted_entries": 703,
+        "entry_attempts": 805,
+        "skip_reasons": {
+          "event_slot_cap": 102
+        }
+      },
+      "historical_test": {
+        "sessions": 251,
+        "arithmetic_return": 0.11980267527670893,
+        "cagr": 0.1196475332634237,
+        "vol": 0.11656097379839085,
+        "excess_sharpe": 0.703138252899688,
+        "total_return_sharpe": 1.0278112079256054,
+        "naive_excess_t": 0.7017417505223552,
+        "max_drawdown": -0.11121491853439647,
+        "worst_month": -0.05933008230739667,
+        "turnover_per_year": 16.31601867666202,
+        "trading_fee_per_year": 0.009716661885554898,
+        "borrow_per_year": 0.00962511832649111,
+        "max_gross_short": 1.1452749404604583,
+        "max_gross_total": 2.2753122698457404,
+        "max_issuer_weight": 0.055148207380335074,
+        "mean_unique_issuers": 46.20318725099602,
+        "max_stale_short_weight": 0.0,
+        "stale_exposure_days": 0,
+        "accepted_entries": 201,
+        "entry_attempts": 302,
+        "skip_reasons": {
+          "event_slot_cap": 101
+        }
+      },
+      "test_observed_rf_only": {
+        "sessions": 230,
+        "arithmetic_return": 0.07998650561391514,
+        "cagr": 0.0755194795334051,
+        "vol": 0.12005643679110752,
+        "excess_sharpe": 0.3414285875878196,
+        "total_return_sharpe": 0.666240875973088,
+        "naive_excess_t": 0.3261846571255056,
+        "max_drawdown": -0.11121491853439647,
+        "worst_month": -0.05933008230739667,
+        "turnover_per_year": 16.211510857487767,
+        "trading_fee_per_year": 0.009659541229862728,
+        "borrow_per_year": 0.009675169535555425,
+        "max_gross_short": 1.1452749404604583,
+        "max_gross_total": 2.2753122698457404,
+        "max_issuer_weight": 0.055148207380335074,
+        "mean_unique_issuers": 46.05652173913043,
+        "max_stale_short_weight": 0.0,
+        "stale_exposure_days": 0
+      }
+    },
+    "issuer_controlled": {
+      "IS": {
+        "sessions": 939,
+        "arithmetic_return": 0.07451062587728983,
+        "cagr": 0.07429404959982855,
+        "vol": 0.07535150680718386,
+        "excess_sharpe": 0.4532408840718164,
+        "total_return_sharpe": 0.9888405558757342,
+        "naive_excess_t": 0.8749064207455148,
+        "max_drawdown": -0.06747151782773342,
+        "worst_month": -0.03594805095365117,
+        "turnover_per_year": 14.360753832512136,
+        "trading_fee_per_year": 0.008618310183301872,
+        "borrow_per_year": 0.007813188138098403,
+        "max_gross_short": 1.0000000000000913,
+        "max_gross_total": 2.0930507486581007,
+        "max_issuer_weight": 0.02013669412720383,
+        "mean_unique_issuers": 43.01703940362087,
+        "max_stale_short_weight": 0.02013669412720383,
+        "stale_exposure_days": 1,
+        "accepted_entries": 711,
+        "entry_attempts": 805,
+        "skip_reasons": {
+          "issuer_overlap": 57,
+          "short_cap": 37
+        }
+      },
+      "historical_test": {
+        "sessions": 251,
+        "arithmetic_return": 0.0927241632265063,
+        "cagr": 0.09180544130162938,
+        "vol": 0.09893111521728262,
+        "excess_sharpe": 0.5547165833830203,
+        "total_return_sharpe": 0.9372598602861802,
+        "naive_excess_t": 0.5536148611765472,
+        "max_drawdown": -0.09191716627242841,
+        "worst_month": -0.047917217143713,
+        "turnover_per_year": 17.563042080315046,
+        "trading_fee_per_year": 0.010436188472240112,
+        "borrow_per_year": 0.009203617028469835,
+        "max_gross_short": 1.0000000000056424,
+        "max_gross_total": 2.1287734806299223,
+        "max_issuer_weight": 0.02000000000798641,
+        "mean_unique_issuers": 54.45019920318725,
+        "max_stale_short_weight": 0.0,
+        "stale_exposure_days": 0,
+        "accepted_entries": 231,
+        "entry_attempts": 302,
+        "skip_reasons": {
+          "short_cap": 41,
+          "issuer_overlap": 30
+        }
+      },
+      "test_observed_rf_only": {
+        "sessions": 230,
+        "arithmetic_return": 0.037976939025262585,
+        "cagr": 0.03340977463003458,
+        "vol": 0.10130475845823003,
+        "excess_sharpe": -0.010154276983330737,
+        "total_return_sharpe": 0.3748781360642722,
+        "naive_excess_t": -0.009700913973154692,
+        "max_drawdown": -0.09191716627242841,
+        "worst_month": -0.047917217143713,
+        "turnover_per_year": 17.116600619275445,
+        "trading_fee_per_year": 0.010184198488547704,
+        "borrow_per_year": 0.009194090638679467,
+        "max_gross_short": 1.0000000000056424,
+        "max_gross_total": 2.1287734806299223,
+        "max_issuer_weight": 0.02000000000798641,
+        "mean_unique_issuers": 54.108695652173914,
+        "max_stale_short_weight": 0.0,
+        "stale_exposure_days": 0
+      }
+    },
+    "stress_2x_fees_3pct_borrow": {
+      "IS": {
+        "sessions": 939,
+        "arithmetic_return": 0.05041110908232622,
+        "cagr": 0.048713256519619996,
+        "vol": 0.0754269622979138,
+        "excess_sharpe": 0.13323366228461245,
+        "total_return_sharpe": 0.6683433555658453,
+        "naive_excess_t": 0.25718550706422333,
+        "max_drawdown": -0.07119174026449704,
+        "worst_month": -0.038624765088831725,
+        "turnover_per_year": 14.39043932056707,
+        "trading_fee_per_year": 0.017271897027019874,
+        "borrow_per_year": 0.023461821927051228,
+        "max_gross_short": 1.000000000003373,
+        "max_gross_total": 2.0932303109792123,
+        "max_issuer_weight": 0.020138774498731866,
+        "mean_unique_issuers": 43.01703940362087,
+        "max_stale_short_weight": 0.020138774498731866,
+        "stale_exposure_days": 1,
+        "accepted_entries": 711,
+        "entry_attempts": 805,
+        "skip_reasons": {
+          "issuer_overlap": 57,
+          "short_cap": 37
+        }
+      },
+      "historical_test": {
+        "sessions": 251,
+        "arithmetic_return": 0.06397632487182732,
+        "cagr": 0.06086868757999264,
+        "vol": 0.0989765927746799,
+        "excess_sharpe": 0.2639846854528231,
+        "total_return_sharpe": 0.6463783312633256,
+        "naive_excess_t": 0.26346038565929886,
+        "max_drawdown": -0.09952928835063535,
+        "worst_month": -0.05038159230245842,
+        "turnover_per_year": 17.581750819082682,
+        "trading_fee_per_year": 0.020878713075812003,
+        "borrow_per_year": 0.02760672803181487,
+        "max_gross_short": 1.0000000000010323,
+        "max_gross_total": 2.129028748128635,
+        "max_issuer_weight": 0.020000000008513496,
+        "mean_unique_issuers": 54.45019920318725,
+        "max_stale_short_weight": 0.0,
+        "stale_exposure_days": 0,
+        "accepted_entries": 231,
+        "entry_attempts": 302,
+        "skip_reasons": {
+          "short_cap": 41,
+          "issuer_overlap": 30
+        }
+      },
+      "test_observed_rf_only": {
+        "sessions": 230,
+        "arithmetic_return": 0.009409405210746733,
+        "cagr": 0.0043003521337856565,
+        "vol": 0.10136961652584484,
+        "excess_sharpe": -0.2920710091720957,
+        "total_return_sharpe": 0.09282273656769477,
+        "naive_excess_t": -0.27903077084485806,
+        "max_drawdown": -0.09952928835063535,
+        "worst_month": -0.05038159230245842,
+        "turnover_per_year": 17.141295457845626,
+        "trading_fee_per_year": 0.020380148149431357,
+        "borrow_per_year": 0.027576442399116552,
+        "max_gross_short": 1.0000000000010323,
+        "max_gross_total": 2.129028748128635,
+        "max_issuer_weight": 0.020000000008513496,
+        "mean_unique_issuers": 54.108695652173914,
+        "max_stale_short_weight": 0.0,
+        "stale_exposure_days": 0
+      }
+    },
+    "delay_5_sessions": {
+      "IS": {
+        "sessions": 939,
+        "arithmetic_return": 0.07510843677213498,
+        "cagr": 0.07509542223643728,
+        "vol": 0.07337247441901952,
+        "excess_sharpe": 0.47368345592053207,
+        "total_return_sharpe": 1.023659585789647,
+        "naive_excess_t": 0.9143674181875702,
+        "max_drawdown": -0.06630699763852022,
+        "worst_month": -0.023056131415984726,
+        "turnover_per_year": 14.328137309201546,
+        "trading_fee_per_year": 0.008595297433293424,
+        "borrow_per_year": 0.007788818768504455,
+        "max_gross_short": 1.0000000000059566,
+        "max_gross_total": 2.096931941587404,
+        "max_issuer_weight": 0.020026409759126985,
+        "mean_unique_issuers": 42.89350372736954,
+        "max_stale_short_weight": 0.020026409759126985,
+        "stale_exposure_days": 1,
+        "accepted_entries": 709,
+        "entry_attempts": 795,
+        "skip_reasons": {
+          "issuer_overlap": 57,
+          "short_cap": 28,
+          "missing_entry_quote": 1
+        }
+      },
+      "historical_test": {
+        "sessions": 251,
+        "arithmetic_return": 0.044994819732691656,
+        "cagr": 0.04093124880424548,
+        "vol": 0.09890681221306488,
+        "excess_sharpe": 0.0722286292616419,
+        "total_return_sharpe": 0.4549213418764716,
+        "naive_excess_t": 0.0720851760331205,
+        "max_drawdown": -0.11085685251953514,
+        "worst_month": -0.06281946079384015,
+        "turnover_per_year": 17.455020875129676,
+        "trading_fee_per_year": 0.010417082336435074,
+        "borrow_per_year": 0.009254026005214008,
+        "max_gross_short": 1.0000000000026024,
+        "max_gross_total": 2.1232274345351696,
+        "max_issuer_weight": 0.02000000000803538,
+        "mean_unique_issuers": 54.48207171314741,
+        "max_stale_short_weight": 0.0,
+        "stale_exposure_days": 0,
+        "accepted_entries": 231,
+        "entry_attempts": 305,
+        "skip_reasons": {
+          "short_cap": 43,
+          "issuer_overlap": 31
+        }
+      },
+      "test_observed_rf_only": {
+        "sessions": 230,
+        "arithmetic_return": -0.010044376043691395,
+        "cagr": -0.01511322413127314,
+        "vol": 0.10200555390912826,
+        "excess_sharpe": -0.48094408810587014,
+        "total_return_sharpe": -0.09846891329700967,
+        "naive_excess_t": -0.4594711403156938,
+        "max_drawdown": -0.11085685251953514,
+        "worst_month": -0.06281946079384015,
+        "turnover_per_year": 17.221421845452316,
+        "trading_fee_per_year": 0.010287337354267043,
+        "borrow_per_year": 0.009305936008515574,
+        "max_gross_short": 1.0000000000026024,
+        "max_gross_total": 2.1232274345351696,
+        "max_issuer_weight": 0.02000000000803538,
+        "mean_unique_issuers": 54.18695652173913,
+        "max_stale_short_weight": 0.0,
+        "stale_exposure_days": 0
+      }
+    }
+  },
+  "configuration": {
+    "accounting_only": {
+      "weight": 0.02,
+      "hold": 60,
+      "stock_cost": 0.001,
+      "spy_cost": 0.0002,
+      "borrow": 0.01,
+      "debit_spread": 0.015,
+      "controlled": false,
+      "lag": 0,
+      "fixed_beta": null
+    },
+    "issuer_controlled": {
+      "weight": 0.02,
+      "hold": 60,
+      "stock_cost": 0.001,
+      "spy_cost": 0.0002,
+      "borrow": 0.01,
+      "debit_spread": 0.015,
+      "controlled": true,
+      "lag": 0,
+      "fixed_beta": null
+    },
+    "stress_2x_fees_3pct_borrow": {
+      "weight": 0.02,
+      "hold": 60,
+      "stock_cost": 0.002,
+      "spy_cost": 0.0004,
+      "borrow": 0.03,
+      "debit_spread": 0.015,
+      "controlled": true,
+      "lag": 0,
+      "fixed_beta": null
+    },
+    "delay_5_sessions": {
+      "weight": 0.02,
+      "hold": 60,
+      "stock_cost": 0.001,
+      "spy_cost": 0.0002,
+      "borrow": 0.01,
+      "debit_spread": 0.015,
+      "controlled": true,
+      "lag": 5,
+      "fixed_beta": null
+    }
+  },
+  "factor_attribution": {
+    "accounting_only": {
+      "IS": {
+        "sessions": 939,
+        "end": "2025-09-30",
+        "r2": 0.5047514705197952,
+        "coefficients": {
+          "alpha": {
+            "coefficient": 8.782039104422755e-05,
+            "nw_t": 0.7274109977142973
+          },
+          "Mkt-RF": {
+            "coefficient": 0.0241199546633278,
+            "nw_t": 1.8616438730436298
+          },
+          "SMB": {
+            "coefficient": -0.4771497496285248,
+            "nw_t": -18.409186049347156
+          },
+          "HML": {
+            "coefficient": -0.10321900591310919,
+            "nw_t": -4.758686054711057
+          },
+          "RMW": {
+            "coefficient": 0.07485224854749607,
+            "nw_t": 2.809702931027478
+          },
+          "CMA": {
+            "coefficient": -0.01277096941351813,
+            "nw_t": -0.4458174075764766
+          },
+          "Mom": {
+            "coefficient": -0.0010821864503350086,
+            "nw_t": -0.06954056627550084
+          }
+        },
+        "alpha_annual": 0.022130738543145345,
+        "alpha_p_two_sided_normal": 0.4669742193782126,
+        "rf_already_subtracted": true
+      },
+      "historical_test": {
+        "sessions": 230,
+        "end": "2026-08-31",
+        "r2": 0.4839345830641115,
+        "coefficients": {
+          "alpha": {
+            "coefficient": 0.0005852034742941669,
+            "nw_t": 1.4855446757872208
+          },
+          "Mkt-RF": {
+            "coefficient": 0.07127709189364297,
+            "nw_t": 1.4905763403643442
+          },
+          "SMB": {
+            "coefficient": -0.7211289908620955,
+            "nw_t": -8.605465281716132
+          },
+          "HML": {
+            "coefficient": -0.07725290699135688,
+            "nw_t": -1.0723333509032547
+          },
+          "RMW": {
+            "coefficient": 0.3234728114693278,
+            "nw_t": 4.608419780978415
+          },
+          "CMA": {
+            "coefficient": -0.11215980399059808,
+            "nw_t": -1.4767238368172173
+          },
+          "Mom": {
+            "coefficient": -0.07535509993752858,
+            "nw_t": -1.7844021689193883
+          }
+        },
+        "alpha_annual": 0.14747127552213007,
+        "alpha_p_two_sided_normal": 0.13739959797381504,
+        "rf_already_subtracted": true
+      }
+    },
+    "issuer_controlled": {
+      "IS": {
+        "sessions": 939,
+        "end": "2025-09-30",
+        "r2": 0.5117038006944816,
+        "coefficients": {
+          "alpha": {
+            "coefficient": 2.860086430146304e-05,
+            "nw_t": 0.2679220366130114
+          },
+          "Mkt-RF": {
+            "coefficient": 0.0318276920124603,
+            "nw_t": 2.743573696555615
+          },
+          "SMB": {
+            "coefficient": -0.43322813330886945,
+            "nw_t": -18.809385451827684
+          },
+          "HML": {
+            "coefficient": -0.08950956173107569,
+            "nw_t": -4.721731771604595
+          },
+          "RMW": {
+            "coefficient": 0.047192495518461414,
+            "nw_t": 1.9491870594767045
+          },
+          "CMA": {
+            "coefficient": -0.014688968321017857,
+            "nw_t": -0.6486822387589463
+          },
+          "Mom": {
+            "coefficient": 0.012705437335043935,
+            "nw_t": 0.9684456562491354
+          }
+        },
+        "alpha_annual": 0.007207417803968687,
+        "alpha_p_two_sided_normal": 0.7887593308456273,
+        "rf_already_subtracted": true
+      },
+      "historical_test": {
+        "sessions": 230,
+        "end": "2026-08-31",
+        "r2": 0.5035077839851538,
+        "coefficients": {
+          "alpha": {
+            "coefficient": 0.0003602281987823255,
+            "nw_t": 1.1815443431256334
+          },
+          "Mkt-RF": {
+            "coefficient": 0.11264125264524213,
+            "nw_t": 2.780246102228199
+          },
+          "SMB": {
+            "coefficient": -0.6244564395374816,
+            "nw_t": -9.172961486200053
+          },
+          "HML": {
+            "coefficient": -0.12631074299059336,
+            "nw_t": -2.2654719574150417
+          },
+          "RMW": {
+            "coefficient": 0.2776524540387515,
+            "nw_t": 5.16114613272291
+          },
+          "CMA": {
+            "coefficient": -0.09258401995853428,
+            "nw_t": -1.208711157778275
+          },
+          "Mom": {
+            "coefficient": -0.058719355199125384,
+            "nw_t": -1.6485843702047844
+          }
+        },
+        "alpha_annual": 0.09077750609314603,
+        "alpha_p_two_sided_normal": 0.2373865486911465,
+        "rf_already_subtracted": true
+      }
+    },
+    "stress_2x_fees_3pct_borrow": {
+      "IS": {
+        "sessions": 939,
+        "end": "2025-09-30",
+        "r2": 0.5123728060522446,
+        "coefficients": {
+          "alpha": {
+            "coefficient": -6.722660519652218e-05,
+            "nw_t": -0.6290221125133288
+          },
+          "Mkt-RF": {
+            "coefficient": 0.031798972763850505,
+            "nw_t": 2.7369065321231156
+          },
+          "SMB": {
+            "coefficient": -0.4340738223520432,
+            "nw_t": -18.86406704034172
+          },
+          "HML": {
+            "coefficient": -0.08946770611028565,
+            "nw_t": -4.714663933319126
+          },
+          "RMW": {
+            "coefficient": 0.047259489083826406,
+            "nw_t": 1.9516774118014901
+          },
+          "CMA": {
+            "coefficient": -0.014704570368204183,
+            "nw_t": -0.6494340166460166
+          },
+          "Mom": {
+            "coefficient": 0.012686473076998479,
+            "nw_t": 0.9667026270663296
+          }
+        },
+        "alpha_annual": -0.01694110450952359,
+        "alpha_p_two_sided_normal": 0.5293345797392655,
+        "rf_already_subtracted": true
+      },
+      "historical_test": {
+        "sessions": 230,
+        "end": "2026-08-31",
+        "r2": 0.5036987979337849,
+        "coefficients": {
+          "alpha": {
+            "coefficient": 0.00024697174896406375,
+            "nw_t": 0.8088024396419494
+          },
+          "Mkt-RF": {
+            "coefficient": 0.11229306451877664,
+            "nw_t": 2.7576375255268255
+          },
+          "SMB": {
+            "coefficient": -0.6258983886951549,
+            "nw_t": -9.19761250934244
+          },
+          "HML": {
+            "coefficient": -0.1252125749023877,
+            "nw_t": -2.244804044277731
+          },
+          "RMW": {
+            "coefficient": 0.2774905101758037,
+            "nw_t": 5.168217764589263
+          },
+          "CMA": {
+            "coefficient": -0.09164568603618485,
+            "nw_t": -1.1906713451740145
+          },
+          "Mom": {
+            "coefficient": -0.05928561539703502,
+            "nw_t": -1.6647324476886396
+          }
+        },
+        "alpha_annual": 0.06223688073894407,
+        "alpha_p_two_sided_normal": 0.4186287927104586,
+        "rf_already_subtracted": true
+      }
+    },
+    "delay_5_sessions": {
+      "IS": {
+        "sessions": 939,
+        "end": "2025-09-30",
+        "r2": 0.5191560322711092,
+        "coefficients": {
+          "alpha": {
+            "coefficient": 3.0579512544459585e-05,
+            "nw_t": 0.2990102562629955
+          },
+          "Mkt-RF": {
+            "coefficient": 0.033507109835262304,
+            "nw_t": 2.971066216453984
+          },
+          "SMB": {
+            "coefficient": -0.42530440714544676,
+            "nw_t": -19.71667440056497
+          },
+          "HML": {
+            "coefficient": -0.0859812750071099,
+            "nw_t": -4.695872118203399
+          },
+          "RMW": {
+            "coefficient": 0.039317839522959676,
+            "nw_t": 1.8117870741401556
+          },
+          "CMA": {
+            "coefficient": -0.004529481937626927,
+            "nw_t": -0.20481137049786238
+          },
+          "Mom": {
+            "coefficient": 0.019117964397459983,
+            "nw_t": 1.420956969706602
+          }
+        },
+        "alpha_annual": 0.007706037161203816,
+        "alpha_p_two_sided_normal": 0.7649322199947594,
+        "rf_already_subtracted": true
+      },
+      "historical_test": {
+        "sessions": 230,
+        "end": "2026-08-31",
+        "r2": 0.4946154638203327,
+        "coefficients": {
+          "alpha": {
+            "coefficient": 0.00017403658655371638,
+            "nw_t": 0.5458384486354199
+          },
+          "Mkt-RF": {
+            "coefficient": 0.10835091893905402,
+            "nw_t": 2.660789005385543
+          },
+          "SMB": {
+            "coefficient": -0.6029457038342497,
+            "nw_t": -8.940946270005263
+          },
+          "HML": {
+            "coefficient": -0.12668367107721076,
+            "nw_t": -2.127092204305045
+          },
+          "RMW": {
+            "coefficient": 0.3016980379776223,
+            "nw_t": 5.393191190366527
+          },
+          "CMA": {
+            "coefficient": -0.10237712563881646,
+            "nw_t": -1.542992864732196
+          },
+          "Mom": {
+            "coefficient": -0.04439382429905967,
+            "nw_t": -1.268386081261682
+          }
+        },
+        "alpha_annual": 0.04385721981153653,
+        "alpha_p_two_sided_normal": 0.5851769913551101,
+        "rf_already_subtracted": true
+      }
+    }
+  },
+  "exceptions": {
+    "accounting_only": {
+      "cvr_maximum_reserved": 3,
+      "carried_mark": 1
+    },
+    "issuer_controlled": {
+      "blocked_issuer_trim": 4,
+      "cvr_maximum_reserved": 2,
+      "carried_mark": 1,
+      "unexecutable_limit_breach": 1
+    },
+    "stress_2x_fees_3pct_borrow": {
+      "blocked_issuer_trim": 4,
+      "cvr_maximum_reserved": 2,
+      "carried_mark": 1,
+      "unexecutable_limit_breach": 1
+    },
+    "delay_5_sessions": {
+      "blocked_issuer_trim": 4,
+      "cvr_maximum_reserved": 4,
+      "carried_mark": 1,
+      "unexecutable_limit_breach": 1
+    }
+  },
+  "dividend_adjustments": {
+    "corrected_foreign_rows": 11,
+    "paying_agent_proxy_rows": 10,
+    "boc_proxy_2022_04_14_USD_per_EUR": 1.0820736,
+    "not_verified_broker_cash_for_ENB_and_2022_CNHI": true,
+    "rejected_ECB_download": "did not contain the required 2022-04-14 observation"
+  },
+  "capacity_illustrative": [
+    {
+      "aum": 10000000.0,
+      "entries_with_adv": 711,
+      "missing_adv": 0,
+      "median_participation": 0.0027242073278292618,
+      "p95_participation": 0.016032730155413136,
+      "max_participation": 0.1670537237021186,
+      "share_over_5pct_adv": 0.005625879043600563,
+      "share_requiring_over_3_days_at_5pct_adv": 0.0014064697609001407,
+      "illustrative_two_sided_entry_based_impact_per_year": 0.010367890089861071
+    },
+    {
+      "aum": 50000000.0,
+      "entries_with_adv": 711,
+      "missing_adv": 0,
+      "median_participation": 0.013621036639146307,
+      "p95_participation": 0.08016365077706566,
+      "max_participation": 0.8352686185105931,
+      "share_over_5pct_adv": 0.13924050632911392,
+      "share_requiring_over_3_days_at_5pct_adv": 0.009845288326300985,
+      "illustrative_two_sided_entry_based_impact_per_year": 0.02318330702417573
+    },
+    {
+      "aum": 100000000.0,
+      "entries_with_adv": 711,
+      "missing_adv": 0,
+      "median_participation": 0.027242073278292613,
+      "p95_participation": 0.16032730155413133,
+      "max_participation": 1.6705372370211862,
+      "share_over_5pct_adv": 0.3206751054852321,
+      "share_requiring_over_3_days_at_5pct_adv": 0.06188466947960619,
+      "illustrative_two_sided_entry_based_impact_per_year": 0.03278614721424879
+    },
+    {
+      "aum": 150000000.0,
+      "entries_with_adv": 711,
+      "missing_adv": 0,
+      "median_participation": 0.04086310991743892,
+      "p95_participation": 0.240490952331197,
+      "max_participation": 2.505805855531779,
+      "share_over_5pct_adv": 0.4472573839662447,
+      "share_requiring_over_3_days_at_5pct_adv": 0.13924050632911392,
+      "illustrative_two_sided_entry_based_impact_per_year": 0.0401546656533408
+    }
+  ],
+  "placebo": {
+    "seed": 20261003,
+    "replicates": 100,
+    "observed_is_excess_sharpe": 0.46733221493883037,
+    "mean": -0.5347140535676471,
+    "p95": -0.11399246396914757,
+    "number_ge_observed": 0,
+    "finite_sample_tail_fraction": 0.009900990099009901,
+    "not_family_wise_or_causal": true,
+    "matched_sample": {
+      "original_eligible_events": 732,
+      "excluded_no_control_dates": 7,
+      "excluded_tickers": [
+        "KRMN",
+        "MIME",
+        "NLSN"
+      ],
+      "matched_events": 725,
+      "observed_is_excess_sharpe": 0.46733221493883037,
+      "deviation": "Infeasible issuers removed from BOTH observed and placebo samples, without relaxing exclusion window."
+    }
+  },
+  "checks": {
+    "max_nav_identity_error": 1.3322676295501878e-15,
+    "rf_proxy_sessions": 21,
+    "max_close_gross_short": 1.0000000000056424,
+    "max_close_issuer_weight": 0.02013669412720383
+  },
+  "investable_validation_passed": false,
+  "unresolved_reasons": [
+    "historical locate/recall and maintenance-margin data absent",
+    "historical test window previously examined",
+    "0 overdue exits unresolved",
+    "post-August RF uses disclosed proxy",
+    "issuer roles not human-verified",
+    "BLD lender election unknown; cash-election proration estimate used",
+    "CVRs reserved at contractual maximum, not observed fair value",
+    "same-close issuer/gross maintenance assumes executable quotes and idealized close fills"
+  ]
+}

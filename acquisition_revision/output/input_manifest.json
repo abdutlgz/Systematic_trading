@@ -1,0 +1,71 @@
+{
+  "created_utc": "2026-10-04T02:52:35.064088+00:00",
+  "source_root": "/Users/atoleugazin/Documents/Projects/QGHACKS",
+  "source_files": {
+    "prices.csv": "event8k/data/grid_prices.csv",
+    "adv.csv": "event8k/data/acq_dollar_volume.csv",
+    "ff5.csv": "strategy/data/F-F_Research_Data_5_Factors_2x3_daily.csv",
+    "momentum.csv": "strategy/data/F-F_Momentum_Factor_daily.csv"
+  },
+  "files": {
+    "adv.csv": {
+      "sha256": "4bbfdd0969e73ff2db1320192385ad48eadd6d24e030196d86cf36e8ae830cd4",
+      "bytes": 13227655
+    },
+    "corporate_action_coverage.json": {
+      "sha256": "963766d3b141f378c7676a0539610c297bd0086e01c0d588d091da95cc70ebd0",
+      "bytes": 251
+    },
+    "disclosures.json": {
+      "sha256": "90c4dddd22e0997f9442a78c8793a4f7d3677f81a0791ec2c8430abee43d6cbd",
+      "bytes": 3823843
+    },
+    "dividend_adjustments.json": {
+      "sha256": "61a6c69ba9ed8927cfe9fcb761fa8f670c03093cfab9516f964aecb65a15a509",
+      "bytes": 256
+    },
+    "dividend_coverage.json": {
+      "sha256": "04b5ec9e2b3c4cf455af4d99e36f18266390dac45b27d7919fc4beb319fbb98d",
+      "bytes": 8197
+    },
+    "dividend_overrides.csv": {
+      "sha256": "3337b685a8f59d21f191cde365972ef5c425b8ac9693d0e5a8bea25f7b800398",
+      "bytes": 2629
+    },
+    "dividends.csv": {
+      "sha256": "fc678abf975f54864bd2eff197e5872022f018bc94493efddfc029aee712939d",
+      "bytes": 774890
+    },
+    "events.csv": {
+      "sha256": "19490a177d5b31fb09216e3af4f4086c66dd47379ad4ba86769ad3b23c9a1d4b",
+      "bytes": 66218
+    },
+    "ff5.csv": {
+      "sha256": "323ee3426ffa429ea2e3dacaac85a581e3968d319817efe0b4614c5e5adfddc1",
+      "bytes": 1017831
+    },
+    "momentum.csv": {
+      "sha256": "d4b3e98cb5afb1533af0d4568aa816de2aadac5bbff9a590c1c65e3392d7b05b",
+      "bytes": 472762
+    },
+    "original_dividends.csv": {
+      "sha256": "24ef100accbc2b3084d1231efac997411c5bb3a85eb2cdb20b4a89b188ca6241",
+      "bytes": 764391
+    },
+    "original_prices.csv": {
+      "sha256": "ac6405c409f3b1ddaebb510df5304d8df4943a6cc141a821d0929bac1f5a296b",
+      "bytes": 17617735
+    },
+    "prices.csv": {
+      "sha256": "99c69687ec50aed00376e9696a10d5cb13293955b62936f043a15e3d6d43f59c",
+      "bytes": 17694181
+    },
+    "settlements.csv": {
+      "sha256": "91240ad550ea57a0f60a188736627748c8bfb7e8fa4b7225cfde983b5972adb7",
+      "bytes": 49
+    }
+  },
+  "protocol_sha256": "bdd0d9fc2a8831382ffd576a7ac689663d627e7b5f8368ae025ac08cab90fa4e",
+  "licensed_data_not_for_redistribution": true,
+  "corporate_action_journal_sha256": "e5ee303aff74a13d03f9f447f8606c4da6bae45eb40c2414fc48389809208d69"
+}

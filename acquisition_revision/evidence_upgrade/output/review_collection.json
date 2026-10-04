@@ -1,0 +1,251 @@
+{
+  "count": 30,
+  "retrieved_utc": "2026-10-04T03:27:13.046496+00:00",
+  "frozen_sample_sha256": "72158aef2a1e59cf241d7ab6a197338c4cff4132fc4de4939c5bc7acbc9eded5",
+  "items_sha256": "2cfe6914be25138c8215f0b9123d710c2d5b12622e9336f916dd24d89bfc218f",
+  "sources": "exact-accession SEC Items retrieved through licensed Massive text endpoint",
+  "exhibits_not_guaranteed": true,
+  "human_review": false,
+  "receipts": [
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0000790051&filing_date=2024-10-18&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:12.474127+00:00",
+      "response_sha256": "50eafd8580317861df1684401671f7c0dad820bb630754177d01a85b5a7b35c7",
+      "response_file": "e29cde524348adaa1310a413accb2d40ab1ed56d37c5c9a312a0b6b1bef3fc4c.json",
+      "http_status": 200,
+      "request_id": "5ff3b59a1d2d4c1092edc63f4700df78"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0001758009&filing_date=2025-12-15&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:12.473980+00:00",
+      "response_sha256": "bc9ccd3f213f7bd40908d9f60faeb249b20117f963628adeddfb9e40cab67f9e",
+      "response_file": "abb93b13644a0b8f3fb6d2012a398cf4fe760633ee7388e11208cae6d74bd590.json",
+      "http_status": 200,
+      "request_id": "df74eccec3ff49e382f6742403a64d75"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0000885725&filing_date=2024-01-08&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:12.482014+00:00",
+      "response_sha256": "c11db1c26dd5fa379514b678338d69c666f6307f66195c5a997ba4b1607a1921",
+      "response_file": "cda446bbf467eed921432343eedec2e172a8691984ba0925a93dbbd910913bc1.json",
+      "http_status": 200,
+      "request_id": "9516553a3fc3492889b9b656315329f1"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0001805284&filing_date=2025-03-10&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:12.512291+00:00",
+      "response_sha256": "6a54b13761d5f6aaaabc88bec4038774392048c799bec28b32d483a209cee6d3",
+      "response_file": "a32cb9b337318d305b3fadfadaf2bde2252e69fb82530842b86804eab3e291de.json",
+      "http_status": 200,
+      "request_id": "8a933c26025c4e7199c8cba85bc5ba47"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0001515673&filing_date=2022-07-18&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:12.547735+00:00",
+      "response_sha256": "34fe4ea00f4d02e4ddc1eada2f2b615d03ecfe76b167afe5936965dcdf4ac2df",
+      "response_file": "52c7b030b41ab3c680e4980e5a142c0f656319d3b4701b94152870bf80ceb3c4.json",
+      "http_status": 200,
+      "request_id": "e636b152e3a045b2a60976a035edbe65"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0000070145&filing_date=2025-10-21&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:12.547875+00:00",
+      "response_sha256": "cf34802fc049a7e13c378ca797e1d52a2f88cc4106f05ffa9c220a8406f50e6e",
+      "response_file": "c351b2587f21ea4ec50be5cf94ed39e02571a99460b92943c9eb4df1d0695b07.json",
+      "http_status": 200,
+      "request_id": "a96891b19f1f4c81b9b1e8d55d7236d5"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0001647088&filing_date=2024-09-18&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:12.552323+00:00",
+      "response_sha256": "4e23b7e35c4e9481c3ec5cecbc2980175891e50409e052c9687287b38e1ad0a9",
+      "response_file": "3224cc428c5bcec82531441895d19738ef1ff948576182c20a93ed26888255bf.json",
+      "http_status": 200,
+      "request_id": "a9c8fe87573740cc89b5e3d9e2e53ccd"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0001104485&filing_date=2022-10-19&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:12.581181+00:00",
+      "response_sha256": "712051d2567cf5b49af1a61e7df14406565eddf708c6c47d2461f7ddbc8aef76",
+      "response_file": "c39060f922028b5c1f380a8f31a304923c6ae4970b19c196bea9754cf4e81c52.json",
+      "http_status": 200,
+      "request_id": "ad2653465a1c4e84a2459f4a3e9bd5a8"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0001311370&filing_date=2026-04-30&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:12.621130+00:00",
+      "response_sha256": "dc410b712bba8a7b36cd73373614fc1fff86b586840f541aa206e8a76fa9c8cd",
+      "response_file": "fd4009252a85f81fad44f17da2130af8fda664d33dfb08cc305f139abca96622.json",
+      "http_status": 200,
+      "request_id": "4688b700175d4381b1006c0e2b1f4da9"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0000708955&filing_date=2025-06-23&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:12.621328+00:00",
+      "response_sha256": "945a240aa2ea4ad2d4ad47b93819ce4385607c3005fba7aea2e272624a989619",
+      "response_file": "c91d16f3a9568ce76ba714075084de96d64c7da280280d2d37dbe3cbd56f74b5.json",
+      "http_status": 200,
+      "request_id": "d95a0be8d8264c9ea4d93c9ce3a1c106"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0001609253&filing_date=2025-09-17&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:12.629655+00:00",
+      "response_sha256": "71b8ab4e442d661ad5c601770fef9be59c64c438ddea460bcbe38c288449e432",
+      "response_file": "2166d36c0e2d2b591ab28524a535d03f3505f21591db04fd8d4f85684827e76e.json",
+      "http_status": 200,
+      "request_id": "9eedc28045bf4a44894157755e94ad0f"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0001766363&filing_date=2024-04-02&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:12.649268+00:00",
+      "response_sha256": "0f446ae706ee43b38967bf296631241ff3548159760b0cfe15e1246ccca381bf",
+      "response_file": "62a3e940896a77f9d6a85e95dc5fa63037f8a19c2ba299dbdd2c1768ed4c6f49.json",
+      "http_status": 200,
+      "request_id": "a161b4de973e43ee99c4e6eca21677eb"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0001590895&filing_date=2026-09-17&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:12.692962+00:00",
+      "response_sha256": "287db275fb7fef00056bceeb6a1e1f9e112ed777bb9e9071e77bcfb27b68274d",
+      "response_file": "169be6a49e02055c4e4fd3a0b182338d16b13e669a01bad2eb220ae6a5be42aa.json",
+      "http_status": 200,
+      "request_id": "61d38a342d694278b18335650ecec7bc"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0001616318&filing_date=2024-09-13&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:12.694664+00:00",
+      "response_sha256": "de4e19b64afef79845934b7be3026dce31013c0c7059ef3b7f407201a5d58cce",
+      "response_file": "eb4447cb6c3e6a19233288249e9e0634d0e1550c93769b82a829d38b5b361558.json",
+      "http_status": 200,
+      "request_id": "b4c6e886a01f48f2b4f9482bd596d5cd"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0001114483&filing_date=2026-08-04&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:12.701161+00:00",
+      "response_sha256": "1960c04285cad3642aff2bca9ccd1bff5fa95bb5e468bb89d4925fa5e6c1aa77",
+      "response_file": "ef315bf22943531c50a39960432b636a26b091e9ecd60e1e1daf6f10833e5664.json",
+      "http_status": 200,
+      "request_id": "25718ff3933149f4bb2f4c8e67baac11"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0001651052&filing_date=2023-02-27&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:12.721391+00:00",
+      "response_sha256": "2213e616d86e7e2eb424daa8438dfdd1f45afbfdc2904e6884e316c9bd22da77",
+      "response_file": "4d677730475d8f844c9c1f091183b3c7e3db635ac4343dafae75be67c243af18.json",
+      "http_status": 200,
+      "request_id": "f415fba91e474e558973cfb102583274"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0000892537&filing_date=2022-05-16&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:12.817661+00:00",
+      "response_sha256": "2a42fc18562a93e4d6eb7831d2a8a5a4f76c3d96673217b936b73c88185c00de",
+      "response_file": "ed7b823f1c0209bbf8d2e43710f131640c276cad85f3405f895442ccf6d5e007.json",
+      "http_status": 200,
+      "request_id": "069f32cb5cf44cbbbfe1ab9a64cfa3ad"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0001274173&filing_date=2025-12-22&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:12.818994+00:00",
+      "response_sha256": "3cd95393f914ecc87d77a5e26c3cbe88209087e87e0f4fca2fef4843c3357ad8",
+      "response_file": "28042d98e9b898687fc4c5e04dcc2af4508fc2f5fe05520e0fce17a215e15c8c.json",
+      "http_status": 200,
+      "request_id": "646bd9326ea64c4d94fe0de65f27f38a"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0001603756&filing_date=2024-01-08&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:12.819314+00:00",
+      "response_sha256": "4f79dd57777f594ff5a5373914ce54459abbd7548e9107c716d8eafa1dbbcb69",
+      "response_file": "58877df455d77a52bb0971e895c8eb9bf693b209167093ad8221b2342201ad0b.json",
+      "http_status": 200,
+      "request_id": "1ace17fb5b5c43c1b66aab51c8661d41"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0000059527&filing_date=2022-10-14&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:12.888061+00:00",
+      "response_sha256": "bc48e661895f270f6e4a264b580e6e4bc8d6ac77a6f801162b7c82756c57ddc5",
+      "response_file": "b01161af6de9cb315dc2c410361ddb6fac628b6ef7cfd51b930e136aee3c9bfe.json",
+      "http_status": 200,
+      "request_id": "e4cd9d9a067548eeadce23baaa03fc5b"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0001094831&filing_date=2024-10-22&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:12.888519+00:00",
+      "response_sha256": "2c74e3c6d97c1a1ca675d5374ab4c7890047c9600cfcd5e2c95f47b4548521fc",
+      "response_file": "a6e2c8fb85e48abd2343f59e3d4ce440e461ff24384939755709ea96e22402a0.json",
+      "http_status": 200,
+      "request_id": "0ccd4c0f948443e78681dab07cb2f15a"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0001359841&filing_date=2025-08-13&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:12.888126+00:00",
+      "response_sha256": "8b9e04fceef7b23e6d8a7ad76b4c97fb627a8e2667c9be3c724d551e39fc9b5b",
+      "response_file": "bf044275279fea80ff17a1648d6213b891a80c282f5a21a3c86e1ba3f33d5940.json",
+      "http_status": 200,
+      "request_id": "f785d666d9b74824b6f28f70c5bd053d"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0001666138&filing_date=2026-08-03&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:12.888951+00:00",
+      "response_sha256": "f0e2496e74699e53e113f260ca518f5ef9ade187d7255ddf40c96045cca09891",
+      "response_file": "9738da49242c627b2a02973bbad26b0566c9298496cdbd00ddf4e16ed1aef58e.json",
+      "http_status": 200,
+      "request_id": "0e5d6f2d6fbb40af9280a5f0d3d92ab4"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0001451809&filing_date=2026-02-04&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:12.958095+00:00",
+      "response_sha256": "749ad8287a106798292570b7d5c0491e9d76de4d625a610fc22d1fd3ee2eea78",
+      "response_file": "41ebc090fd12a27cf0c246f344541660702d677d0556e815707870c06365ba52.json",
+      "http_status": 200,
+      "request_id": "560d81ec0490490586628e239a6daf7c"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0001288469&filing_date=2022-06-21&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:12.958192+00:00",
+      "response_sha256": "8b333ac9f429626531ed572e19bc4f3589e053c28dc06c9549d2530d881a217d",
+      "response_file": "d738d0324006a7c43d07940404c3af27f9c9d806ca13d4db4068578a008c3ea3.json",
+      "http_status": 200,
+      "request_id": "bfec8bfcfce84a37ab65c9dc9ee7b5b7"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0001097149&filing_date=2023-09-06&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:12.965306+00:00",
+      "response_sha256": "13451f8435e620caf2c7f19f89db60202b243f4fccd29e1eb633d22f4ac3a1c9",
+      "response_file": "79fa2a6a9d08af0d392cc23a15a1e978ea0eec9e5f2be00cbdad5de061feba91.json",
+      "http_status": 200,
+      "request_id": "fdf35c8c34d2450c9d1262a72883df81"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0000026780&filing_date=2026-06-11&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:12.966466+00:00",
+      "response_sha256": "0a146b29e84aeb70cbd239613ca081085f6fc2680f17713b488368d7289c8100",
+      "response_file": "69a64d807c58787c7245dcc7b4838fc7898c8388b28a3d432ea2b74672f4b34b.json",
+      "http_status": 200,
+      "request_id": "eaec36c3e47b4acfb975afcbfb5bb0ab"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0000106640&filing_date=2022-09-23&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:13.031961+00:00",
+      "response_sha256": "2efd7aecefe661c10523dae86262dd8d2481aa95726a4cd27bda97ea0508818c",
+      "response_file": "c2a53ee1058287633126925636655bc9aa6ac9b24852a46456c2ddc27396d8f9.json",
+      "http_status": 200,
+      "request_id": "fe6943a00eb24346baf848635b6a2010"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0000006281&filing_date=2026-05-19&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:13.035337+00:00",
+      "response_sha256": "3296dd0e38376794d55784eb4e8a040d47ff5837d8ab114dc52f6925daf27436",
+      "response_file": "ee2e36c599a5c5cedd2d04151477622fe7101921e1070a4ac0bb2bb98dd07e1b.json",
+      "http_status": 200,
+      "request_id": "861728516919473f838c2f2d790663da"
+    },
+    {
+      "url": "https://api.massive.com/stocks/filings/8-K/vX/text?cik=0000864749&filing_date=2022-12-12&limit=100&sort=filing_date.asc",
+      "retrieved_utc": "2026-10-04T03:27:13.040527+00:00",
+      "response_sha256": "8352ce0334d37fe8510475d47a7ed3b4ab7a103a06e06934579551cc6b0fe090",
+      "response_file": "aee78e7981e17c3eccd83918242a2999e78336d89f7c3c7f292a4b84b34989ac.json",
+      "http_status": 200,
+      "request_id": "4373915f970b4833a94b0071e1658deb"
+    }
+  ]
+}

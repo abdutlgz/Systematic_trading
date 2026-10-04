@@ -1,0 +1,8 @@
+data/
+cache/
+__pycache__/
+.mplconfig/
+output/role_review.csv
+output/role_review_sample.csv
+output/role_quotes.json
+output/placebo_daily.csv

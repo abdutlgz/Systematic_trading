@@ -1,0 +1,21 @@
+{
+  "generated_utc": "2026-10-04T03:42:12.948879+00:00",
+  "rebuilt_events": 1109,
+  "source_response_count": 4080,
+  "not_independent_software_implementation": true,
+  "clean_input_reconstruction": true,
+  "no_historical_reselection": true,
+  "parent_raw_comparison_available": true,
+  "original_events": 1109,
+  "events_only_original": [],
+  "events_only_rebuilt": [],
+  "price_columns_compared": 715,
+  "price_dates_compared": 1444,
+  "quote_cells_differing": 0,
+  "max_shared_quote_difference": 0.0,
+  "maximum_metric_difference": 0.0,
+  "maximum_daily_return_difference": 0.0,
+  "daily_return_match_1e_10": true,
+  "metrics_match_1e_8": true,
+  "reconstructed_placebos": 100
+}
